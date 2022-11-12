@@ -1,0 +1,7 @@
+ldc_set_location -site {34} [get_ports reset]
+ldc_set_location -site {6} [get_ports a1]
+ldc_set_location -site {4} [get_ports a2]
+ldc_set_location -site {28} [get_ports a3]
+ldc_set_location -site {47} [get_ports a4]
+ldc_set_location -site {2} [get_ports enable12]
+ldc_set_location -site {21} [get_ports enable34]

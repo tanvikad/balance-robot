@@ -1,0 +1,11 @@
+ERROR - c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(11): syntax error near ). VERI-1137
+ERROR - c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(13): syntax error near &lt;=. VERI-1137
+ERROR - c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(13): syntax error near &lt;=. VERI-1137
+ERROR - c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(12): syntax error near &lt;=. VERI-1137
+ERROR - c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(12): syntax error near =. VERI-1137
+ERROR - c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(28): syntax error near end. VERI-1137
+ERROR - c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(23): hf_osc is not valid in an expression. VERI-1130
+ERROR - c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(23): hf_osc is not valid in an expression. VERI-1130
+ERROR - c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(10): illegal expression in target. VERI-1042
+ERROR - c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(10): syntax error near =. VERI-1137
+ERROR - c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(37): syntax error near (. VERI-1137

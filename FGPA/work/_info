@@ -1,0 +1,131 @@
+m255
+K4
+z2
+!s11f vlog 2022.3 2022.07, Jul 18 2022
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/tdasari/my_designs/Lab7
+vmotor_controller
+Z0 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z1 !s110 1668242682
+!i10b 1
+!s100 _8J:<KJ@zc:WF[1D81N2X2
+I09@XFk4>A58DZAb4]dH5C0
+S1
+Z2 dC:/Users/tdasari/balance-robot/FGPA
+w1668242676
+8C:/Users/tdasari/balance-robot/FGPA/source/impl_1/motor_controller.sv
+FC:/Users/tdasari/balance-robot/FGPA/source/impl_1/motor_controller.sv
+!i122 18
+L0 1 50
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z4 OP;L;2022.3;75
+r1
+!s85 0
+31
+Z5 !s108 1668242682.000000
+!s107 C:/Users/tdasari/balance-robot/FGPA/source/impl_1/motor_controller.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/tdasari/balance-robot/FGPA/source/impl_1/motor_controller.sv|
+!i113 1
+Z6 o-work work -sv
+Z7 tCvgOpt 0
+vmotor_controller_tb
+R0
+R1
+!i10b 1
+!s100 09m^RgejoXO=9zPT3J2HZ1
+I^_a2:2gnIG8>L[6a>2KaE2
+S1
+R2
+Z8 w1668242407
+Z9 8C:/Users/tdasari/balance-robot/FGPA/source/impl_1/top.sv
+Z10 FC:/Users/tdasari/balance-robot/FGPA/source/impl_1/top.sv
+!i122 19
+L0 51 37
+R3
+R4
+r1
+!s85 0
+31
+R5
+Z11 !s107 C:/Users/tdasari/balance-robot/FGPA/source/impl_1/top.sv|
+Z12 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/tdasari/balance-robot/FGPA/source/impl_1/top.sv|
+!i113 1
+R6
+R7
+vtop
+R0
+R1
+!i10b 1
+!s100 e8=V3_9QL9U^iBSM4?=0n0
+Io@f7G[QHQJzB<0eA>m5l]1
+S1
+R2
+R8
+R9
+R10
+!i122 19
+L0 17 31
+R3
+R4
+r1
+!s85 0
+31
+R5
+R11
+R12
+!i113 1
+R6
+R7
+vtop_tb
+R0
+!s110 1668227162
+!i10b 1
+!s100 DRiN8V[aJG=fG0g?AN`Sc2
+I[UTze?PBD48?oG7H^ihbi3
+S1
+R2
+w1668227129
+R9
+R10
+!i122 3
+L0 34 25
+R3
+R4
+r1
+!s85 0
+31
+!s108 1668227162.000000
+R11
+R12
+!i113 1
+R6
+R7
+vtop_wrapper
+R0
+R1
+!i10b 1
+!s100 4@;`L]XhJFlR3CHTnmb:H3
+IO2bQU:zKFR^_LK8jNYz4f1
+S1
+R2
+R8
+R9
+R10
+!i122 19
+L0 1 12
+R3
+R4
+r1
+!s85 0
+31
+R5
+R11
+R12
+!i113 1
+R6
+R7

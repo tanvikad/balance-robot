@@ -34,7 +34,6 @@
   <ProjectSessionItem path="MCU"/>
   <ProjectSessionItem path="MCU;MCU"/>
   <ProjectSessionItem path="MCU;MCU;CMSIS Files"/>
-  <ProjectSessionItem path="MCU;MCU;lib"/>
   <ProjectSessionItem path="MCU;MCU;Script Files"/>
   <ProjectSessionItem path="MCU;MCU;Source Files"/>
   <ProjectSessionItem path="MCU;MCU;System Files"/>
@@ -81,11 +80,6 @@
  <Watch4>
   <Watches active="0" update="Never"/>
  </Watch4>
- <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="MCU.emProject" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="1" y="16" useTextEdit="1" path="main.c" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="84" useTextEdit="1" path="spi.c" left="0" top="44" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="31" y="53" useTextEdit="1" path="lib/STM32L432KC_SPI.c" left="0" selected="1" top="21" codecName="Default"/>
- </Files>
- <EMStudioWindow activeProject="MCU" fileDialogDefaultFilter="*" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="C:/Users/erchen/Documents/balance-robot/MCU/lib" debugSearchPath="" autoConnectCapabilities="3199"/>
+ <Files/>
+ <EMStudioWindow activeProject="MCU" fileDialogDefaultFilter="*" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="C:/Users/tdasari/balance-robot/MCU" debugSearchPath="" autoConnectCapabilities="3199"/>
 </session>

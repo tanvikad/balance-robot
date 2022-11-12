@@ -1,6 +1,6 @@
 <HTML>
 <HEAD>
-<TITLE>Lattice TCL Log</TITLE>
+<TITLE></TITLE>
 <link href="file:///C:/lscc/radiant/3.2/data/theme/css/light/report.css" rel="stylesheet" type="text/css" media="screen"/>
 <link href="file:///C:/lscc/radiant/3.2/data/theme/css/print/report.css" rel="stylesheet" type="text/css" media="print"/>
 <style type="text/css">
@@ -40,22 +40,23 @@ if (a)
 <BODY>
 
 <DIV id="content" onclick="hideTocList()"><PRE>
-<A name="pn221111182851"></A><B><U><big>pn221111182851</big></U></B>
-#Start recording tcl command: 11/11/2022 18:28:27
-#Project Location: C:/Users/tdasari/balance-robot/FGPA; Project name: FGPA
-prj_create -name "FGPA" -impl "impl_1" -dev iCE40UP5K-SG48I -performance "High-Performance_1.2V" -synthesis "lse"
-prj_save 
-#Stop recording: 11/11/2022 18:28:51
-
+POSTSYN: Post Synthesis Process Radiant Software (64-bit) 3.2.0.18.0
+Command Line: postsyn -a iCE40UP -p iCE40UP5K -t SG48 -sp High-Performance_1.2V -oc Industrial -top -w -o FGPA_impl_1_syn.udb -gui -msgset C:/Users/tdasari/balance-robot/FGPA/promote.xml FGPA_impl_1.vm 
+   Architecture:     iCE40UP
+   Device:           iCE40UP5K
+   Package:          SG48
+   Performance:      High-Performance_1.2V
+Reading input file 'FGPA_impl_1.vm' ...
+Removing unused logic ...
+Starting design annotation....
+Writing output file 'FGPA_impl_1_syn.udb'.
+POSTSYN finished successfully.
+Total CPU Time: 0 secs 
+Total REAL Time: 0 secs 
+Peak Memory Usage: 32 MB
 
 
 </PRE></DIV>
-
-<DIV id="toc" class="radiant"><span onmousemove="showTocList()">Contents</span>
-<UL id="toc_list">
-<LI><A href=#pn221111182851>pn221111182851</A></LI>
-</UL>
-</DIV>
 
 <button id="back_to_top" class="radiant" onclick="scrollToTop()">&lt;</button>
 <script type="text/javascript">

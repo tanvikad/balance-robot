@@ -1,0 +1,226 @@
+Copyright (c) 2002-2022 Lattice Semiconductor Corporation,  All rights reserved.
+
+Sat Nov 12 01:08:40 2022
+
+Command Line: par -w -n 1 -t 1 -s 1 -cores 1 -exp parPathBased=ON \
+	FGPA_impl_1_map.udb FGPA_impl_1.udb 
+
+
+Level/       Number       Worst        Timing       Worst        Timing       Run          Run
+Cost [udb]   Unrouted     Slack        Score        Slack(hold)  Score(hold)  Time         Status
+----------   --------     -----        ------       -----------  -----------  ----         ------
+5_1   *      0            158.381      0            1.882        0            06           Completed
+
+* : Design saved.
+
+Total (real) run time for 1-seed: 6 secs 
+
+par done!
+
+Lattice Place and Route Report for Design "FGPA_impl_1_map.udb"
+Sat Nov 12 01:08:40 2022
+
+PAR: Place And Route Radiant Software (64-bit) 3.2.0.18.0.
+Command Line: par -w -t 1 -cores 1 -exp parPathBased=ON FGPA_impl_1_map.udb \
+	FGPA_impl_1_par.dir/5_1.udb 
+
+Loading FGPA_impl_1_map.udb ...
+Loading device for application GENERIC from file 'itpa08.nph' in environment: C:/lscc/radiant/3.2/ispfpga.
+Package Status:                     Preliminary    Version 1.5.
+Performance Hardware Data Status:   Advanced       Version 1.0.
+
+
+
+Design:  top_wrapper
+Family:  iCE40UP
+Device:  iCE40UP5K
+Package: SG48
+Performance Grade:   High-Performance_1.2V
+Number of Signals: 58
+Number of Connections: 116
+Device utilization summary:
+
+   SLICE (est.)      16/2640         <1% used
+     LUT             27/5280         <1% used
+     REG             16/5280         <1% used
+   PIO                7/56           12% used
+                      7/36           19% bonded
+   IOLOGIC            1/56            1% used
+   DSP                0/8             0% used
+   I2C                0/2             0% used
+   HFOSC              1/1           100% used
+   LFOSC              0/1             0% used
+   LEDDA_IP           0/1             0% used
+   RGBA_DRV           0/1             0% used
+   FILTER             0/2             0% used
+   SRAM               0/4             0% used
+   WARMBOOT           0/1             0% used
+   SPI                0/2             0% used
+   EBR                0/30            0% used
+   PLL                0/1             0% used
+   RGBOUTBUF          0/3             0% used
+   I3C                0/2             0% used
+   OPENDRAIN          0/3             0% used
+
+Pin Constraint Summary:
+   7 out of 7 pins locked (100% locked).
+
+Finished Placer Phase 0 (HIER). CPU time: 0 secs , REAL time: 4 secs 
+
+
+................
+Finished Placer Phase 0 (AP).  CPU time: 0 secs , REAL time: 4 secs 
+
+Starting Placer Phase 1. CPU time: 0 secs , REAL time: 4 secs 
+..  ..
+....................
+
+Placer score = 7887.
+
+Device SLICE utilization summary after final SLICE packing:
+   SLICE             16/2640         <1% used
+
+Finished Placer Phase 1. CPU time: 1 secs , REAL time: 6 secs 
+
+Starting Placer Phase 2.
+.
+
+Placer score =  10087
+Finished Placer Phase 2.  CPU time: 1 secs , REAL time: 6 secs 
+
+
+------------------ Clock Report ------------------
+
+Global Clocks :
+  PRIMARY "dut.int_osc" from comp "dut.hf_osc" on site "HFOSC_R1C32", clk load = 5, ce load = 0, sr load = 0
+
+  PRIMARY  : 1 out of 8 (12%)
+
+--------------- End of Clock Report ---------------
+
+
+I/O Usage Summary (final):
+   7 out of 56 (12.5%) I/O sites used.
+   7 out of 36 (19.4%) bonded I/O sites used.
+   Number of I/O comps: 7; differential: 0
+   Number of Vref pins used: 0
+
+I/O Bank Usage Summary:
++----------+---------------+------------+------------+------------+
+| I/O Bank | Usage         | Bank Vccio | Bank Vref1 | Bank Vref2 |
++----------+---------------+------------+------------+------------+
+| 0        | 2 / 14 ( 14%) | 3.3V       |            |            |
+| 1        | 2 / 14 ( 14%) | 3.3V       |            |            |
+| 2        | 3 / 8 ( 37%)  | 3.3V       |            |            |
++----------+---------------+------------+------------+------------+
+
+Total Placer CPU time: 1 secs , REAL time: 6 secs 
+
+Writing design to file FGPA_impl_1_par.dir/5_1.udb ...
+
+
+Start NBR router at 01:08:46 11/12/22
+
+*****************************************************************
+Info: NBR allows conflicts(one node used by more than one signal)
+      in the earlier iterations. In each iteration, it tries to  
+      solve the conflicts while keeping the critical connections 
+      routed as short as possible. The routing process is said to
+      be completed when no conflicts exist and all connections   
+      are routed.                                                
+Note: NBR uses a different method to calculate timing slacks. The
+      worst slack and total negative slack may not be the same as
+      that in timing report. You should always run the timing    
+      tool to verify your design.                                
+*****************************************************************
+
+Starting routing resource preassignment
+Preassignment Summary:
+--------------------------------------------------------------------------------
+32 connections routed with dedicated routing resources
+1 global clock signals routed
+37 connections routed (of 116 total) (31.90%)
+---------------------------------------------------------
+Clock routing summary:
+Primary clocks (1 used out of 8 available):
+#4  Signal "dut.int_osc"
+       Clock   loads: 5     out of     5 routed (100.00%)
+Other clocks:
+    Signal "dut.clk"
+       Clock   loads: 0     out of     7 routed (  0.00%)
+       Data    loads: 0     out of     1 routed (  0.00%)
+---------------------------------------------------------
+--------------------------------------------------------------------------------
+Completed routing resource preassignment
+
+Start NBR section for initial routing at 01:08:46 11/12/22
+Level 4, iteration 1
+2(0.00%) conflicts; 79(68.10%) untouched conns; 0 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: 158.617ns/0.000ns; real time: 0 secs 
+Level 4, iteration 2
+0(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: 158.617ns/0.000ns; real time: 0 secs 
+
+Info: Initial congestion level at 75.00% usage is 0
+Info: Initial congestion area  at 75.00% usage is 0 (0.00%)
+
+Start NBR section for normal routing at 01:08:46 11/12/22
+Level 4, iteration 1
+0(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: 158.617ns/0.000ns; real time: 0 secs 
+
+Start NBR section for setup/hold timing optimization with effort level 3 at 01:08:46 11/12/22
+
+Starting full timing analysis...
+
+Start NBR section for post-routing at 01:08:46 11/12/22
+
+End NBR router with 0 unrouted connection
+
+Starting full timing analysis...
+
+NBR Summary
+-----------
+  Number of unrouted connections : 0 (0.00%)
+  Estimated worst slack<setup> : 158.381ns
+  Estimated worst slack<hold > : 1.882ns
+  Timing score<setup> : 0
+  Timing score<hold > : 0
+  Number of connections with timing violations<setup> : 0 (0.00%)
+  Number of connections with timing violations<hold > : 0 (0.00%)
+-----------
+
+
+Total CPU time 0 secs 
+Total REAL time: 0 secs 
+Completely routed.
+End of route.  116 routed (100.00%); 0 unrouted.
+
+Writing design to file FGPA_impl_1_par.dir/5_1.udb ...
+
+
+All signals are completely routed.
+
+
+PAR_SUMMARY::Run status = Completed
+PAR_SUMMARY::Number of unrouted conns = 0
+PAR_SUMMARY::Worst  slack<setup/<ns>> = 158.381
+PAR_SUMMARY::Timing score<setup/<ns>> = 0.000
+PAR_SUMMARY::Worst  slack<hold /<ns>> = 1.882
+PAR_SUMMARY::Timing score<hold /<ns>> = 0.000
+PAR_SUMMARY::Number of errors = 0
+
+Total CPU  Time: 2 secs 
+Total REAL Time: 6 secs 
+Peak Memory Usage: 108.06 MB
+
+
+par done!
+
+Note: user must run 'timing' for timing closure signoff.
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2022 Lattice Semiconductor Corporation,  All rights reserved.

@@ -1,0 +1,5 @@
+#Start recording tcl command: 11/11/2022 18:28:27
+#Project Location: C:/Users/tdasari/balance-robot/FGPA; Project name: FGPA
+prj_create -name "FGPA" -impl "impl_1" -dev iCE40UP5K-SG48I -performance "High-Performance_1.2V" -synthesis "lse"
+prj_save 
+#Stop recording: 11/11/2022 18:28:51
