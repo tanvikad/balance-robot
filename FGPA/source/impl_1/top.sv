@@ -5,10 +5,11 @@ module top_wrapper(
 	output logic a1,
 	output logic a2,
 	output logic a3,
-	output logic a4
+	output logic a4,
+	output logic debug_light
 );
 	
-	top dut(reset, 1'd0, 7'd50, 1'd1, 7'd50, enable12, enable34, a1, a2, a3, a4);
+	top dut(reset, 1'd0, 7'd50, 1'd1, 7'd50, enable12, enable34, a1, a2, a3, a4, debug_light);
 endmodule
 
 
@@ -17,15 +18,16 @@ endmodule
 module top(
 	input logic reset,
 	input logic motor1_sign,
-	input logic[6:0] motor1_period,
+	input logic[6:0] motor1_upperlimit,
 	input logic motor2_sign,
-	input logic[6:0] motor2_period,
+	input logic[6:0] motor2_upperlimit,
 	output logic enable12,
 	output logic enable34,
 	output logic a1,
 	output logic a2,
 	output logic a3,
-	output logic a4	
+	output logic a4,
+	output logic debug_light
 );
 
 	// Internal high-speed oscillator
@@ -46,16 +48,16 @@ module top(
 				counter <= 0;
 			end
 	end
-	motor_controller dut(reset, clk,  motor1_sign, motor1_period, motor2_sign, motor2_period, enable12, enable34, a1, a2, a3, a4);
+	motor_controller dut(reset, clk,  motor1_sign, motor1_upperlimit, motor2_sign, motor2_upperlimit, enable12, enable34, a1, a2, a3, a4, debug_light);
 endmodule 
 
 
 
 module motor_controller_tb();
 	logic motor1_sign;
-	logic[6:0] motor1_period;
+	logic[6:0] motor1_upperlimit;
 	logic motor2_sign;
-	logic[6:0] motor2_period;
+	logic[6:0] motor2_upperlimit;
 	logic enable12;
 	logic enable34;
 	logic a1;
@@ -64,6 +66,7 @@ module motor_controller_tb();
 	logic a4;
 	logic clk;
 	logic reset;
+	logic debug_light; 
 	 
 	always begin
 		  clk = 1'b0; #5;
@@ -72,8 +75,8 @@ module motor_controller_tb();
 	 initial begin
 		motor1_sign <= 1'b1;
 		motor2_sign <= 1'b0;
-		motor1_period <= 7'd30;
-		motor2_period <= 7'd100;
+		motor1_upperlimit <= 7'd30;
+		motor2_upperlimit <= 7'd100;
 	 end
 	 
 	 initial begin
@@ -85,6 +88,6 @@ module motor_controller_tb();
 		  reset <= 1'b0;
 	  end
 	 
-	  motor_controller dut(reset, clk, motor1_sign, motor1_period, motor2_sign, motor2_period, enable12, enable34, a1, a2, a3, a4);
+	  motor_controller dut(reset, clk, motor1_sign, motor1_upperlimit, motor2_sign, motor2_upperlimit, enable12, enable34, a1, a2, a3, a4, debug_light);
 	
 endmodule
