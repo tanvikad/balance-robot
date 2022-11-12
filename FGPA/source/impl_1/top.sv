@@ -9,7 +9,7 @@ module top_wrapper(
 	output logic debug_light
 );
 	
-	top dut(reset, 1'd0, 7'd50, 1'd1, 7'd50, enable12, enable34, a1, a2, a3, a4, debug_light);
+	top dut(reset, 1'd1, 7'd25, 1'd1, 7'd50, enable12, enable34, a1, a2, a3, a4, debug_light);
 endmodule
 
 

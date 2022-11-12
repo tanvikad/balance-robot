@@ -32,14 +32,16 @@ module motor_controller(
 			else
 				begin
 					debug_light <= 1'b0;
-					a1<= (motor1_sign);
-					a2<= (!motor1_sign);
+					a1<=(motor1_sign);
+					a2<=(!motor1_sign);
+					a3<=(motor2_sign);
+					a4<= (!motor2_sign);
 					if(counter < upper_limit) counter <= counter + 1;
-					else 
-						begin
-							enable12 <= !enable12;
-							counter <= 0;
-						end
+					else counter <= 0;
+					
+					enable12 <= (counter <= motor1_upperlimit);
+					enable34 <= (counter <= motor2_upperlimit);
+						
 				end
 		end
 endmodule
