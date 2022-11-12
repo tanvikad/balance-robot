@@ -33,6 +33,11 @@
  <Project>
   <ProjectSessionItem path="MCU"/>
   <ProjectSessionItem path="MCU;MCU"/>
+  <ProjectSessionItem path="MCU;MCU;CMSIS Files"/>
+  <ProjectSessionItem path="MCU;MCU;lib"/>
+  <ProjectSessionItem path="MCU;MCU;Script Files"/>
+  <ProjectSessionItem path="MCU;MCU;Source Files"/>
+  <ProjectSessionItem path="MCU;MCU;System Files"/>
  </Project>
  <Register1>
   <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/MSP;CPU/PSP;CPU/PRIMASK;CPU/BASEPRI;CPU/FAULTMASK;CPU/CONTROL;CPU/internal" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context" name="lab4_EC" decimalNodes="" octalNodes="" unsignedNodes=""/>
@@ -77,7 +82,10 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="MCU.emProject" left="0" selected="1" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="MCU.emProject" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="1" y="16" useTextEdit="1" path="main.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="84" useTextEdit="1" path="spi.c" left="0" top="44" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="31" y="53" useTextEdit="1" path="lib/STM32L432KC_SPI.c" left="0" selected="1" top="21" codecName="Default"/>
  </Files>
- <EMStudioWindow activeProject="MCU" fileDialogDefaultFilter="*" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="C:/Users/tdasari/balance-robot/MCU" debugSearchPath="" autoConnectCapabilities="3199"/>
+ <EMStudioWindow activeProject="MCU" fileDialogDefaultFilter="*" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="C:/Users/erchen/Documents/balance-robot/MCU/lib" debugSearchPath="" autoConnectCapabilities="3199"/>
 </session>

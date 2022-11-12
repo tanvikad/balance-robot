@@ -1,8 +1,6 @@
-Output/Debug/Obj/MCU/system_stm32l4xx.o: \
- C:\Users\erchen\Documents\balance-robot\MCU\STM32L4xx\Device\Source\system_stm32l4xx.c \
- C:/Users/erchen/Documents/balance-robot/MCU/STM32L4xx/Device/Include/stm32l4xx.h \
- C:/Users/erchen/Documents/balance-robot/MCU/STM32L4xx/Device/Include/stm32l432xx.h \
- C:/Users/erchen/Documents/balance-robot/MCU/CMSIS_5/CMSIS/Core/Include/core_cm4.h \
+Output/Debug/Obj/MCU/STM32L432KC_RCC.o: \
+ C:\Users\erchen\Documents\balance-robot\MCU\lib\STM32L432KC_RCC.c \
+ C:\Users\erchen\Documents\balance-robot\MCU\lib\STM32L432KC_RCC.h \
  C:/Users/erchen/AppData/Local/SEGGER/SEGGER\ Embedded\ Studio/v3/packages/libraries/libcxx/include/stdint.h \
  C:/Users/erchen/AppData/Local/SEGGER/SEGGER\ Embedded\ Studio/v3/packages/libraries/libcxx/include/__config \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 6.34/include/stdint.h \
@@ -10,6 +8,8 @@ Output/Debug/Obj/MCU/system_stm32l4xx.o: \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 6.34/include/__SEGGER_RTL_ConfDefaults.h \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 6.34/include/__SEGGER_RTL_Conf.h \
  C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ for\ ARM\ 6.34/include/__SEGGER_RTL_Arm_Conf.h \
+ C:/Users/erchen/Documents/balance-robot/MCU/STM32L4xx/Device/Include/stm32l432xx.h \
+ C:/Users/erchen/Documents/balance-robot/MCU/CMSIS_5/CMSIS/Core/Include/core_cm4.h \
  C:/Users/erchen/Documents/balance-robot/MCU/CMSIS_5/CMSIS/Core/Include/cmsis_version.h \
  C:/Users/erchen/Documents/balance-robot/MCU/CMSIS_5/CMSIS/Core/Include/cmsis_compiler.h \
  C:/Users/erchen/Documents/balance-robot/MCU/CMSIS_5/CMSIS/Core/Include/cmsis_gcc.h \

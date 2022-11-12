@@ -50,7 +50,7 @@
     </folder>
     <folder Name="Source Files">
       <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
-      <file file_name="main.c" />
+      <file file_name="spi.c" />
     </folder>
     <folder Name="System Files">
       <file file_name="SEGGER_THUMB_Startup.s" />
@@ -58,6 +58,21 @@
       <file file_name="STM32L4xx/Source/stm32l432xx_Vectors.s">
         <configuration Name="Common" file_type="Assembly" />
       </file>
+    </folder>
+    <folder Name="lib">
+      <file file_name="lib/STM32L432KC.h" />
+      <file file_name="lib/STM32L432KC_FLASH.c" />
+      <file file_name="lib/STM32L432KC_FLASH.h" />
+      <file file_name="lib/STM32L432KC_GPIO.c" />
+      <file file_name="lib/STM32L432KC_GPIO.h" />
+      <file file_name="lib/STM32L432KC_RCC.c" />
+      <file file_name="lib/STM32L432KC_RCC.h" />
+      <file file_name="lib/STM32L432KC_SPI.c" />
+      <file file_name="lib/STM32L432KC_SPI.h" />
+      <file file_name="lib/STM32L432KC_TIM.c" />
+      <file file_name="lib/STM32L432KC_TIM.h" />
+      <file file_name="lib/STM32L432KC_USART.c" />
+      <file file_name="lib/STM32L432KC_USART.h" />
     </folder>
   </project>
   <configuration
