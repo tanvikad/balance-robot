@@ -1,12 +1,13 @@
-<top name = "motor_controller"  library = "work"  arch = ""  entry = "Verilog">
+<top name = "top_wrapper"  library = "work"  arch = ""  entry = "Verilog">
 
 <clocks>
-    <clockitem name = "clk"  type = "port" />
+    <clockitem name = "dut/int_osc"  type = "net" />
+    <clockitem name = "dut/clk"  type = "net" />
 </clocks>
 
 <!--
     //=============================================================
-    //  Number of Clocks processed: 1
+    //  Number of Clocks processed: 2
     //
     //  If a clock cannot be found in the top level pins section,
     //  that means it is an internal clock.

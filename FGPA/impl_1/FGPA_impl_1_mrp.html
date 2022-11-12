@@ -47,32 +47,34 @@ Target Device:        iCE40UP5KSG48
 Target Performance:   High-Performance_1.2V
 
 Mapper:    version Radiant Software (64-bit) 3.2.0.18.0
-Mapped on: Fri Nov 11 20:08:59 2022
+Mapped on: Fri Nov 11 22:34:45 2022
 
 
 <A name="mrp_di"></A><B><U><big>Design Information</big></U></B>
 
-Command line:   map -i FGPA_impl_1_syn.udb -o FGPA_impl_1_map.udb -mp
+Command line:   map -i FGPA_impl_1_syn.udb -pdc
+     C:/Users/tdasari/balance-robot/FGPA/pins.pdc -o FGPA_impl_1_map.udb -mp
      FGPA_impl_1.mrp -hierrpt -gui
 
 <A name="mrp_ds"></A><B><U><big>Design Summary</big></U></B>
-   Number of slice registers:  14 out of  5280 (<1%)
-   Number of I/O registers:      4 out of   117 (3%)
-   Number of LUT4s:            35 out of  5280 (1%)
-      Number of logic LUT4s:              21
-      Number of ripple logic:              7 (14 LUT4s)
-   Number of IO sites used:   23 out of 39 (59%)
-      Number of IO sites used for general PIO: 23
+   Number of slice registers:  21 out of  5280 (<1%)
+   Number of I/O registers:      0 out of   117 (0%)
+   Number of LUT4s:            38 out of  5280 (1%)
+      Number of logic LUT4s:              15
+      Number of inserted feedthru LUT4s:   1
+      Number of ripple logic:             11 (22 LUT4s)
+   Number of IO sites used:   7 out of 39 (18%)
+      Number of IO sites used for general PIO: 7
       Number of IO sites used for I3C: 0 out of 2 (0%)
       (note: If I3C is not used, its site can be used as general PIO)
-      Number of IO sites used for PIO+I3C: 23 out of 36 (64%)
+      Number of IO sites used for PIO+I3C: 7 out of 36 (19%)
       Number of IO sites used for OD+RGB IO buffers: 0 out of 3 (0%)
       (note: If RGB LED drivers are not used, sites can be used as OD outputs,
        see TN1288 iCE40 LED Driver Usage Guide)
-      Number of IO sites used for PIO+I3C+OD+RGB: 23 out of 39 (59%)
+      Number of IO sites used for PIO+I3C+OD+RGB: 7 out of 39 (18%)
    Number of DSPs:             0 out of 8 (0%)
    Number of I2Cs:             0 out of 2 (0%)
-   Number of High Speed OSCs:  0 out of 1 (0%)
+   Number of High Speed OSCs:  1 out of 1 (100%)
    Number of Low Speed OSCs:   0 out of 1 (0%)
    Number of RGB PWM:          0 out of 1 (0%)
    Number of RGB Drivers:      0 out of 1 (0%)
@@ -82,24 +84,29 @@ Command line:   map -i FGPA_impl_1_syn.udb -o FGPA_impl_1_map.udb -mp
    Number of SPIs:             0 out of 2 (0%)
    Number of EBRs:             0 out of 30 (0%)
    Number of PLLs:             0 out of 1 (0%)
-   Number of Clocks:  1
-      Net clk_c: 13 loads, 13 rising, 0 falling (Driver: Port clk)
-   Number of Clock Enables:  0
-   Number of LSRs:  2
-      Net counter_11__N_25: 7 loads, 7 SLICEs
-      Net n111: 2 loads, 2 SLICEs
+   Number of Clocks:  2
+      Net dut.int_osc: 5 loads, 5 rising, 0 falling (Driver: Pin
+     dut.hf_osc/CLKHF)
+      Net dut.clk: 9 loads, 9 rising, 0 falling (Driver: Pin dut.clk_c/Q)
+   Number of Clock Enables:  1
+      Net VCC_net: 1 loads, 0 SLICEs
+   Number of LSRs:  4
+      Net dut.counter_5__N_13: 4 loads, 4 SLICEs
+      Net dut.dut.n13: 7 loads, 7 SLICEs
+      Net dut.dut.n90: 1 loads, 1 SLICEs
+      Net dut.dut.n89: 1 loads, 1 SLICEs
    Top 10 highest fanout non-clock nets:
-      Net counter_11__N_25: 7 loads
-      Net counter[0]: 4 loads
-      Net counter[1]: 4 loads
-      Net counter[2]: 4 loads
-      Net counter[3]: 4 loads
-      Net counter[4]: 4 loads
-      Net counter[5]: 4 loads
-      Net counter[6]: 4 loads
-      Net counter[11]: 3 loads
-      Net counter[8]: 3 loads
+      Net dut.dut.n13: 7 loads
+      Net VCC_net: 6 loads
+      Net dut.counter_5__N_13: 4 loads
+      Net dut.dut.counter[0]: 4 loads
 
+      Net dut.dut.counter[1]: 4 loads
+      Net dut.dut.counter[2]: 4 loads
+      Net dut.dut.counter[5]: 4 loads
+      Net dut.dut.counter[6]: 4 loads
+      Net dut.dut.counter[7]: 4 loads
+      Net dut.counter[5]: 3 loads
 
 
 
@@ -122,73 +129,40 @@ Command line:   map -i FGPA_impl_1_syn.udb -o FGPA_impl_1_map.udb -mp
 | IO Name             | Direction | Levelmode |  IO   |  IO   | Special   |
 |                     |           |  IO_TYPE  |  REG  |  DDR  | IO Buffer |
 +---------------------+-----------+-----------+-------+-------+-----------+
-| enable12            | OUTPUT    |           |       |       |           |
+| a1                  | OUTPUT    |           |       |       |           |
 +---------------------+-----------+-----------+-------+-------+-----------+
 | enable34            | OUTPUT    |           |       |       |           |
 +---------------------+-----------+-----------+-------+-------+-----------+
-| a1                  | OUTPUT    |           | O     |       |           |
+| enable12            | OUTPUT    |           |       |       |           |
 +---------------------+-----------+-----------+-------+-------+-----------+
-| a2                  | OUTPUT    |           | O     |       |           |
+| a2                  | OUTPUT    |           |       |       |           |
 +---------------------+-----------+-----------+-------+-------+-----------+
-| a3                  | OUTPUT    |           | O     |       |           |
+| a3                  | OUTPUT    |           |       |       |           |
 +---------------------+-----------+-----------+-------+-------+-----------+
-| a4                  | OUTPUT    |           | O     |       |           |
+| a4                  | OUTPUT    |           |       |       |           |
 +---------------------+-----------+-----------+-------+-------+-----------+
-| clk                 | INPUT     |           |       |       |           |
-+---------------------+-----------+-----------+-------+-------+-----------+
-| motor1_sign         | INPUT     |           |       |       |           |
-+---------------------+-----------+-----------+-------+-------+-----------+
-| motor1_count[6]     | INPUT     |           |       |       |           |
-+---------------------+-----------+-----------+-------+-------+-----------+
-| motor1_count[5]     | INPUT     |           |       |       |           |
-+---------------------+-----------+-----------+-------+-------+-----------+
-| motor1_count[4]     | INPUT     |           |       |       |           |
-+---------------------+-----------+-----------+-------+-------+-----------+
-| motor1_count[3]     | INPUT     |           |       |       |           |
-+---------------------+-----------+-----------+-------+-------+-----------+
-| motor1_count[2]     | INPUT     |           |       |       |           |
-+---------------------+-----------+-----------+-------+-------+-----------+
-| motor1_count[1]     | INPUT     |           |       |       |           |
-+---------------------+-----------+-----------+-------+-------+-----------+
-| motor1_count[0]     | INPUT     |           |       |       |           |
-+---------------------+-----------+-----------+-------+-------+-----------+
-| motor2_sign         | INPUT     |           |       |       |           |
-+---------------------+-----------+-----------+-------+-------+-----------+
-| motor2_count[6]     | INPUT     |           |       |       |           |
-+---------------------+-----------+-----------+-------+-------+-----------+
-| motor2_count[5]     | INPUT     |           |       |       |           |
-+---------------------+-----------+-----------+-------+-------+-----------+
-| motor2_count[4]     | INPUT     |           |       |       |           |
-+---------------------+-----------+-----------+-------+-------+-----------+
-| motor2_count[3]     | INPUT     |           |       |       |           |
-+---------------------+-----------+-----------+-------+-------+-----------+
-| motor2_count[2]     | INPUT     |           |       |       |           |
-
-+---------------------+-----------+-----------+-------+-------+-----------+
-| motor2_count[1]     | INPUT     |           |       |       |           |
-+---------------------+-----------+-----------+-------+-------+-----------+
-| motor2_count[0]     | INPUT     |           |       |       |           |
+| reset               | INPUT     |           |       |       |           |
 +---------------------+-----------+-----------+-------+-------+-----------+
 
+OSC Summary
+-----------
 
-
-<A name="mrp_rm"></A><B><U><big>Removed logic</big></U></B>
-
-Block i1 was optimized away.
+OSC 1:                                 Pin/Node Value
+  OSC Instance Name:                            dut/hf_osc
+  Power UP:                            NODE     VCC_net
+  Enable Signal:                       NODE     VCC_net
+  OSC Output:                          NODE     dut.int_osc
+  DIV Setting:                                  11
 
 
 
 <A name="mrp_asic"></A><B><U><big>ASIC Components</big></U></B>
 ---------------
 
-Instance Name: a4_i5
-         Type: IOLOGIC
-Instance Name: a2_i3
-         Type: IOLOGIC
-Instance Name: a1_i2
-         Type: IOLOGIC
-Instance Name: a3_i4
-         Type: IOLOGIC
+Instance Name: dut/hf_osc
+         Type: HFOSC
+
+
 
 
 
@@ -197,7 +171,32 @@ Instance Name: a3_i4
 
    Total CPU Time: 0 secs
    Total REAL Time: 0 secs
-   Peak Memory Usage: 51 MB
+   Peak Memory Usage: 55 MB
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -299,7 +298,6 @@ Copyright (c) 2002-2022 Lattice Semiconductor
 <LI><A href=#mrp_ds>Design Summary</A></LI>
 <LI><A href=#mrp_dwe>Design Errors/Warnings</A></LI>
 <LI><A href=#mrp_ioa>IO (PIO) Attributes</A></LI>
-<LI><A href=#mrp_rm>Removed logic</A></LI>
 <LI><A href=#mrp_asic>ASIC Components</A></LI>
 <LI><A href=#mrp_runtime>Run Time and Memory Usage</A></LI>
 </UL>

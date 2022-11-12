@@ -48,36 +48,20 @@ Performance Grade:      High-Performance_1.2V
 PACKAGE:          SG48
 Package Status:                     Preliminary    Version 1.5
 
-Fri Nov 11 20:09:12 2022
+Fri Nov 11 22:34:51 2022
 
 Pinout by Port Name:
-+-----------------+----------+--------------+-------+--------------------+
-| Port Name       | Pin/Bank | Buffer Type  | Site  | Properties         |
-+-----------------+----------+--------------+-------+--------------------+
-| a1              | 28/0     | LVCMOS33_OUT | PR18A | DRIVE:8mA PULL:NA  |
-| a2              | 32/0     | LVCMOS33_OUT | PR17A | DRIVE:8mA PULL:NA  |
-| a3              | 25/0     | LVCMOS33_OUT | PR20B | DRIVE:8mA PULL:NA  |
-| a4              | 26/0     | LVCMOS33_OUT | PR19A | DRIVE:8mA PULL:NA  |
-| clk             | 35/0     | LVCMOS33_IN  | PR13B | PULL:100K          |
-| enable12        | 12/1     | LVCMOS33_OUT | PL19A | DRIVE:8mA PULL:NA  |
-| enable34        | 4/2      | LVCMOS33_OUT | PL10A | DRIVE:8mA PULL:NA  |
-| motor1_count[0] | 13/1     | LVCMOS33_IN  | PL20A | PULL:100K          |
-| motor1_count[1] | 10/1     | LVCMOS33_IN  | PL17A | PULL:100K          |
-| motor1_count[2] | 20/1     | LVCMOS33_IN  | PL20B | PULL:100K          |
-| motor1_count[3] | 11/1     | LVCMOS33_IN  | PL18A | PULL:100K          |
-| motor1_count[4] | 9/1      | LVCMOS33_IN  | PL16A | PULL:100K          |
-| motor1_count[5] | 6/1      | LVCMOS33_IN  | PL14B | PULL:100K          |
-| motor1_count[6] | 21/1     | LVCMOS33_IN  | PL19B | PULL:100K          |
-| motor1_sign     | 31/0     | LVCMOS33_IN  | PR17B | PULL:100K          |
-| motor2_count[0] | 3/2      | LVCMOS33_IN  | PL10B | PULL:100K          |
-| motor2_count[1] | 48/2     | LVCMOS33_IN  | PL8A  | PULL:100K          |
-| motor2_count[2] | 44/2     | LVCMOS33_IN  | PL7B  | PULL:100K          |
-| motor2_count[3] | 2/2      | LVCMOS33_IN  | PL9A  | PULL:100K          |
-| motor2_count[4] | 47/2     | LVCMOS33_IN  | PL7A  | PULL:100K          |
-| motor2_count[5] | 46/2     | LVCMOS33_IN  | PL6A  | PULL:100K          |
-| motor2_count[6] | 45/2     | LVCMOS33_IN  | PL8B  | PULL:100K          |
-| motor2_sign     | 27/0     | LVCMOS33_IN  | PR19B | PULL:100K          |
-+-----------------+----------+--------------+-------+--------------------+
++-----------+----------+--------------+-------+--------------------+
+| Port Name | Pin/Bank | Buffer Type  | Site  | Properties         |
++-----------+----------+--------------+-------+--------------------+
+| a1        | 6/1      | LVCMOS33_OUT | PL14B | DRIVE:8mA PULL:NA  |
+| a2        | 4/2      | LVCMOS33_OUT | PL10A | DRIVE:8mA PULL:NA  |
+| a3        | 48/2     | LVCMOS33_OUT | PL8A  | DRIVE:8mA PULL:NA  |
+| a4        | 47/2     | LVCMOS33_OUT | PL7A  | DRIVE:8mA PULL:NA  |
+| enable12  | 2/2      | LVCMOS33_OUT | PL9A  | DRIVE:8mA PULL:NA  |
+| enable34  | 21/1     | LVCMOS33_OUT | PL19B | DRIVE:8mA PULL:NA  |
+| reset     | 34/0     | LVCMOS33_IN  | PR14B | PULL:100K          |
++-----------+----------+--------------+-------+--------------------+
 
 Vccio by Bank:
 +------+-------+
@@ -92,32 +76,32 @@ Vccio by Bank:
 +----------+---------------------+------------+--------------+-------+------------------+
 | Pin/Bank | Pin Info            | Constraint | Buffer Type  | Site  | Dual Function    |
 +----------+---------------------+------------+--------------+-------+------------------+
-| 2/2      | motor2_count[3]     |            | LVCMOS33_IN  | PL9A  |                  |
-| 3/2      | motor2_count[0]     |            | LVCMOS33_IN  | PL10B |                  |
-| 4/2      | enable34            |            | LVCMOS33_OUT | PL10A |                  |
-| 6/1      | motor1_count[5]     |            | LVCMOS33_IN  | PL14B |                  |
-| 9/1      | motor1_count[4]     |            | LVCMOS33_IN  | PL16A |                  |
-| 10/1     | motor1_count[1]     |            | LVCMOS33_IN  | PL17A |                  |
-| 11/1     | motor1_count[3]     |            | LVCMOS33_IN  | PL18A |                  |
-| 12/1     | enable12            |            | LVCMOS33_OUT | PL19A |                  |
-| 13/1     | motor1_count[0]     |            | LVCMOS33_IN  | PL20A |                  |
+| 2/2      | enable12            | LOCATED    | LVCMOS33_OUT | PL9A  |                  |
+| 3/2      |     unused, PULL:UP |            |              | PL10B |                  |
+| 4/2      | a2                  | LOCATED    | LVCMOS33_OUT | PL10A |                  |
+| 6/1      | a1                  | LOCATED    | LVCMOS33_OUT | PL14B |                  |
+| 9/1      |     unused, PULL:UP |            |              | PL16A |                  |
+| 10/1     |     unused, PULL:UP |            |              | PL17A |                  |
+| 11/1     |     unused, PULL:UP |            |              | PL18A |                  |
+| 12/1     |     unused, PULL:UP |            |              | PL19A |                  |
+| 13/1     |     unused, PULL:UP |            |              | PL20A |                  |
 | 14/1     |     unused, PULL:UP |            |              | PL24A | SPI_SO           |
 | 15/1     |     unused, PULL:UP |            |              | PL25A | SPISCK           |
 | 16/1     |     unused, PULL:UP |            |              | PL25B | SPI_SS           |
 | 17/1     |     unused, PULL:UP |            |              | PL24B | SPI_SI           |
 | 18/1     |     unused, PULL:UP |            |              | PL23B |                  |
 | 19/1     |     unused, PULL:UP |            |              | PL22B |                  |
-| 20/1     | motor1_count[2]     |            | LVCMOS33_IN  | PL20B | PCLKT1_0         |
-| 21/1     | motor1_count[6]     |            | LVCMOS33_IN  | PL19B |                  |
+| 20/1     |     unused, PULL:UP |            |              | PL20B | PCLKT1_0         |
+| 21/1     | enable34            | LOCATED    | LVCMOS33_OUT | PL19B |                  |
 | 23/0     |     unused, PULL:UP |            |              | PR20A |                  |
-| 25/0     | a3                  |            | LVCMOS33_OUT | PR20B |                  |
-| 26/0     | a4                  |            | LVCMOS33_OUT | PR19A |                  |
-| 27/0     | motor2_sign         |            | LVCMOS33_IN  | PR19B |                  |
-| 28/0     | a1                  |            | LVCMOS33_OUT | PR18A |                  |
-| 31/0     | motor1_sign         |            | LVCMOS33_IN  | PR17B |                  |
-| 32/0     | a2                  |            | LVCMOS33_OUT | PR17A |                  |
-| 34/0     |     unused, PULL:UP |            |              | PR14B |                  |
-| 35/0     | clk                 |            | LVCMOS33_IN  | PR13B | GPLL_IN/PCLKT0_1 |
+| 25/0     |     unused, PULL:UP |            |              | PR20B |                  |
+| 26/0     |     unused, PULL:UP |            |              | PR19A |                  |
+| 27/0     |     unused, PULL:UP |            |              | PR19B |                  |
+| 28/0     |     unused, PULL:UP |            |              | PR18A |                  |
+| 31/0     |     unused, PULL:UP |            |              | PR17B |                  |
+| 32/0     |     unused, PULL:UP |            |              | PR17A |                  |
+| 34/0     | reset               | LOCATED    | LVCMOS33_IN  | PR14B |                  |
+| 35/0     |     unused, PULL:UP |            |              | PR13B | GPLL_IN/PCLKT0_1 |
 | 36/0     |     unused, PULL:UP |            |              | PR10B |                  |
 | 37/0     |     unused, PULL:UP |            |              | PR14A | PCLKT0_0         |
 | 38/0     |     unused, PULL:UP |            |              | PR9B  |                  |
@@ -126,11 +110,11 @@ Vccio by Bank:
 | 41/0     |                     |            |              | PR7A  | RGB2             |
 | 42/0     |     unused, PULL:UP |            |              | PR9A  |                  |
 | 43/0     |     unused, PULL:UP |            |              | PR10A |                  |
-| 44/2     | motor2_count[2]     |            | LVCMOS33_IN  | PL7B  | PCLKT2_0         |
-| 45/2     | motor2_count[6]     |            | LVCMOS33_IN  | PL8B  |                  |
-| 46/2     | motor2_count[5]     |            | LVCMOS33_IN  | PL6A  |                  |
-| 47/2     | motor2_count[4]     |            | LVCMOS33_IN  | PL7A  |                  |
-| 48/2     | motor2_count[1]     |            | LVCMOS33_IN  | PL8A  |                  |
+| 44/2     |     unused, PULL:UP |            |              | PL7B  | PCLKT2_0         |
+| 45/2     |     unused, PULL:UP |            |              | PL8B  |                  |
+| 46/2     |     unused, PULL:UP |            |              | PL6A  |                  |
+| 47/2     | a4                  | LOCATED    | LVCMOS33_OUT | PL7A  |                  |
+| 48/2     | a3                  | LOCATED    | LVCMOS33_OUT | PL8A  |                  |
 | PL6B/2   |     unused, PULL:UP |            |              | PL6B  |                  |
 | PL9B/2   |     unused, PULL:UP |            |              | PL9B  |                  |
 | PL13A/1  |     unused, PULL:UP |            |              | PL13A |                  |
@@ -153,29 +137,13 @@ Vccio by Bank:
 
 Locate Constraints for each Pin: 
 
-ldc_set_location -site {28} [ get_ports {a1} ]
-ldc_set_location -site {32} [ get_ports {a2} ]
-ldc_set_location -site {25} [ get_ports {a3} ]
-ldc_set_location -site {26} [ get_ports {a4} ]
-ldc_set_location -site {35} [ get_ports {clk} ]
-ldc_set_location -site {12} [ get_ports {enable12} ]
-ldc_set_location -site {4} [ get_ports {enable34} ]
-ldc_set_location -site {13} [ get_ports {motor1_count[0]} ]
-ldc_set_location -site {10} [ get_ports {motor1_count[1]} ]
-ldc_set_location -site {20} [ get_ports {motor1_count[2]} ]
-ldc_set_location -site {11} [ get_ports {motor1_count[3]} ]
-ldc_set_location -site {9} [ get_ports {motor1_count[4]} ]
-ldc_set_location -site {6} [ get_ports {motor1_count[5]} ]
-ldc_set_location -site {21} [ get_ports {motor1_count[6]} ]
-ldc_set_location -site {31} [ get_ports {motor1_sign} ]
-ldc_set_location -site {3} [ get_ports {motor2_count[0]} ]
-ldc_set_location -site {48} [ get_ports {motor2_count[1]} ]
-ldc_set_location -site {44} [ get_ports {motor2_count[2]} ]
-ldc_set_location -site {2} [ get_ports {motor2_count[3]} ]
-ldc_set_location -site {47} [ get_ports {motor2_count[4]} ]
-ldc_set_location -site {46} [ get_ports {motor2_count[5]} ]
-ldc_set_location -site {45} [ get_ports {motor2_count[6]} ]
-ldc_set_location -site {27} [ get_ports {motor2_sign} ]
+ldc_set_location -site {6} [ get_ports {a1} ]
+ldc_set_location -site {4} [ get_ports {a2} ]
+ldc_set_location -site {48} [ get_ports {a3} ]
+ldc_set_location -site {47} [ get_ports {a4} ]
+ldc_set_location -site {2} [ get_ports {enable12} ]
+ldc_set_location -site {21} [ get_ports {enable34} ]
+ldc_set_location -site {34} [ get_ports {reset} ]
 
 
 
@@ -183,7 +151,7 @@ ldc_set_location -site {27} [ get_ports {motor2_sign} ]
 
 Copyright (c) 2002-2022 Lattice Semiconductor Corporation,  All rights reserved.
 
-Fri Nov 11 20:09:12 2022
+Fri Nov 11 22:34:51 2022
 
 
 

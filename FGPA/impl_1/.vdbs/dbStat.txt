@@ -1,1 +1,1 @@
-FGPA_impl_1_rtl_rtl.vdb
+top_wrapper_rtl.vdb

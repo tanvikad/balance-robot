@@ -44,6 +44,7 @@
 
 
 -path "C:/Users/tdasari/balance-robot/FGPA"
+-top top_wrapper
 -udb "FGPA_impl_1_rtl.udb"
 -output_hdl "FGPA_impl_1.vm"
 

@@ -1,13 +1,37 @@
 ----------------------------------------------------------------------
-Report for cell motor_controller.TECH
-Register bits:  14 of 5280 (0.265%)
-I/O cells:      23
+Report for cell top_wrapper.TECH
+Register bits:  21 of 5280 (0.398%)
+I/O cells:      7
                                   Cell usage:
                                cell     count   Res Usage(%)
-                               CCU2         7          100.0
-                            FD1P3XZ        14          100.0
-                                 IB        17          100.0
-                              IOL_B         4          100.0
-                               LUT4        20          100.0
+                               CCU2        11          100.0
+                            FD1P3XZ        21          100.0
+                         HSOSC_CORE         1          100.0
+                                 IB         1          100.0
+                               LUT4        13          100.0
                                  OB         6          100.0
-                              TOTAL        68
+SUB MODULES
+                   motor_controller         1
+                                top         1
+                              TOTAL        55
+----------------------------------------------------------------------
+Report for cell top.v1
+Instance Path : dut
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                                FA2        11          100.0
+                            FD1P3XZ        21          100.0
+                         HSOSC_CORE         1          100.0
+                               LUT4        13          100.0
+SUB MODULES
+                   motor_controller         1
+                              TOTAL        47
+----------------------------------------------------------------------
+Report for cell motor_controller.v1
+Instance Path : dut.dut
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                                FA2         7           63.6
+                            FD1P3XZ        14           66.7
+                               LUT4        12           92.3
+                              TOTAL        33

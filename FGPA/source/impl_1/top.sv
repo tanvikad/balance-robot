@@ -1,3 +1,18 @@
+module top_wrapper(
+	input logic reset,
+	output logic enable12,
+	output logic enable34,
+	output logic a1,
+	output logic a2,
+	output logic a3,
+	output logic a4
+);
+	top dut(reset, 0, 7'd100, 1, 7'd50, enable12, enable34, a1, a2, a3, a4);
+endmodule
+
+
+
+
 module top(
 	input logic reset,
 	input logic motor1_sign,
@@ -66,9 +81,6 @@ module motor_controller_tb();
 		  reset <= 1'b0;
 	  end
 	 
-	 
-	 
 	  motor_controller dut(reset, clk, motor1_sign, motor1_count, motor2_sign, motor2_count, enable12, enable34, a1, a2, a3, a4);
-	  
 	
 endmodule
