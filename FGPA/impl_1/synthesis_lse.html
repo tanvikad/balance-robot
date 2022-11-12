@@ -48,7 +48,7 @@ Copyright (c) 1995 AT&T Corp.   All rights reserved.
 Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
 Copyright (c) 2001 Agere Systems   All rights reserved.
 Copyright (c) 2002-2022 Lattice Semiconductor Corporation,  All rights reserved.
-Fri Nov 11 19:37:54 2022
+Fri Nov 11 20:08:54 2022
 
 
 Command Line:  C:\lscc\radiant\3.2\ispfpga\bin\nt64\synthesis.exe -f FGPA_impl_1_lattice.synproj -gui -msgset C:/Users/tdasari/balance-robot/FGPA/promote.xml 
@@ -117,9 +117,11 @@ Mixed language design
 WARNING - synthesis: A top-level module has not been specified for the mixed language design.
 Verilog design file = C:/lscc/radiant/3.2/ip/pmi/pmi_iCE40UP.v
 Verilog design file = C:/Users/tdasari/balance-robot/FGPA/source/impl_1/motor_controller.sv
+Verilog design file = C:/Users/tdasari/balance-robot/FGPA/source/impl_1/top.sv
 VHDL library = pmi
 VHDL design file = C:/lscc/radiant/3.2/ip/pmi/pmi_iCE40UP.vhd
 WARNING - synthesis: Unexpected file name extension for Verilog file c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv.
+WARNING - synthesis: Unexpected file name extension for Verilog file c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv.
 The -r option is OFF. [ Remove LOC Properties is OFF. ]
 Compile design.
 Compile Design Begin
@@ -158,6 +160,7 @@ INFO - synthesis: c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(16): analyzing includ
 INFO - synthesis: c:/lscc/radiant/3.2/ip/pmi/pmi_ram_dq_be.v(45): analyzing included file c:/lscc/radiant/3.2/ip/pmi/../avant/ram_dq/rtl/lscc_ram_dq.v. VERI-1328
 INFO - synthesis: c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(17): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_dsp.v. VERI-1328
 Analyzing Verilog file c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv. VERI-1482
+Analyzing Verilog file c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv. VERI-1482
 Analyzing VHDL file c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.vhd. VHDL-1481
 Analyzing VHDL file c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.vhd
 
@@ -167,7 +170,7 @@ INFO - synthesis: The default VHDL library search path is now "C:/Users/tdasari/
 Top module language type = Verilog.
 Top module name (Verilog, mixed language): motor_controller
 INFO - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(1): compiling module motor_controller. VERI-1018
-WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(45): expression size 32 truncated to fit in target size 17. VERI-1209
+WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(45): expression size 32 truncated to fit in target size 12. VERI-1209
                                                          
 
 
@@ -201,16 +204,16 @@ INFO - synthesis: Special Primitives IFD1P3AZ and OFD1P3AZ for ThunderPlus are s
 <A name="lse_area"></A><B><U><big>Area Report</big></U></B>
 
 ################### Begin Area Report (motor_controller)######################
-Number of register bits => 19 of 5280 (0 % )
-CCU2 => 9
-FD1P3XZ => 19
-IB => 19
+Number of register bits => 14 of 5280 (0 % )
+CCU2 => 7
+FD1P3XZ => 14
+IB => 17
 IOL_B => 4
-LUT4 => 25
+LUT4 => 20
 OB => 6
 ################### End Area Report ##################
-Number of odd-length carry chains : 1
-Number of even-length carry chains : 0
+Number of odd-length carry chains : 0
+Number of even-length carry chains : 1
 
 
 <A name="lse_clock"></A><B><U><big>Clock Report</big></U></B>
@@ -223,8 +226,7 @@ Clock Enable Nets
 Number of Clock Enables: 0
 Highest fanout non-clock nets
 Top 10 highest fanout non-clock nets:
-  Net : counter_16__N_35, loads : 17
-  Net : counter[7], loads : 4
+  Net : counter_11__N_25, loads : 12
   Net : counter[6], loads : 4
   Net : counter[5], loads : 4
   Net : counter[4], loads : 4
@@ -232,7 +234,8 @@ Top 10 highest fanout non-clock nets:
   Net : counter[2], loads : 4
   Net : counter[1], loads : 4
   Net : counter[0], loads : 4
-  Net : counter[16], loads : 3
+  Net : counter[11], loads : 3
+  Net : counter[8], loads : 3
 ################### End Clock Report ##################
 
 Peak Memory Usage: 86 MB

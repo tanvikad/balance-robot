@@ -1,0 +1,184 @@
+# Compile of motor_controller.sv was successful.
+# Compile of top.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.top_tb
+# vsim -gui work.top_tb 
+# Start time: 20:26:12 on Nov 11,2022
+# //  ModelSim DE-64 2022.3 Jul 18 2022
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim DE-64 and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top_tb
+# Loading work.top
+# ** Error: (vsim-3033) Instantiation of 'HSOSC' failed. The design unit was not found.
+#    Time: 0 ns  Iteration: 0  Instance: /top_tb/dut File: C:/Users/tdasari/balance-robot/FGPA/source/impl_1/top.sv Line: 17
+#         Searched libraries:
+#             C:/Users/tdasari/balance-robot/FGPA/work
+# Loading work.motor_controller
+# Error loading design
+# End time: 20:26:23 on Nov 11,2022, Elapsed time: 0:00:11
+# Errors: 1, Warnings: 2
+# Compile of motor_controller.sv was successful.
+# Compile of top.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.motor_controller_tb
+# vsim -gui work.motor_controller_tb 
+# Start time: 20:34:18 on Nov 11,2022
+# Loading sv_std.std
+# Loading work.motor_controller_tb
+# Loading work.motor_controller
+run
+run
+run
+add wave -position end  sim:/motor_controller_tb/motor1_sign
+add wave -position end  sim:/motor_controller_tb/motor1_count
+add wave -position end  sim:/motor_controller_tb/motor2_sign
+add wave -position end  sim:/motor_controller_tb/motor2_count
+add wave -position end  sim:/motor_controller_tb/enable12
+add wave -position end  sim:/motor_controller_tb/enable34
+add wave -position end  sim:/motor_controller_tb/a1
+add wave -position end  sim:/motor_controller_tb/a2
+add wave -position end  sim:/motor_controller_tb/a3
+add wave -position end  sim:/motor_controller_tb/a4
+add wave -position end  sim:/motor_controller_tb/clk
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# Compile of motor_controller.sv was successful.
+# Compile of top.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.motor_controller_tb
+# End time: 20:52:02 on Nov 11,2022, Elapsed time: 0:17:44
+# Errors: 0, Warnings: 3
+# vsim -gui work.motor_controller_tb 
+# Start time: 20:52:02 on Nov 11,2022
+# Loading sv_std.std
+# Loading work.motor_controller_tb
+# Loading work.motor_controller
+run
+add wave -position end  sim:/motor_controller_tb/motor1_sign
+add wave -position end  sim:/motor_controller_tb/motor1_count
+add wave -position end  sim:/motor_controller_tb/motor2_sign
+add wave -position end  sim:/motor_controller_tb/motor2_count
+add wave -position end  sim:/motor_controller_tb/enable12
+add wave -position end  sim:/motor_controller_tb/enable34
+add wave -position end  sim:/motor_controller_tb/a1
+add wave -position end  sim:/motor_controller_tb/a2
+add wave -position end  sim:/motor_controller_tb/a3
+add wave -position end  sim:/motor_controller_tb/a4
+add wave -position end  sim:/motor_controller_tb/clk
+add wave -position end  sim:/motor_controller_tb/reset
+run
+run
+run
+restart -f
+run
+run
+add wave -position end  sim:/motor_controller_tb/dut/period
+add wave -position end  sim:/motor_controller_tb/dut/reset
+add wave -position end  sim:/motor_controller_tb/dut/clk
+add wave -position end  sim:/motor_controller_tb/dut/motor1_sign
+add wave -position end  sim:/motor_controller_tb/dut/motor1_count
+add wave -position end  sim:/motor_controller_tb/dut/motor2_sign
+add wave -position end  sim:/motor_controller_tb/dut/motor2_count
+add wave -position end  sim:/motor_controller_tb/dut/enable12
+add wave -position end  sim:/motor_controller_tb/dut/enable34
+add wave -position end  sim:/motor_controller_tb/dut/a1
+add wave -position end  sim:/motor_controller_tb/dut/a2
+add wave -position end  sim:/motor_controller_tb/dut/a3
+add wave -position end  sim:/motor_controller_tb/dut/a4
+add wave -position end  sim:/motor_controller_tb/dut/counter
+restart -f
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# Compile of motor_controller.sv was successful.
+# Compile of top.sv was successful.
+# 2 compiles, 0 failed with no errors.
+run
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.motor_controller_tb
+# Loading work.motor_controller
+run
+run
+run
+restart -f
+run
+run
+run
+restart -f
+# Compile of motor_controller.sv was successful with warnings.
+# Compile of top.sv was successful.
+# 2 compiles, 0 failed with no errors.
+run
+run
+run
+# Compile of motor_controller.sv was successful with warnings.
+# Compile of top.sv was successful.
+# 2 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.motor_controller_tb
+# Loading work.motor_controller
+run
+run

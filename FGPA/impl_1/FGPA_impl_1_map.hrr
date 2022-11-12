@@ -4,7 +4,7 @@ Report for cell motor_controller
                      Cell usage:
                                   cell	      count    Res Usage(%)
                                  IOLGC	       4.00        100.0
-                                  LUT4	         44        100.0
+                                  LUT4	         35        100.0
                                  IOREG	          4        100.0
-                                 IOBUF	         25        100.0
-                                PFUREG	         19        100.0
+                                 IOBUF	         23        100.0
+                                PFUREG	         14        100.0

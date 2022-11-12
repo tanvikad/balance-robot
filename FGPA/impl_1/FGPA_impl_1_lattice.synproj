@@ -40,6 +40,7 @@
 -ver "C:/lscc/radiant/3.2/ip/pmi/pmi_iCE40UP.v"
 -lib pmi -vhd "C:/lscc/radiant/3.2/ip/pmi/pmi_iCE40UP.vhd"
 -sver "C:/Users/tdasari/balance-robot/FGPA/source/impl_1/motor_controller.sv"
+"C:/Users/tdasari/balance-robot/FGPA/source/impl_1/top.sv"
 
 
 -path "C:/Users/tdasari/balance-robot/FGPA"

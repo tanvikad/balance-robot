@@ -26,6 +26,11 @@
             <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv</Dynamic>
         </Message>
         <Message>
+            <ID>35002033</ID>
+            <Severity>16</Severity>
+            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv</Dynamic>
+        </Message>
+        <Message>
             <ID>35901328</ID>
             <Severity>1</Severity>
             <Dynamic>c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(1): </Dynamic>
@@ -321,7 +326,7 @@
             <Severity>16</Severity>
             <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(45): </Dynamic>
             <Dynamic>32</Dynamic>
-            <Dynamic>17</Dynamic>
+            <Dynamic>12</Dynamic>
             <Navigation>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv</Navigation>
             <Navigation>45</Navigation>
         </Message>
