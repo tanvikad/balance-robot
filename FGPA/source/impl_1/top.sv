@@ -8,7 +8,7 @@ module top_wrapper(
 	output logic a4
 );
 	
-	top dut(reset, 1'd0, 7'd100, 1'd1, 7'd50, enable12, enable34, a1, a2, a3, a4);
+	top dut(reset, 1'd1, 7'd100, 1'd1, 7'd50, enable12, enable34, a1, a2, a3, a4);
 endmodule
 
 
@@ -35,13 +35,16 @@ module top(
 	
 	logic clk;
 	logic[5:0] counter;
-	parameter[5:0] limit = 6'd48;
+	parameter[5:0] limit = 6'd50;
 	
 	always_ff@(posedge int_osc)
 	begin
 		if(counter <= limit) counter <= counter+1;
-		else counter <= 0;
-		clk <= counter[5];
+		else 
+			begin
+				clk <= !clk;
+				counter <= 0;
+			end
 	end
 	motor_controller dut(reset, clk,  motor1_sign, motor1_period, motor2_sign, motor2_period, enable12, enable34, a1, a2, a3, a4);
 endmodule 

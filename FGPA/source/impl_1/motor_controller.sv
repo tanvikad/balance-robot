@@ -14,7 +14,7 @@ module motor_controller(
 );
 	//assign a1 = reset;
 
-	logic [11:0] counter;
+	logic [7:0] counter;
 	
 	logic[7:0] motor1_upper_limit;
 	logic[7:0] motor2_upper_limit;
@@ -24,7 +24,7 @@ module motor_controller(
 			//Here we are changing the inputs based on the direction of the motor1 and motor2 input
 			if(reset == 1'b1)
 				begin
-					counter <= 12'd0;
+					counter <= 8'd0;
 					motor1_upper_limit <= motor1_period>>1;
 					motor2_upper_limit <= motor2_period>>1;
 					a3 <= 1'b1;
@@ -34,18 +34,13 @@ module motor_controller(
 			else
 				begin
 					a3 <= 1'b0;
-					a1<= 1'b1;
-					a2<= 1'b0;
+					a1<= (motor1_sign);
+					a2<= (!motor1_sign);
 					if(counter < motor1_period) counter <= counter + 1;
 					else counter <= 0;
 					if(counter < motor1_upper_limit) enable12 <= 1'b1;
 					else enable12 <= 1'b0;
 				end
-			//output logic, setting the enable high when we are in the right period
-			//enable12 <= (counter > 0);
-			
-			
-			//enable34 <= (counter < motor2_upper_limit);
 		end
 endmodule
 

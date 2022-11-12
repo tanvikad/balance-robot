@@ -210,3 +210,18 @@ add wave -position end  sim:/motor_controller_tb/enable34
 run
 run
 run
+add wave -position end  sim:/motor_controller_tb/clk
+restart -f
+run
+run
+# Compile of motor_controller.sv was successful.
+# Compile of top.sv was successful.
+# 2 compiles, 0 failed with no errors.
+add wave -position end  sim:/motor_controller_tb/a1
+add wave -position end  sim:/motor_controller_tb/a2
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.motor_controller_tb
+# Loading work.motor_controller
+run
+run

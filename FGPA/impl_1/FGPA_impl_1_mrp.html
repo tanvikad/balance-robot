@@ -47,7 +47,7 @@ Target Device:        iCE40UP5KSG48
 Target Performance:   High-Performance_1.2V
 
 Mapper:    version Radiant Software (64-bit) 3.2.0.18.0
-Mapped on: Sat Nov 12 00:37:28 2022
+Mapped on: Sat Nov 12 01:02:18 2022
 
 
 <A name="mrp_di"></A><B><U><big>Design Information</big></U></B>
@@ -57,12 +57,11 @@ Command line:   map -i FGPA_impl_1_syn.udb -pdc
      FGPA_impl_1.mrp -hierrpt -gui
 
 <A name="mrp_ds"></A><B><U><big>Design Summary</big></U></B>
-   Number of slice registers:  20 out of  5280 (<1%)
+   Number of slice registers:  16 out of  5280 (<1%)
    Number of I/O registers:      1 out of   117 (1%)
-   Number of LUT4s:            35 out of  5280 (1%)
-      Number of logic LUT4s:              12
-      Number of inserted feedthru LUT4s:   1
-      Number of ripple logic:             11 (22 LUT4s)
+   Number of LUT4s:            29 out of  5280 (1%)
+      Number of logic LUT4s:              11
+      Number of ripple logic:              9 (18 LUT4s)
    Number of IO sites used:   7 out of 39 (18%)
       Number of IO sites used for general PIO: 7
       Number of IO sites used for I3C: 0 out of 2 (0%)
@@ -87,25 +86,25 @@ Command line:   map -i FGPA_impl_1_syn.udb -pdc
    Number of Clocks:  2
       Net dut.int_osc: 5 loads, 5 rising, 0 falling (Driver: Pin
      dut.hf_osc/CLKHF)
-      Net dut.clk: 9 loads, 9 rising, 0 falling (Driver: Pin dut.clk_c/Q)
+      Net dut.clk: 7 loads, 7 rising, 0 falling (Driver: Pin dut.clk_c/Q)
    Number of Clock Enables:  1
       Net VCC_net: 1 loads, 0 SLICEs
    Number of LSRs:  3
-      Net dut.n79: 4 loads, 4 SLICEs
-      Net dut.dut.n80: 7 loads, 7 SLICEs
-      Net dut.dut.n212: 1 loads, 1 SLICEs
+      Net dut.n55: 4 loads, 4 SLICEs
+      Net dut.dut.n56: 5 loads, 5 SLICEs
+      Net dut.dut.n180: 1 loads, 1 SLICEs
    Top 10 highest fanout non-clock nets:
-      Net dut.dut.n80: 7 loads
+      Net dut.dut.n56: 5 loads
+      Net dut.n55: 5 loads
       Net VCC_net: 5 loads
-      Net dut.n79: 4 loads
-      Net dut.counter[5]: 3 loads
-      Net dut.dut.counter[1]: 3 loads
-
       Net dut.dut.counter[2]: 3 loads
       Net dut.dut.counter[3]: 3 loads
       Net dut.dut.counter[4]: 3 loads
+
       Net dut.dut.counter[5]: 3 loads
-      Net dut.counter[0]: 2 loads
+      Net dut.dut.counter[6]: 3 loads
+      Net dut.dut.counter[7]: 3 loads
+      Net reset_c: 3 loads
 
 
 
@@ -158,10 +157,11 @@ OSC 1:                                 Pin/Node Value
 <A name="mrp_asic"></A><B><U><big>ASIC Components</big></U></B>
 ---------------
 
-Instance Name: dut/dut/a3
-         Type: IOLOGIC
 Instance Name: dut/hf_osc
          Type: HFOSC
+Instance Name: dut/dut/a3
+         Type: IOLOGIC
+
 
 
 

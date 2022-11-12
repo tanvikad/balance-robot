@@ -4,31 +4,31 @@ Report for cell top_wrapper
                      Cell usage:
                                   cell	      count    Res Usage(%)
                                  IOLGC	       1.00        100.0
-                                  LUT4	         35        100.0
+                                  LUT4	         29        100.0
                                  IOREG	          1        100.0
                                  IOBUF	          7        100.0
-                                PFUREG	         20        100.0
+                                PFUREG	         16        100.0
 SUB MODULES
                                   cell	      count    LUT4 Usage(%)
-                                   top	          1        91.4
+                                   top	          1        93.1
 ---------------------------------------------------
 Report for cell top
    Instance path: top_wrapper/dut
                      Cell usage:
                                   cell	      count    Res Usage(%)
                                  IOLGC	       1.00        100.0
-                                  LUT4	         32        91.4
+                                  LUT4	         27        93.1
                                  IOREG	          1        100.0
-                                PFUREG	         20        100.0
+                                PFUREG	         16        100.0
 SUB MODULES
                                   cell	      count    LUT4 Usage(%)
-                      motor_controller	          1        62.9
+                      motor_controller	          1        55.2
 ---------------------------------------------------
 Report for cell motor_controller
    Instance path: top_wrapper/dut/dut
                      Cell usage:
                                   cell	      count    Res Usage(%)
                                  IOLGC	       1.00        100.0
-                                  LUT4	         22        62.9
+                                  LUT4	         16        55.2
                                  IOREG	          1        100.0
-                                PFUREG	         13        65.0
+                                PFUREG	          9        56.2

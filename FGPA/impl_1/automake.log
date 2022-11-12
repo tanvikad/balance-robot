@@ -44,13 +44,13 @@ Bitstream generation complete!
 
 Total CPU Time: 0 secs 
 Total REAL Time: 7 secs 
-Peak Memory Usage: 108 MB
+Peak Memory Usage: 109 MB
 
 
 ibisgen "FGPA_impl_1.udb" "C:/lscc/radiant/3.2/cae_library/ibis/iCE40UP.ibs"
 IBIS Models Generator: Lattice Radiant Software (64-bit) 3.2.0.18.0
 
-Sat Nov 12 00:37:42 2022
+Sat Nov 12 01:02:31 2022
 
 Loading FGPA_impl_1.udb ...
 Loading device for application GENERIC from file 'itpa08.nph' in environment: C:/lscc/radiant/3.2/ispfpga.
@@ -101,4 +101,4 @@ Writing SDF timing to file FGPA_impl_1_vo.sdf
 Backanno finished with 0 posted error messages.
 Total CPU Time: 0 secs 
 Total REAL Time: 0 secs 
-Peak Memory Usage: 79 MB
+Peak Memory Usage: 78 MB

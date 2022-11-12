@@ -48,7 +48,7 @@ Copyright (c) 1995 AT&T Corp.   All rights reserved.
 Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
 Copyright (c) 2001 Agere Systems   All rights reserved.
 Copyright (c) 2002-2022 Lattice Semiconductor Corporation,  All rights reserved.
-Sat Nov 12 00:37:23 2022
+Sat Nov 12 01:02:13 2022
 
 
 Command Line:  C:\lscc\radiant\3.2\ispfpga\bin\nt64\synthesis.exe -f FGPA_impl_1_lattice.synproj -gui -msgset C:/Users/tdasari/balance-robot/FGPA/promote.xml 
@@ -172,7 +172,7 @@ INFO - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(17): 
 INFO - synthesis: C:/lscc/radiant/3.2/ispfpga/../cae_library/synthesis/verilog/iCE40UP.v(756): compiling module HSOSC(CLKHF_DIV=2'b11). VERI-1018
 WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(42): expression size 32 truncated to fit in target size 6. VERI-1209
 INFO - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(1): compiling module motor_controller. VERI-1018
-WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(39): expression size 32 truncated to fit in target size 12. VERI-1209
+WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(39): expression size 32 truncated to fit in target size 8. VERI-1209
                                                          
 
 
@@ -201,14 +201,14 @@ WARNING - synthesis: Bit 7 of Register motor1_upper_limit is stuck at Zero
 WARNING - synthesis: Bit 6 of Register motor1_upper_limit is stuck at Zero
 WARNING - synthesis: I/O Port a4 's net has no driver and is unused.
 ######## Missing driver on net a4. Patching with GND.
-WARNING - synthesis: Bit 5 of Register \dut/dut/motor1_upper_limit is stuck at Zero
+WARNING - synthesis: Bit 5 of Register \dut/dut/motor1_upper_limit is stuck at One
 WARNING - synthesis: Bit 4 of Register \dut/dut/motor1_upper_limit is stuck at One
-WARNING - synthesis: Bit 3 of Register \dut/dut/motor1_upper_limit is stuck at One
+WARNING - synthesis: Bit 3 of Register \dut/dut/motor1_upper_limit is stuck at Zero
 WARNING - synthesis: Bit 2 of Register \dut/dut/motor1_upper_limit is stuck at Zero
-WARNING - synthesis: Bit 1 of Register \dut/dut/motor1_upper_limit is stuck at Zero
-WARNING - synthesis: Bit 0 of Register \dut/dut/motor1_upper_limit is stuck at One
-WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(49): Register \dut/dut/enable34 is stuck at Zero. VDB-5013
-WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(49): Register \dut/dut/a1 is stuck at One. VDB-5014
+WARNING - synthesis: Bit 1 of Register \dut/dut/motor1_upper_limit is stuck at One
+WARNING - synthesis: Bit 0 of Register \dut/dut/motor1_upper_limit is stuck at Zero
+WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(44): Register \dut/dut/enable34 is stuck at Zero. VDB-5013
+WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(44): Register \dut/dut/a1 is stuck at One. VDB-5014
 
 
 
@@ -218,13 +218,13 @@ INFO - synthesis: Special Primitives IFD1P3AZ and OFD1P3AZ for ThunderPlus are s
 <A name="lse_area"></A><B><U><big>Area Report</big></U></B>
 
 ################### Begin Area Report (top_wrapper)######################
-Number of register bits => 20 of 5280 (0 % )
-CCU2 => 11
-FD1P3XZ => 20
+Number of register bits => 16 of 5280 (0 % )
+CCU2 => 9
+FD1P3XZ => 16
 HSOSC_CORE => 1
 IB => 1
 IOL_B => 1
-LUT4 => 10
+LUT4 => 9
 OB => 6
 ################### End Area Report ##################
 Number of odd-length carry chains : 0
@@ -240,23 +240,23 @@ Clock Enable Nets
 Number of Clock Enables: 0
 Highest fanout non-clock nets
 Top 10 highest fanout non-clock nets:
-  Net : dut/clk, loads : 14
-  Net : dut/dut/n80, loads : 12
+  Net : dut/clk, loads : 11
+  Net : dut/dut/n56, loads : 8
   Net : dut/int_osc, loads : 7
-  Net : dut/n79, loads : 6
-  Net : dut/counter[5], loads : 3
+  Net : dut/n55, loads : 7
+  Net : reset_c, loads : 3
   Net : dut/dut/counter[5], loads : 3
   Net : dut/dut/counter[4], loads : 3
-  Net : dut/dut/counter[2], loads : 3
-  Net : dut/dut/counter[1], loads : 3
+  Net : dut/dut/counter[7], loads : 3
   Net : dut/dut/counter[3], loads : 3
+  Net : dut/dut/counter[2], loads : 3
 ################### End Clock Report ##################
 
 Peak Memory Usage: 81 MB
 
 --------------------------------------------------------------
 Total CPU Time: 1 secs 
-Total REAL Time: 5 secs 
+Total REAL Time: 4 secs 
 --------------------------------------------------------------
 
 

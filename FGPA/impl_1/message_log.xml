@@ -350,7 +350,7 @@
             <Severity>16</Severity>
             <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(39): </Dynamic>
             <Dynamic>32</Dynamic>
-            <Dynamic>12</Dynamic>
+            <Dynamic>8</Dynamic>
             <Navigation>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv</Navigation>
             <Navigation>39</Navigation>
         </Message>
@@ -372,7 +372,7 @@
             <Dynamic>a4</Dynamic>
         </Message>
         <Message>
-            <ID>35001747</ID>
+            <ID>35001748</ID>
             <Severity>16</Severity>
             <Dynamic>5</Dynamic>
             <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
@@ -384,7 +384,7 @@
             <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
         </Message>
         <Message>
-            <ID>35001748</ID>
+            <ID>35001747</ID>
             <Severity>16</Severity>
             <Dynamic>3</Dynamic>
             <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
@@ -396,13 +396,13 @@
             <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
         </Message>
         <Message>
-            <ID>35001747</ID>
+            <ID>35001748</ID>
             <Severity>16</Severity>
             <Dynamic>1</Dynamic>
             <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
         </Message>
         <Message>
-            <ID>35001748</ID>
+            <ID>35001747</ID>
             <Severity>16</Severity>
             <Dynamic>0</Dynamic>
             <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
@@ -410,18 +410,18 @@
         <Message>
             <ID>35935013</ID>
             <Severity>16</Severity>
-            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(49): </Dynamic>
+            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(44): </Dynamic>
             <Dynamic>\dut/dut/enable34</Dynamic>
             <Navigation>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv</Navigation>
-            <Navigation>49</Navigation>
+            <Navigation>44</Navigation>
         </Message>
         <Message>
             <ID>35935014</ID>
             <Severity>16</Severity>
-            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(49): </Dynamic>
+            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(44): </Dynamic>
             <Dynamic>\dut/dut/a1</Dynamic>
             <Navigation>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv</Navigation>
-            <Navigation>49</Navigation>
+            <Navigation>44</Navigation>
         </Message>
         <Message>
             <ID>35002039</ID>

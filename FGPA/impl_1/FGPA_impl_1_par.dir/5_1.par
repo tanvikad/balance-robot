@@ -1,6 +1,6 @@
 
 Lattice Place and Route Report for Design "FGPA_impl_1_map.udb"
-Sat Nov 12 00:37:28 2022
+Sat Nov 12 01:02:18 2022
 
 PAR: Place And Route Radiant Software (64-bit) 3.2.0.18.0.
 Command Line: par -w -t 1 -cores 1 -exp parPathBased=ON FGPA_impl_1_map.udb \
@@ -18,13 +18,13 @@ Family:  iCE40UP
 Device:  iCE40UP5K
 Package: SG48
 Performance Grade:   High-Performance_1.2V
-Number of Signals: 74
-Number of Connections: 147
+Number of Signals: 60
+Number of Connections: 122
 Device utilization summary:
 
-   SLICE (est.)      20/2640         <1% used
-     LUT             35/5280         <1% used
-     REG             20/5280         <1% used
+   SLICE (est.)      17/2640         <1% used
+     LUT             29/5280         <1% used
+     REG             16/5280         <1% used
    PIO                7/56           12% used
                       7/36           19% bonded
    IOLOGIC            1/56            1% used
@@ -47,7 +47,7 @@ Device utilization summary:
 Pin Constraint Summary:
    7 out of 7 pins locked (100% locked).
 
-Finished Placer Phase 0 (HIER). CPU time: 0 secs , REAL time: 4 secs 
+Finished Placer Phase 0 (HIER). CPU time: 0 secs , REAL time: 3 secs 
 
 
 ................
@@ -57,18 +57,18 @@ Starting Placer Phase 1. CPU time: 0 secs , REAL time: 4 secs
 ..  ..
 ....................
 
-Placer score = 8485.
+Placer score = 7824.
 
 Device SLICE utilization summary after final SLICE packing:
-   SLICE             20/2640         <1% used
+   SLICE             17/2640         <1% used
 
-Finished Placer Phase 1. CPU time: 2 secs , REAL time: 6 secs 
+Finished Placer Phase 1. CPU time: 1 secs , REAL time: 5 secs 
 
 Starting Placer Phase 2.
 .
 
-Placer score =  10786
-Finished Placer Phase 2.  CPU time: 2 secs , REAL time: 6 secs 
+Placer score =  9424
+Finished Placer Phase 2.  CPU time: 1 secs , REAL time: 5 secs 
 
 
 ------------------ Clock Report ------------------
@@ -96,12 +96,12 @@ I/O Bank Usage Summary:
 | 2        | 3 / 8 ( 37%)  | 3.3V       |            |            |
 +----------+---------------+------------+------------+------------+
 
-Total Placer CPU time: 2 secs , REAL time: 6 secs 
+Total Placer CPU time: 1 secs , REAL time: 5 secs 
 
 Writing design to file FGPA_impl_1_par.dir/5_1.udb ...
 
 
-Start NBR router at 00:37:34 11/12/22
+Start NBR router at 01:02:23 11/12/22
 
 *****************************************************************
 Info: NBR allows conflicts(one node used by more than one signal)
@@ -119,9 +119,9 @@ Note: NBR uses a different method to calculate timing slacks. The
 Starting routing resource preassignment
 Preassignment Summary:
 --------------------------------------------------------------------------------
-40 connections routed with dedicated routing resources
+32 connections routed with dedicated routing resources
 1 global clock signals routed
-45 connections routed (of 147 total) (30.61%)
+37 connections routed (of 122 total) (30.33%)
 ---------------------------------------------------------
 Clock routing summary:
 Primary clocks (1 used out of 8 available):
@@ -129,41 +129,33 @@ Primary clocks (1 used out of 8 available):
        Clock   loads: 5     out of     5 routed (100.00%)
 Other clocks:
     Signal "dut.clk"
-       Clock   loads: 0     out of     9 routed (  0.00%)
+       Clock   loads: 0     out of     7 routed (  0.00%)
+       Data    loads: 0     out of     1 routed (  0.00%)
 ---------------------------------------------------------
 --------------------------------------------------------------------------------
 Completed routing resource preassignment
 
-Start NBR section for initial routing at 00:37:34 11/12/22
+Start NBR section for initial routing at 01:02:23 11/12/22
 Level 4, iteration 1
-0(0.00%) conflict; 102(69.39%) untouched conns; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 158.753ns/0.000ns; real time: 0 secs 
+1(0.00%) conflict; 85(69.67%) untouched conns; 0 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: 158.617ns/0.000ns; real time: 0 secs 
 Level 4, iteration 2
-0(0.00%) conflict; 102(69.39%) untouched conns; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 158.753ns/0.000ns; real time: 0 secs 
+0(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: 158.617ns/0.000ns; real time: 0 secs 
 
 Info: Initial congestion level at 75.00% usage is 0
 Info: Initial congestion area  at 75.00% usage is 0 (0.00%)
 
-Start NBR section for normal routing at 00:37:34 11/12/22
+Start NBR section for normal routing at 01:02:23 11/12/22
 Level 4, iteration 1
-0(0.00%) conflict; 102(69.39%) untouched conns; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 158.753ns/0.000ns; real time: 0 secs 
-Level 4, iteration 2
-0(0.00%) conflict; 102(69.39%) untouched conns; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 158.753ns/0.000ns; real time: 0 secs 
-Level 4, iteration 3
-0(0.00%) conflict; 102(69.39%) untouched conns; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 158.753ns/0.000ns; real time: 0 secs 
-Level 4, iteration 4
 0(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 158.753ns/0.000ns; real time: 0 secs 
+Estimated worst slack/total negative slack<setup>: 158.617ns/0.000ns; real time: 0 secs 
 
-Start NBR section for setup/hold timing optimization with effort level 3 at 00:37:34 11/12/22
+Start NBR section for setup/hold timing optimization with effort level 3 at 01:02:23 11/12/22
 
 Starting full timing analysis...
 
-Start NBR section for post-routing at 00:37:34 11/12/22
+Start NBR section for post-routing at 01:02:24 11/12/22
 
 End NBR router with 0 unrouted connection
 
@@ -172,8 +164,8 @@ Starting full timing analysis...
 NBR Summary
 -----------
   Number of unrouted connections : 0 (0.00%)
-  Estimated worst slack<setup> : 158.315ns
-  Estimated worst slack<hold > : 1.715ns
+  Estimated worst slack<setup> : 159.132ns
+  Estimated worst slack<hold > : 1.882ns
   Timing score<setup> : 0
   Timing score<hold > : 0
   Number of connections with timing violations<setup> : 0 (0.00%)
@@ -184,7 +176,7 @@ NBR Summary
 Total CPU time 0 secs 
 Total REAL time: 0 secs 
 Completely routed.
-End of route.  147 routed (100.00%); 0 unrouted.
+End of route.  122 routed (100.00%); 0 unrouted.
 
 Writing design to file FGPA_impl_1_par.dir/5_1.udb ...
 
@@ -194,15 +186,15 @@ All signals are completely routed.
 
 PAR_SUMMARY::Run status = Completed
 PAR_SUMMARY::Number of unrouted conns = 0
-PAR_SUMMARY::Worst  slack<setup/<ns>> = 158.315
+PAR_SUMMARY::Worst  slack<setup/<ns>> = 159.132
 PAR_SUMMARY::Timing score<setup/<ns>> = 0.000
-PAR_SUMMARY::Worst  slack<hold /<ns>> = 1.715
+PAR_SUMMARY::Worst  slack<hold /<ns>> = 1.882
 PAR_SUMMARY::Timing score<hold /<ns>> = 0.000
 PAR_SUMMARY::Number of errors = 0
 
 Total CPU  Time: 2 secs 
-Total REAL Time: 7 secs 
-Peak Memory Usage: 110.08 MB
+Total REAL Time: 6 secs 
+Peak Memory Usage: 109.38 MB
 
 
 par done!
