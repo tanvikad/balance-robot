@@ -1,0 +1,5 @@
+ERROR - c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(11): syntax error near ). VERI-1137
+ERROR - c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(13): syntax error near &lt;=. VERI-1137
+ERROR - c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(13): syntax error near &lt;=. VERI-1137
+ERROR - c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(12): syntax error near &lt;=. VERI-1137
+ERROR - c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(12): syntax error near =. VERI-1137

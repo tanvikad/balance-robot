@@ -1,0 +1,13 @@
+----------------------------------------------------------------------
+Report for cell motor_controller.TECH
+Register bits:  19 of 5280 (0.360%)
+I/O cells:      25
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               CCU2         9          100.0
+                            FD1P3XZ        19          100.0
+                                 IB        19          100.0
+                              IOL_B         4          100.0
+                               LUT4        25          100.0
+                                 OB         6          100.0
+                              TOTAL        82

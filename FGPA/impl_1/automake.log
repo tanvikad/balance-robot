@@ -1,0 +1,655 @@
+
+"C:/lscc/radiant/3.2/tcltk/windows/bin/tclsh" "FGPA_impl_1_synthesize.tcl"
+
+synthesis -f FGPA_impl_1_lattice.synproj
+synthesis:  version Radiant Software (64-bit) 3.2.0.18.0
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2022 Lattice Semiconductor Corporation,  All rights reserved.
+Fri Nov 11 19:37:54 2022
+
+
+Command Line:  C:\lscc\radiant\3.2\ispfpga\bin\nt64\synthesis.exe -f FGPA_impl_1_lattice.synproj -gui -msgset C:/Users/tdasari/balance-robot/FGPA/promote.xml 
+
+INFO - synthesis: Lattice Synthesis Engine Launched.
+Synthesis options:
+The -top option is not used.
+The -a option is iCE40UP.
+The -t option is SG48.
+The -sp option is High-Performance_1.2V.
+The -p option is iCE40UP5K.
+                                                          
+
+
+##########################################################
+
+
+### Lattice Family     : iCE40UP
+
+
+### Device             : iCE40UP5K
+
+
+### Package            : SG48
+
+
+### Performance Grade  : High-Performance_1.2V
+
+
+                                                         
+
+
+INFO - User-Selected Strategy Settings
+Optimization goal = Area
+Target frequency = 200.000000 MHz.
+Maximum fanout = 1000.
+Timing path count = 3
+RWCheckOnRam = 0
+
+BRAM utilization = 100.000000 %
+DSP usage = true
+DSP utilization = 100.000000 %
+fsm_encoding_style = auto
+resolve_mixed_drivers = 0
+fix_gated_clocks = 1
+
+
+Mux style = auto (Default)
+Use Carry Chain = true
+carry_chain_length = 0
+Loop Limit = 1950.
+Use IO Insertion = TRUE
+Use IO Reg = AUTO
+
+Resource Sharing = TRUE
+Propagate Constants = TRUE
+Remove Duplicate Registers = TRUE
+Output HDL file name = FGPA_impl_1.vm.
+ROM style = auto
+RAM style = auto
+The -comp option is FALSE.
+The -syn option is FALSE.
+-path C:/Users/tdasari/balance-robot/FGPA (searchpath added)
+-path C:/Users/tdasari/balance-robot/FGPA/impl_1 (searchpath added)
+-path C:/lscc/radiant/3.2/ispfpga/ice40tp/data (searchpath added)
+Mixed language design
+WARNING - A top-level module has not been specified for the mixed language design.
+Verilog design file = C:/lscc/radiant/3.2/ip/pmi/pmi_iCE40UP.v
+Verilog design file = C:/Users/tdasari/balance-robot/FGPA/source/impl_1/motor_controller.sv
+VHDL library = pmi
+VHDL design file = C:/lscc/radiant/3.2/ip/pmi/pmi_iCE40UP.vhd
+WARNING - Unexpected file name extension for Verilog file c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv.
+The -r option is OFF. [ Remove LOC Properties is OFF. ]
+Compile design.
+Compile Design Begin
+Analyzing Verilog file c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v. VERI-1482
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(1): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_addsub.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_addsub.v(40): analyzing included file c:/lscc/radiant/3.2/ip/pmi/../common/adder_subtractor/rtl/lscc_add_sub.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(2): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_add.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_add.v(50): analyzing included file c:/lscc/radiant/3.2/ip/pmi/../common/adder/rtl/lscc_adder.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(3): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_complex_mult.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_complex_mult.v(52): analyzing included file c:/lscc/radiant/3.2/ip/pmi/../common/complex_mult/rtl/lscc_complex_mult.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(4): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_counter.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_counter.v(39): analyzing included file c:/lscc/radiant/3.2/ip/pmi/../common/counter/rtl/lscc_cntr.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(5): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_fifo.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_fifo.v(44): analyzing included file c:/lscc/radiant/3.2/ip/pmi/../avant/fifo/rtl/lscc_fifo.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(6): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_fifo_dc.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_fifo_dc.v(47): analyzing included file c:/lscc/radiant/3.2/ip/pmi/../avant/fifo_dc/rtl/lscc_fifo_dc.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(7): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_mac.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_mac.v(52): analyzing included file c:/lscc/radiant/3.2/ip/pmi/../common/mult_accumulate/rtl/lscc_mult_accumulate.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(8): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_multaddsubsum.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_multaddsubsum.v(53): analyzing included file c:/lscc/radiant/3.2/ip/pmi/../common/mult_add_sub_sum/rtl/lscc_mult_add_sub_sum.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(9): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_multaddsub.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_multaddsub.v(52): analyzing included file c:/lscc/radiant/3.2/ip/pmi/../common/mult_add_sub/rtl/lscc_mult_add_sub.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(10): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_mult.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_mult.v(51): analyzing included file c:/lscc/radiant/3.2/ip/pmi/../common/multiplier/rtl/lscc_multiplier.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(11): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_ram_dp.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ram_dp.v(48): analyzing included file c:/lscc/radiant/3.2/ip/pmi/../avant/ram_dp/rtl/lscc_ram_dp.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(12): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_ram_dq.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ram_dq.v(45): analyzing included file c:/lscc/radiant/3.2/ip/pmi/../avant/ram_dq/rtl/lscc_ram_dq.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(13): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_rom.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_rom.v(45): analyzing included file c:/lscc/radiant/3.2/ip/pmi/../avant/rom/rtl/lscc_rom.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(14): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_sub.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_sub.v(50): analyzing included file c:/lscc/radiant/3.2/ip/pmi/../common/subtractor/rtl/lscc_subtractor.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(15): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_ram_dp_be.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ram_dp_be.v(49): analyzing included file c:/lscc/radiant/3.2/ip/pmi/../avant/ram_dp/rtl/lscc_ram_dp.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(16): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_ram_dq_be.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ram_dq_be.v(45): analyzing included file c:/lscc/radiant/3.2/ip/pmi/../avant/ram_dq/rtl/lscc_ram_dq.v. VERI-1328
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(17): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_dsp.v. VERI-1328
+Analyzing Verilog file c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv. VERI-1482
+Analyzing VHDL file c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.vhd. VHDL-1481
+Analyzing VHDL file c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.vhd
+
+INFO - c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.vhd(4): analyzing package components. VHDL-1014
+WARNING - Setting motor_controller as the top-level module. To specify the top-level module explicitly, go to View->Set Views->Hierarchy or Project->Active Implementation->Set Top-Level Unit.
+INFO - The default VHDL library search path is now "C:/Users/tdasari/balance-robot/FGPA/impl_1". VHDL-1504
+Top module language type = Verilog.
+Top module name (Verilog, mixed language): motor_controller
+INFO - c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(1): compiling module motor_controller. VERI-1018
+WARNING - c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(45): expression size 32 truncated to fit in target size 17. VERI-1209
+                                                         
+
+
+### Number of Logic Cells: 5280
+
+
+### Number of RAM Blocks: 30
+
+
+### Number of DSP Blocks: 8
+
+
+### Number of PLLs: 1
+
+
+### Number of IO Pins: 61
+
+
+##########################################################
+
+
+                                                         
+
+
+
+
+
+INFO - Special Primitives IFD1P3AZ and OFD1P3AZ for ThunderPlus are synthesized using IOL_B.
+
+################### Begin Area Report (motor_controller)######################
+Number of register bits => 19 of 5280 (0 % )
+CCU2 => 9
+FD1P3XZ => 19
+IB => 19
+IOL_B => 4
+LUT4 => 25
+OB => 6
+################### End Area Report ##################
+Number of odd-length carry chains : 1
+Number of even-length carry chains : 0
+
+################### Begin Clock Report ######################
+Clock Nets
+Number of Clocks: 1
+  Net : clk_c, loads : 0
+Clock Enable Nets
+Number of Clock Enables: 0
+Highest fanout non-clock nets
+Top 10 highest fanout non-clock nets:
+  Net : counter_16__N_35, loads : 17
+  Net : counter[7], loads : 4
+  Net : counter[6], loads : 4
+  Net : counter[5], loads : 4
+  Net : counter[4], loads : 4
+  Net : counter[3], loads : 4
+  Net : counter[2], loads : 4
+  Net : counter[1], loads : 4
+  Net : counter[0], loads : 4
+  Net : counter[16], loads : 3
+################### End Clock Report ##################
+
+Peak Memory Usage: 86 MB
+
+--------------------------------------------------------------
+Total CPU Time: 1 secs 
+Total REAL Time: 5 secs 
+--------------------------------------------------------------
+
+
+postsyn -a iCE40UP -p iCE40UP5K -t SG48 -sp High-Performance_1.2V -oc Industrial -top -w -o FGPA_impl_1_syn.udb FGPA_impl_1.vm
+POSTSYN: Post Synthesis Process Radiant Software (64-bit) 3.2.0.18.0
+Command Line: postsyn -a iCE40UP -p iCE40UP5K -t SG48 -sp High-Performance_1.2V -oc Industrial -top -w -o FGPA_impl_1_syn.udb -gui -msgset C:/Users/tdasari/balance-robot/FGPA/promote.xml FGPA_impl_1.vm 
+   Architecture:     iCE40UP
+   Device:           iCE40UP5K
+   Package:          SG48
+   Performance:      High-Performance_1.2V
+Reading input file 'FGPA_impl_1.vm' ...
+CPU Time to convert: 0.046875
+REAL Time to convert: 0
+convert PEAK Memory Usage: 25 MB
+convert CURRENT Memory Usage: 25 MB
+Removing unused logic ...
+Starting design annotation....
+Writing output file 'FGPA_impl_1_syn.udb'.
+POSTSYN finished successfully.
+Total CPU Time: 0 secs 
+Total REAL Time: 0 secs 
+Peak Memory Usage: 29 MB
+
+
+map -i "FGPA_impl_1_syn.udb"  -o "FGPA_impl_1_map.udb" -mp "FGPA_impl_1.mrp" -hierrpt     
+map:  version Radiant Software (64-bit) 3.2.0.18.0
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2022 Lattice Semiconductor Corporation,  All rights reserved.
+
+Command line:   map -i FGPA_impl_1_syn.udb -o FGPA_impl_1_map.udb -mp FGPA_impl_1.mrp -hierrpt -gui 
+
+Loading device for application GENERIC from file 'itpa08.nph' in environment: C:/lscc/radiant/3.2/ispfpga.
+Package Status:                     Preliminary    Version 1.5.
+
+
+
+   Remove unused logic
+
+   Do not produce over sized UDBs.
+
+Running general design DRC...
+
+Removing unused logic...
+
+Optimizing...
+
+
+
+
+Design Summary:
+   Number of slice registers:  19 out of  5280 (<1%)
+   Number of I/O registers:      4 out of   117 (3%)
+   Number of LUT4s:            44 out of  5280 (1%)
+      Number of logic LUT4s:              26
+      Number of ripple logic:              9 (18 LUT4s)
+   Number of IO sites used:   25 out of 39 (64%)
+      Number of IO sites used for general PIO: 25
+      Number of IO sites used for I3C: 0 out of 2 (0%)
+      (note: If I3C is not used, its site can be used as general PIO)
+      Number of IO sites used for PIO+I3C: 25 out of 36 (69%)
+      Number of IO sites used for OD+RGB IO buffers: 0 out of 3 (0%)
+      (note: If RGB LED drivers are not used, sites can be used as OD outputs,
+       see TN1288 iCE40 LED Driver Usage Guide)
+      Number of IO sites used for PIO+I3C+OD+RGB: 25 out of 39 (64%)
+   Number of DSPs:             0 out of 8 (0%)
+   Number of I2Cs:             0 out of 2 (0%)
+   Number of High Speed OSCs:  0 out of 1 (0%)
+   Number of Low Speed OSCs:   0 out of 1 (0%)
+   Number of RGB PWM:          0 out of 1 (0%)
+   Number of RGB Drivers:      0 out of 1 (0%)
+   Number of SCL FILTERs:      0 out of 2 (0%)
+   Number of SRAMs:            0 out of 4 (0%)
+   Number of WARMBOOTs:        0 out of 1 (0%)
+   Number of SPIs:             0 out of 2 (0%)
+   Number of EBRs:             0 out of 30 (0%)
+   Number of PLLs:             0 out of 1 (0%)
+   Number of Clocks:  1
+      Net clk_c: 15 loads, 15 rising, 0 falling (Driver: Port clk)
+   Number of Clock Enables:  0
+   Number of LSRs:  2
+      Net counter_16__N_35: 9 loads, 9 SLICEs
+      Net n131: 2 loads, 2 SLICEs
+   Top 10 highest fanout non-clock nets:
+      Net counter_16__N_35: 9 loads
+      Net counter[0]: 4 loads
+      Net counter[1]: 4 loads
+      Net counter[2]: 4 loads
+      Net counter[3]: 4 loads
+      Net counter[4]: 4 loads
+      Net counter[5]: 4 loads
+      Net counter[6]: 4 loads
+      Net counter[7]: 4 loads
+      Net counter[13]: 3 loads
+Running physical design DRC...
+
+ 
+
+   Number of warnings:  0
+   Number of errors:    0
+
+
+
+Total CPU Time: 0 secs  
+Total REAL Time: 0 secs  
+Peak Memory Usage: 52 MB
+
+
+par -f "FGPA_impl_1.p2t" "FGPA_impl_1_map.udb" "FGPA_impl_1.udb"
+
+Lattice Place and Route Report for Design "FGPA_impl_1_map.udb"
+Fri Nov 11 19:37:59 2022
+
+PAR: Place And Route Radiant Software (64-bit) 3.2.0.18.0.
+Command Line: par -w -t 1 -cores 1 -exp parPathBased=ON FGPA_impl_1_map.udb \
+	FGPA_impl_1_par.dir/5_1.udb 
+
+Loading FGPA_impl_1_map.udb ...
+Loading device for application GENERIC from file 'itpa08.nph' in environment: C:/lscc/radiant/3.2/ispfpga.
+Package Status:                     Preliminary    Version 1.5.
+Performance Hardware Data Status:   Advanced       Version 1.0.
+
+
+
+Design:  motor_controller
+Family:  iCE40UP
+Device:  iCE40UP5K
+Package: SG48
+Performance Grade:   High-Performance_1.2V
+Number of Signals: 102
+Number of Connections: 185
+Device utilization summary:
+
+   SLICE (est.)      24/2640         <1% used
+     LUT             44/5280         <1% used
+     REG             19/5280         <1% used
+   PIO               25/56           44% used
+                     25/36           69% bonded
+   IOLOGIC            4/56            7% used
+   DSP                0/8             0% used
+   I2C                0/2             0% used
+   HFOSC              0/1             0% used
+   LFOSC              0/1             0% used
+   LEDDA_IP           0/1             0% used
+   RGBA_DRV           0/1             0% used
+   FILTER             0/2             0% used
+   SRAM               0/4             0% used
+   WARMBOOT           0/1             0% used
+   SPI                0/2             0% used
+   EBR                0/30            0% used
+   PLL                0/1             0% used
+   RGBOUTBUF          0/3             0% used
+   I3C                0/2             0% used
+   OPENDRAIN          0/3             0% used
+
+Pin Constraint Summary:
+   0 out of 25 pins locked (0% locked).
+.
+............
+Finished Placer Phase 0 (HIER). CPU time: 0 secs , REAL time: 4 secs 
+
+
+................
+Finished Placer Phase 0 (AP).  CPU time: 0 secs , REAL time: 4 secs 
+
+Starting Placer Phase 1. CPU time: 0 secs , REAL time: 4 secs 
+..  ..
+....................
+
+Placer score = 9216.
+
+Device SLICE utilization summary after final SLICE packing:
+   SLICE             24/2640         <1% used
+
+Finished Placer Phase 1. CPU time: 9 secs , REAL time: 13 secs 
+
+Starting Placer Phase 2.
+.
+
+Placer score =  30647
+Finished Placer Phase 2.  CPU time: 9 secs , REAL time: 13 secs 
+
+
+------------------ Clock Report ------------------
+
+Global Clocks :
+  PRIMARY "clk_c" from comp "clk" on CLK_PIN site "35 (PR13B)", clk load = 14, ce load = 0, sr load = 0
+
+  PRIMARY  : 1 out of 8 (12%)
+
+--------------- End of Clock Report ---------------
+
+
+I/O Usage Summary (final):
+   25 out of 56 (44.6%) I/O sites used.
+   25 out of 36 (69.4%) bonded I/O sites used.
+   Number of I/O comps: 25; differential: 0
+   Number of Vref pins used: 0
+
+I/O Bank Usage Summary:
++----------+----------------+------------+------------+------------+
+| I/O Bank | Usage          | Bank Vccio | Bank Vref1 | Bank Vref2 |
++----------+----------------+------------+------------+------------+
+| 0        | 7 / 14 ( 50%)  | 3.3V       |            |            |
+| 1        | 14 / 14 (100%) | 3.3V       |            |            |
+| 2        | 4 / 8 ( 50%)   | 3.3V       |            |            |
++----------+----------------+------------+------------+------------+
+
+Total Placer CPU time: 9 secs , REAL time: 13 secs 
+
+Writing design to file FGPA_impl_1_par.dir/5_1.udb ...
+
+
+-----------------------------------------------------------------
+INFO - par: ASE feature is off due to non timing-driven settings.  
+-----------------------------------------------------------------
+
+
+Start NBR router at 19:38:12 11/11/22
+
+*****************************************************************
+Info: NBR allows conflicts(one node used by more than one signal)
+      in the earlier iterations. In each iteration, it tries to  
+      solve the conflicts while keeping the critical connections 
+      routed as short as possible. The routing process is said to
+      be completed when no conflicts exist and all connections   
+      are routed.                                                
+Note: NBR uses a different method to calculate timing slacks. The
+      worst slack and total negative slack may not be the same as
+      that in timing report. You should always run the timing    
+      tool to verify your design.                                
+*****************************************************************
+
+Starting routing resource preassignment
+Preassignment Summary:
+--------------------------------------------------------------------------------
+38 connections routed with dedicated routing resources
+1 global clock signals routed
+52 connections routed (of 183 total) (28.42%)
+---------------------------------------------------------
+Clock routing summary:
+Primary clocks (1 used out of 8 available):
+#7  Signal "clk_c"
+       Clock   loads: 14    out of    14 routed (100.00%)
+---------------------------------------------------------
+--------------------------------------------------------------------------------
+Completed routing resource preassignment
+
+Start NBR section for initial routing at 19:38:12 11/11/22
+Level 4, iteration 1
+9(0.00%) conflicts; 0(0.00%) untouched conn; 0 (nbr) score; real time: 0 secs 
+
+Info: Initial congestion level at 75.00% usage is 0
+Info: Initial congestion area  at 75.00% usage is 0 (0.00%)
+
+Start NBR section for normal routing at 19:38:12 11/11/22
+Level 4, iteration 1
+1(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; real time: 0 secs 
+Level 4, iteration 2
+1(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; real time: 0 secs 
+Level 4, iteration 3
+1(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; real time: 0 secs 
+Level 4, iteration 4
+1(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; real time: 0 secs 
+Level 4, iteration 5
+1(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; real time: 0 secs 
+Level 4, iteration 6
+1(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; real time: 0 secs 
+Level 4, iteration 7
+1(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; real time: 0 secs 
+Level 4, iteration 8
+0(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; real time: 0 secs 
+
+Start NBR section for post-routing at 19:38:12 11/11/22
+
+End NBR router with 0 unrouted connection
+
+NBR Summary
+-----------
+  Number of unrouted connections : 0 (0.00%)
+-----------
+
+
+Total CPU time 0 secs 
+Total REAL time: 0 secs 
+Completely routed.
+End of route.  183 routed (100.00%); 0 unrouted.
+
+Writing design to file FGPA_impl_1_par.dir/5_1.udb ...
+
+
+PAR_SUMMARY::Run status = Completed
+PAR_SUMMARY::Number of unrouted conns = 0
+PAR_SUMMARY::Worst  slack<setup/<ns>> = <n/a>
+PAR_SUMMARY::Timing score<setup/<ns>> = <n/a>
+PAR_SUMMARY::Worst  slack<hold /<ns>> = <n/a>
+PAR_SUMMARY::Timing score<hold /<ns>> = <n/a>
+PAR_SUMMARY::Number of errors = 0
+
+Total CPU  Time: 9 secs 
+Total REAL Time: 13 secs 
+Peak Memory Usage: 90.69 MB
+
+
+par done!
+
+Note: user must run 'timing' for timing closure signoff.
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2022 Lattice Semiconductor Corporation,  All rights reserved.
+
+timing -sethld -v 10 -u 10 -endpoints 10 -nperend 1 -sp High-Performance_1.2V -hsp m  -pwrprd -html -rpt "FGPA_impl_1.twr" "FGPA_impl_1.udb" 
+timing -sethld -v 10 -u 10 -endpoints 10 -nperend 1 -sp High-Performance_1.2V -hsp m -pwrprd -html -rpt FGPA_impl_1.twr FGPA_impl_1.udb -gui
+Starting design reading...
+Loading device for application GENERIC from file 'itpa08.nph' in environment: C:/lscc/radiant/3.2/ispfpga.
+Package Status:                     Preliminary    Version 1.5.
+Performance Hardware Data Status:   Advanced       Version 1.0.
+Loading udb::Database ...
+Design:  motor_controller
+Family:  iCE40UP
+Device:  iCE40UP5K
+Package: SG48
+Performance Grade:   High-Performance_1.2V
+
+
+
+Successfully loading udb, 0.03 seconds
+
+Initializing timer
+Starting design annotation....
+High-Performance_1.2V
+
+Starting full timing analysis...
+Performance Hardware Data Status:   Advanced       Version 1.0.
+Connections ignored  14  counted  171  covered  0
+Changing speed to m
+
+Starting full timing analysis...
+
+STA Runtime and Peak Memory Usage :
+Total CPU Time: 0 secs 
+Total REAL Time: 0 secs 
+Peak Memory Usage: 87 MB
+
+ 0.497221s wall, 0.468750s user + 0.015625s system = 0.484375s CPU (97.4%)
+
+
+tmcheck -par "FGPA_impl_1.par" 
+
+bitgen -w "FGPA_impl_1.udb" -f "FGPA_impl_1.t2b" 
+Loading FGPA_impl_1.udb ...
+Loading device for application GENERIC from file 'itpa08.nph' in environment: C:/lscc/radiant/3.2/ispfpga.
+Package Status:                     Preliminary    Version 1.5.
+Performance Hardware Data Status:   Advanced       Version 1.0.
+
+
+
+Design:  motor_controller
+Family:  iCE40UP
+Device:  iCE40UP5K
+Package: SG48
+Performance Grade:   High-Performance_1.2V
+Successfully loading design udb and device data from disks and to up-layer in CPU time: 0 secs , REAL time: 0 secs 
+
+
+
+BITGEN: Bitstream Generator Radiant Software (64-bit) 3.2.0.18.0
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2022 Lattice Semiconductor Corporation,  All rights reserved.
+
+
+Running DRC.
+DRC detected 0 errors and 0 warnings.
+
+Preference Summary:
++---------------------------------+---------------------------------+
+|  Preference                     |  Current Setting                |
++---------------------------------+---------------------------------+
+ *  Default setting.
+ ** The specified setting matches the default setting.
+
+
+Creating bit map...
+Saving bit stream in "C:\Users\tdasari\balance-robot\FGPA\impl_1\FGPA_impl_1.bin".
+INFO - Bitstream authenticated.
+Bitstream generation complete!
+
+Total CPU Time: 0 secs 
+Total REAL Time: 6 secs 
+Peak Memory Usage: 106 MB
+
+
+ibisgen "FGPA_impl_1.udb" "C:/lscc/radiant/3.2/cae_library/ibis/iCE40UP.ibs"
+IBIS Models Generator: Lattice Radiant Software (64-bit) 3.2.0.18.0
+
+Fri Nov 11 19:38:19 2022
+
+Loading FGPA_impl_1.udb ...
+Loading device for application GENERIC from file 'itpa08.nph' in environment: C:/lscc/radiant/3.2/ispfpga.
+Package Status:                     Preliminary    Version 1.5.
+Performance Hardware Data Status:   Advanced       Version 1.0.
+
+
+
+Design:  motor_controller
+Family:  iCE40UP
+Device:  iCE40UP5K
+Package: SG48
+Performance Grade:   High-Performance_1.2V
+Successfully loading design udb and device data from disks and to up-layer in CPU time: 0 secs , REAL time: 0 secs 
+
+Created design models.
+
+
+Generating: C:\Users\tdasari\balance-robot\FGPA\impl_1\IBIS\FGPA_impl_1.ibs
+
+
+INFO - Design IBIS models are generated for board level analysis.
+
+
+backanno "FGPA_impl_1.udb"  -o "FGPA_impl_1_vo.vo"      -sp "High-Performance_1.2V"  -w -neg
+backanno: version Radiant Software (64-bit) 3.2.0.18.0
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2022 Lattice Semiconductor Corporation,  All rights reserved.
+
+Loading device for application GENERIC from file 'itpa08.nph' in environment: C:/lscc/radiant/3.2/ispfpga.
+Package Status:                     Preliminary    Version 1.5.
+Loading udb::Database ...
+Design:  motor_controller
+Family:  iCE40UP
+Device:  iCE40UP5K
+Package: SG48
+Performance Grade:   High-Performance_1.2V
+Performance Hardware Data Status:   Advanced       Version 1.0.
+
+
+
+Writing a verilog netlist based on the FGPA_impl_1 design file.
+
+Writing Verilog netlist to file FGPA_impl_1_vo.vo
+Writing SDF timing to file FGPA_impl_1_vo.sdf
+Backanno finished with 0 posted error messages.
+Total CPU Time: 0 secs 
+Total REAL Time: 0 secs 
+Peak Memory Usage: 76 MB
