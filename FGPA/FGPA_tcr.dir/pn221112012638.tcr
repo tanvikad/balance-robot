@@ -1,0 +1,6 @@
+#Start recording tcl command: 11/12/2022 01:25:06
+#Project Location: C:/Users/erchen/Documents/balance-robot/FGPA; Project name: FGPA
+prj_open "C:/Users/erchen/Documents/balance-robot/FGPA/FGPA.rdf"
+prj_add_source "C:/Users/erchen/Documents/balance-robot/FGPA/source/impl_1/spi.sv"
+prj_add_source "C:/Users/erchen/Documents/balance-robot/FGPA/source/impl_1/spi_tb.sv"
+#Stop recording: 11/12/2022 01:26:38
