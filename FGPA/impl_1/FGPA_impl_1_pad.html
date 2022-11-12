@@ -48,7 +48,7 @@ Performance Grade:      High-Performance_1.2V
 PACKAGE:          SG48
 Package Status:                     Preliminary    Version 1.5
 
-Fri Nov 11 22:34:51 2022
+Sat Nov 12 00:37:34 2022
 
 Pinout by Port Name:
 +-----------+----------+--------------+-------+--------------------+
@@ -56,7 +56,7 @@ Pinout by Port Name:
 +-----------+----------+--------------+-------+--------------------+
 | a1        | 6/1      | LVCMOS33_OUT | PL14B | DRIVE:8mA PULL:NA  |
 | a2        | 4/2      | LVCMOS33_OUT | PL10A | DRIVE:8mA PULL:NA  |
-| a3        | 48/2     | LVCMOS33_OUT | PL8A  | DRIVE:8mA PULL:NA  |
+| a3        | 28/0     | LVCMOS33_OUT | PR18A | DRIVE:8mA PULL:NA  |
 | a4        | 47/2     | LVCMOS33_OUT | PL7A  | DRIVE:8mA PULL:NA  |
 | enable12  | 2/2      | LVCMOS33_OUT | PL9A  | DRIVE:8mA PULL:NA  |
 | enable34  | 21/1     | LVCMOS33_OUT | PL19B | DRIVE:8mA PULL:NA  |
@@ -97,7 +97,7 @@ Vccio by Bank:
 | 25/0     |     unused, PULL:UP |            |              | PR20B |                  |
 | 26/0     |     unused, PULL:UP |            |              | PR19A |                  |
 | 27/0     |     unused, PULL:UP |            |              | PR19B |                  |
-| 28/0     |     unused, PULL:UP |            |              | PR18A |                  |
+| 28/0     | a3                  | LOCATED    | LVCMOS33_OUT | PR18A |                  |
 | 31/0     |     unused, PULL:UP |            |              | PR17B |                  |
 | 32/0     |     unused, PULL:UP |            |              | PR17A |                  |
 | 34/0     | reset               | LOCATED    | LVCMOS33_IN  | PR14B |                  |
@@ -114,7 +114,7 @@ Vccio by Bank:
 | 45/2     |     unused, PULL:UP |            |              | PL8B  |                  |
 | 46/2     |     unused, PULL:UP |            |              | PL6A  |                  |
 | 47/2     | a4                  | LOCATED    | LVCMOS33_OUT | PL7A  |                  |
-| 48/2     | a3                  | LOCATED    | LVCMOS33_OUT | PL8A  |                  |
+| 48/2     |     unused, PULL:UP |            |              | PL8A  |                  |
 | PL6B/2   |     unused, PULL:UP |            |              | PL6B  |                  |
 | PL9B/2   |     unused, PULL:UP |            |              | PL9B  |                  |
 | PL13A/1  |     unused, PULL:UP |            |              | PL13A |                  |
@@ -139,7 +139,7 @@ Locate Constraints for each Pin:
 
 ldc_set_location -site {6} [ get_ports {a1} ]
 ldc_set_location -site {4} [ get_ports {a2} ]
-ldc_set_location -site {48} [ get_ports {a3} ]
+ldc_set_location -site {28} [ get_ports {a3} ]
 ldc_set_location -site {47} [ get_ports {a4} ]
 ldc_set_location -site {2} [ get_ports {enable12} ]
 ldc_set_location -site {21} [ get_ports {enable34} ]
@@ -151,7 +151,7 @@ ldc_set_location -site {34} [ get_ports {reset} ]
 
 Copyright (c) 2002-2022 Lattice Semiconductor Corporation,  All rights reserved.
 
-Fri Nov 11 22:34:51 2022
+Sat Nov 12 00:37:34 2022
 
 
 

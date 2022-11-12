@@ -1,6 +1,6 @@
 Copyright (c) 2002-2022 Lattice Semiconductor Corporation,  All rights reserved.
 
-Fri Nov 11 22:34:45 2022
+Sat Nov 12 00:37:28 2022
 
 Command Line: par -w -n 1 -t 1 -s 1 -cores 1 -exp parPathBased=ON \
 	FGPA_impl_1_map.udb FGPA_impl_1.udb 
@@ -9,7 +9,7 @@ Command Line: par -w -n 1 -t 1 -s 1 -cores 1 -exp parPathBased=ON \
 Level/       Number       Worst        Timing       Worst        Timing       Run          Run
 Cost [udb]   Unrouted     Slack        Score        Slack(hold)  Score(hold)  Time         Status
 ----------   --------     -----        ------       -----------  -----------  ----         ------
-5_1   *      0            159.542      0            1.715        0            07           Completed
+5_1   *      0            158.315      0            1.715        0            07           Completed
 
 * : Design saved.
 

@@ -5,7 +5,7 @@ Copyright (c) 1995 AT&T Corp.   All rights reserved.
 Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
 Copyright (c) 2001 Agere Systems   All rights reserved.
 Copyright (c) 2002-2022 Lattice Semiconductor Corporation,  All rights reserved.
-Fri Nov 11 22:31:53 2022
+Sat Nov 12 00:37:23 2022
 
 
 Command Line:  C:\lscc\radiant\3.2\ispfpga\bin\nt64\synthesis.exe -f FGPA_impl_1_lattice.synproj -gui -msgset C:/Users/tdasari/balance-robot/FGPA/promote.xml 
@@ -116,8 +116,6 @@ INFO - synthesis: c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(16): analyzing includ
 INFO - synthesis: c:/lscc/radiant/3.2/ip/pmi/pmi_ram_dq_be.v(45): analyzing included file c:/lscc/radiant/3.2/ip/pmi/../avant/ram_dq/rtl/lscc_ram_dq.v. VERI-1328
 INFO - synthesis: c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.v(17): analyzing included file c:/lscc/radiant/3.2/ip/pmi/pmi_dsp.v. VERI-1328
 Analyzing Verilog file c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv. VERI-1482
-WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(28): literal value truncated to fit in 6 bits. VERI-1208
-WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(29): literal value truncated to fit in 6 bits. VERI-1208
 Analyzing Verilog file c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv. VERI-1482
 Analyzing VHDL file c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.vhd. VHDL-1481
 Analyzing VHDL file c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.vhd
@@ -127,13 +125,11 @@ INFO - synthesis: The default VHDL library search path is now "C:/Users/tdasari/
 Top module language type = Verilog.
 Top module name (Verilog, mixed language): top_wrapper
 INFO - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(1): compiling module top_wrapper. VERI-1018
-INFO - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(16): compiling module top. VERI-1018
+INFO - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(17): compiling module top. VERI-1018
 INFO - synthesis: C:/lscc/radiant/3.2/ispfpga/../cae_library/synthesis/verilog/iCE40UP.v(756): compiling module HSOSC(CLKHF_DIV=2'b11). VERI-1018
-WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(41): expression size 32 truncated to fit in target size 6. VERI-1209
+WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(42): expression size 32 truncated to fit in target size 6. VERI-1209
 INFO - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(1): compiling module motor_controller. VERI-1018
-WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(58): expression size 32 truncated to fit in target size 12. VERI-1209
-WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(10): actual bit length 32 differs from formal bit length 1 for port motor1_sign. VERI-1330
-WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(10): actual bit length 32 differs from formal bit length 1 for port motor2_sign. VERI-1330
+WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(39): expression size 32 truncated to fit in target size 12. VERI-1209
                                                          
 
 
@@ -158,35 +154,31 @@ WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(10
                                                          
 
 
-WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(63): Register \dut/dut/a1 is stuck at Zero. VDB-5013
-WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(63): Register \dut/dut/a2 is stuck at One. VDB-5014
-
-
-
-WARNING - synthesis: Bit 7 of Register \dut/dut/motor1_upper_limit is stuck at One
-WARNING - synthesis: Bit 6 of Register \dut/dut/motor1_upper_limit is stuck at Zero
-WARNING - synthesis: Bit 5 of Register \dut/dut/motor1_upper_limit is stuck at One
-WARNING - synthesis: Bit 4 of Register \dut/dut/motor1_upper_limit is stuck at Zero
-WARNING - synthesis: Bit 3 of Register \dut/dut/motor1_upper_limit is stuck at Zero
+WARNING - synthesis: Bit 7 of Register motor1_upper_limit is stuck at Zero
+WARNING - synthesis: Bit 6 of Register motor1_upper_limit is stuck at Zero
+WARNING - synthesis: I/O Port a4 's net has no driver and is unused.
+######## Missing driver on net a4. Patching with GND.
+WARNING - synthesis: Bit 5 of Register \dut/dut/motor1_upper_limit is stuck at Zero
+WARNING - synthesis: Bit 4 of Register \dut/dut/motor1_upper_limit is stuck at One
+WARNING - synthesis: Bit 3 of Register \dut/dut/motor1_upper_limit is stuck at One
 WARNING - synthesis: Bit 2 of Register \dut/dut/motor1_upper_limit is stuck at Zero
 WARNING - synthesis: Bit 1 of Register \dut/dut/motor1_upper_limit is stuck at Zero
 WARNING - synthesis: Bit 0 of Register \dut/dut/motor1_upper_limit is stuck at One
-WARNING - synthesis: Bit 7 of Register \dut/dut/motor2_upper_limit is stuck at Zero
-WARNING - synthesis: Bit 6 of Register \dut/dut/motor2_upper_limit is stuck at One
-WARNING - synthesis: Bit 5 of Register \dut/dut/motor2_upper_limit is stuck at One
-WARNING - synthesis: Bit 4 of Register \dut/dut/motor2_upper_limit is stuck at Zero
-WARNING - synthesis: Bit 3 of Register \dut/dut/motor2_upper_limit is stuck at One
-WARNING - synthesis: Bit 2 of Register \dut/dut/motor2_upper_limit is stuck at One
-WARNING - synthesis: Bit 1 of Register \dut/dut/motor2_upper_limit is stuck at One
-WARNING - synthesis: Bit 0 of Register \dut/dut/motor2_upper_limit is stuck at One
+WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(49): Register \dut/dut/enable34 is stuck at Zero. VDB-5013
+WARNING - synthesis: c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(49): Register \dut/dut/a1 is stuck at One. VDB-5014
+
+
+
+INFO - synthesis: Special Primitives IFD1P3AZ and OFD1P3AZ for ThunderPlus are synthesized using IOL_B.
 
 ################### Begin Area Report (top_wrapper)######################
-Number of register bits => 21 of 5280 (0 % )
+Number of register bits => 20 of 5280 (0 % )
 CCU2 => 11
-FD1P3XZ => 21
+FD1P3XZ => 20
 HSOSC_CORE => 1
 IB => 1
-LUT4 => 13
+IOL_B => 1
+LUT4 => 10
 OB => 6
 ################### End Area Report ##################
 Number of odd-length carry chains : 0
@@ -200,15 +192,15 @@ Number of Clock Enables: 0
 Highest fanout non-clock nets
 Top 10 highest fanout non-clock nets:
   Net : dut/clk, loads : 14
-  Net : dut/dut/n13, loads : 12
+  Net : dut/dut/n80, loads : 12
   Net : dut/int_osc, loads : 7
-  Net : dut/counter_5__N_13, loads : 6
-  Net : dut/dut/counter[6], loads : 4
-  Net : dut/dut/counter[5], loads : 4
-  Net : dut/dut/counter[0], loads : 4
-  Net : dut/dut/counter[2], loads : 4
-  Net : dut/dut/counter[1], loads : 4
-  Net : dut/dut/counter[7], loads : 4
+  Net : dut/n79, loads : 6
+  Net : dut/counter[5], loads : 3
+  Net : dut/dut/counter[5], loads : 3
+  Net : dut/dut/counter[4], loads : 3
+  Net : dut/dut/counter[2], loads : 3
+  Net : dut/dut/counter[1], loads : 3
+  Net : dut/dut/counter[3], loads : 3
 ################### End Clock Report ##################
 
 Peak Memory Usage: 81 MB

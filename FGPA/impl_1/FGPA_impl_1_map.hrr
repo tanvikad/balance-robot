@@ -3,26 +3,32 @@ Report for cell top_wrapper
    Instance path: top_wrapper
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  LUT4	         38        100.0
+                                 IOLGC	       1.00        100.0
+                                  LUT4	         35        100.0
+                                 IOREG	          1        100.0
                                  IOBUF	          7        100.0
-                                PFUREG	         21        100.0
+                                PFUREG	         20        100.0
 SUB MODULES
                                   cell	      count    LUT4 Usage(%)
-                                   top	          1        92.1
+                                   top	          1        91.4
 ---------------------------------------------------
 Report for cell top
    Instance path: top_wrapper/dut
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  LUT4	         35        92.1
-                                PFUREG	         21        100.0
+                                 IOLGC	       1.00        100.0
+                                  LUT4	         32        91.4
+                                 IOREG	          1        100.0
+                                PFUREG	         20        100.0
 SUB MODULES
                                   cell	      count    LUT4 Usage(%)
-                      motor_controller	          1        68.4
+                      motor_controller	          1        62.9
 ---------------------------------------------------
 Report for cell motor_controller
    Instance path: top_wrapper/dut/dut
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  LUT4	         26        68.4
-                                PFUREG	         14        66.7
+                                 IOLGC	       1.00        100.0
+                                  LUT4	         22        62.9
+                                 IOREG	          1        100.0
+                                PFUREG	         13        65.0

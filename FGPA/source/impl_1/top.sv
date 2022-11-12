@@ -7,7 +7,8 @@ module top_wrapper(
 	output logic a3,
 	output logic a4
 );
-	top dut(reset, 0, 7'd100, 1, 7'd50, enable12, enable34, a1, a2, a3, a4);
+	
+	top dut(reset, 1'd0, 7'd100, 1'd1, 7'd50, enable12, enable34, a1, a2, a3, a4);
 endmodule
 
 
@@ -16,9 +17,9 @@ endmodule
 module top(
 	input logic reset,
 	input logic motor1_sign,
-	input logic[6:0] motor1_count,
+	input logic[6:0] motor1_period,
 	input logic motor2_sign,
-	input logic[6:0] motor2_count,
+	input logic[6:0] motor2_period,
 	output logic enable12,
 	output logic enable34,
 	output logic a1,
@@ -38,20 +39,20 @@ module top(
 	
 	always_ff@(posedge int_osc)
 	begin
-		if(counter >= limit) counter <= counter+1;
+		if(counter <= limit) counter <= counter+1;
 		else counter <= 0;
 		clk <= counter[5];
 	end
-	motor_controller dut(reset, clk,  motor1_sign, motor1_count, motor2_sign, motor2_count, enable12, enable34, a1, a2, a3, a4);
+	motor_controller dut(reset, clk,  motor1_sign, motor1_period, motor2_sign, motor2_period, enable12, enable34, a1, a2, a3, a4);
 endmodule 
 
 
 
 module motor_controller_tb();
 	logic motor1_sign;
-	logic[6:0] motor1_count;
+	logic[6:0] motor1_period;
 	logic motor2_sign;
-	logic[6:0] motor2_count;
+	logic[6:0] motor2_period;
 	logic enable12;
 	logic enable34;
 	logic a1;
@@ -68,8 +69,8 @@ module motor_controller_tb();
 	 initial begin
 		motor1_sign <= 1'b1;
 		motor2_sign <= 1'b0;
-		motor1_count <= 7'd30;
-		motor2_count <= 7'd100;
+		motor1_period <= 7'd30;
+		motor2_period <= 7'd100;
 	 end
 	 
 	 initial begin
@@ -81,6 +82,6 @@ module motor_controller_tb();
 		  reset <= 1'b0;
 	  end
 	 
-	  motor_controller dut(reset, clk, motor1_sign, motor1_count, motor2_sign, motor2_count, enable12, enable34, a1, a2, a3, a4);
+	  motor_controller dut(reset, clk, motor1_sign, motor1_period, motor2_sign, motor2_period, enable12, enable34, a1, a2, a3, a4);
 	
 endmodule

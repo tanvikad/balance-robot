@@ -1,8 +1,8 @@
 <top name = "top_wrapper"  library = "work"  arch = ""  entry = "Verilog">
 
 <clocks>
-    <clockitem name = "dut/int_osc"  type = "net" />
     <clockitem name = "dut/clk"  type = "net" />
+    <clockitem name = "dut/int_osc"  type = "net" />
 </clocks>
 
 <!--

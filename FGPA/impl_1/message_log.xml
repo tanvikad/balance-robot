@@ -291,22 +291,6 @@
             <Navigation>17</Navigation>
         </Message>
         <Message>
-            <ID>35901208</ID>
-            <Severity>16</Severity>
-            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(28): </Dynamic>
-            <Dynamic>6</Dynamic>
-            <Navigation>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv</Navigation>
-            <Navigation>28</Navigation>
-        </Message>
-        <Message>
-            <ID>35901208</ID>
-            <Severity>16</Severity>
-            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(29): </Dynamic>
-            <Dynamic>6</Dynamic>
-            <Navigation>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv</Navigation>
-            <Navigation>29</Navigation>
-        </Message>
-        <Message>
             <ID>35921014</ID>
             <Severity>1</Severity>
             <Dynamic>c:/lscc/radiant/3.2/ip/pmi/pmi_ice40up.vhd(4): </Dynamic>
@@ -331,10 +315,10 @@
         <Message>
             <ID>35901018</ID>
             <Severity>1</Severity>
-            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(16): </Dynamic>
+            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(17): </Dynamic>
             <Dynamic>top</Dynamic>
             <Navigation>c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv</Navigation>
-            <Navigation>16</Navigation>
+            <Navigation>17</Navigation>
         </Message>
         <Message>
             <ID>35901018</ID>
@@ -347,11 +331,11 @@
         <Message>
             <ID>35901209</ID>
             <Severity>16</Severity>
-            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(41): </Dynamic>
+            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(42): </Dynamic>
             <Dynamic>32</Dynamic>
             <Dynamic>6</Dynamic>
             <Navigation>c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv</Navigation>
-            <Navigation>41</Navigation>
+            <Navigation>42</Navigation>
         </Message>
         <Message>
             <ID>35901018</ID>
@@ -364,143 +348,84 @@
         <Message>
             <ID>35901209</ID>
             <Severity>16</Severity>
-            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(58): </Dynamic>
+            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(39): </Dynamic>
             <Dynamic>32</Dynamic>
             <Dynamic>12</Dynamic>
             <Navigation>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv</Navigation>
-            <Navigation>58</Navigation>
+            <Navigation>39</Navigation>
         </Message>
         <Message>
-            <ID>35901330</ID>
+            <ID>35001747</ID>
             <Severity>16</Severity>
-            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(10): </Dynamic>
-            <Dynamic>32</Dynamic>
-            <Dynamic>1</Dynamic>
-            <Dynamic>motor1_sign</Dynamic>
-            <Navigation>c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv</Navigation>
-            <Navigation>10</Navigation>
+            <Dynamic>7</Dynamic>
+            <Dynamic>motor1_upper_limit</Dynamic>
         </Message>
         <Message>
-            <ID>35901330</ID>
+            <ID>35001747</ID>
             <Severity>16</Severity>
-            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv(10): </Dynamic>
-            <Dynamic>32</Dynamic>
+            <Dynamic>6</Dynamic>
+            <Dynamic>motor1_upper_limit</Dynamic>
+        </Message>
+        <Message>
+            <ID>35002028</ID>
+            <Severity>16</Severity>
+            <Dynamic>a4</Dynamic>
+        </Message>
+        <Message>
+            <ID>35001747</ID>
+            <Severity>16</Severity>
+            <Dynamic>5</Dynamic>
+            <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
+        </Message>
+        <Message>
+            <ID>35001748</ID>
+            <Severity>16</Severity>
+            <Dynamic>4</Dynamic>
+            <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
+        </Message>
+        <Message>
+            <ID>35001748</ID>
+            <Severity>16</Severity>
+            <Dynamic>3</Dynamic>
+            <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
+        </Message>
+        <Message>
+            <ID>35001747</ID>
+            <Severity>16</Severity>
+            <Dynamic>2</Dynamic>
+            <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
+        </Message>
+        <Message>
+            <ID>35001747</ID>
+            <Severity>16</Severity>
             <Dynamic>1</Dynamic>
-            <Dynamic>motor2_sign</Dynamic>
-            <Navigation>c:/users/tdasari/balance-robot/fgpa/source/impl_1/top.sv</Navigation>
-            <Navigation>10</Navigation>
+            <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
+        </Message>
+        <Message>
+            <ID>35001748</ID>
+            <Severity>16</Severity>
+            <Dynamic>0</Dynamic>
+            <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
         </Message>
         <Message>
             <ID>35935013</ID>
             <Severity>16</Severity>
-            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(63): </Dynamic>
-            <Dynamic>\dut/dut/a1</Dynamic>
+            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(49): </Dynamic>
+            <Dynamic>\dut/dut/enable34</Dynamic>
             <Navigation>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv</Navigation>
-            <Navigation>63</Navigation>
+            <Navigation>49</Navigation>
         </Message>
         <Message>
             <ID>35935014</ID>
             <Severity>16</Severity>
-            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(63): </Dynamic>
-            <Dynamic>\dut/dut/a2</Dynamic>
+            <Dynamic>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv(49): </Dynamic>
+            <Dynamic>\dut/dut/a1</Dynamic>
             <Navigation>c:/users/tdasari/balance-robot/fgpa/source/impl_1/motor_controller.sv</Navigation>
-            <Navigation>63</Navigation>
+            <Navigation>49</Navigation>
         </Message>
         <Message>
-            <ID>35001748</ID>
-            <Severity>16</Severity>
-            <Dynamic>7</Dynamic>
-            <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001747</ID>
-            <Severity>16</Severity>
-            <Dynamic>6</Dynamic>
-            <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001748</ID>
-            <Severity>16</Severity>
-            <Dynamic>5</Dynamic>
-            <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001747</ID>
-            <Severity>16</Severity>
-            <Dynamic>4</Dynamic>
-            <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001747</ID>
-            <Severity>16</Severity>
-            <Dynamic>3</Dynamic>
-            <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001747</ID>
-            <Severity>16</Severity>
-            <Dynamic>2</Dynamic>
-            <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001747</ID>
-            <Severity>16</Severity>
-            <Dynamic>1</Dynamic>
-            <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001748</ID>
-            <Severity>16</Severity>
-            <Dynamic>0</Dynamic>
-            <Dynamic>\dut/dut/motor1_upper_limit</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001747</ID>
-            <Severity>16</Severity>
-            <Dynamic>7</Dynamic>
-            <Dynamic>\dut/dut/motor2_upper_limit</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001748</ID>
-            <Severity>16</Severity>
-            <Dynamic>6</Dynamic>
-            <Dynamic>\dut/dut/motor2_upper_limit</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001748</ID>
-            <Severity>16</Severity>
-            <Dynamic>5</Dynamic>
-            <Dynamic>\dut/dut/motor2_upper_limit</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001747</ID>
-            <Severity>16</Severity>
-            <Dynamic>4</Dynamic>
-            <Dynamic>\dut/dut/motor2_upper_limit</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001748</ID>
-            <Severity>16</Severity>
-            <Dynamic>3</Dynamic>
-            <Dynamic>\dut/dut/motor2_upper_limit</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001748</ID>
-            <Severity>16</Severity>
-            <Dynamic>2</Dynamic>
-            <Dynamic>\dut/dut/motor2_upper_limit</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001748</ID>
-            <Severity>16</Severity>
-            <Dynamic>1</Dynamic>
-            <Dynamic>\dut/dut/motor2_upper_limit</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001748</ID>
-            <Severity>16</Severity>
-            <Dynamic>0</Dynamic>
-            <Dynamic>\dut/dut/motor2_upper_limit</Dynamic>
+            <ID>35002039</ID>
+            <Severity>1</Severity>
         </Message>
     </Task>
 </BaliMessageLog>
