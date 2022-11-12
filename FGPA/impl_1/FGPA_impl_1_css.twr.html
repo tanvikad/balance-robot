@@ -46,7 +46,7 @@ if (a)
 <A name="timing_rpt_top">Timing Report</A><B><U><big></big></U></B>
 Lattice Timing Report -  Setup  and Hold, Version Radiant Software (64-bit) 3.2.0.18.0
 
-Sat Nov 12 01:02:24 2022
+Sat Nov 12 01:08:47 2022
 
 Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
 Copyright (c) 1995 AT&T Corp.   All rights reserved.
@@ -131,7 +131,7 @@ Clock Domain Crossing
 
 <A name="Timing_rpt_ConstraintCoverage"></A><B><U><big>3.1.1  Constraint Coverage</big></U></B>
 
-Constraint Coverage: 36.2637%
+Constraint Coverage: 38.8235%
 
 <A name="Timing_rpt_Errors"></A><B><U><big>3.1.2  Timing Errors</big></U></B>
 
@@ -147,13 +147,13 @@ Total Negative Slack: 0.000 ns (setup), 0.000 ns (hold)
 -------------------------------------------------------
           Listing 10 End Points          |    Slack    
 -------------------------------------------------------
-dut/clk_c/D                              |  159.133 ns 
-dut/counter_17__i0/SR                    |  159.305 ns 
+dut/counter_17__i0/SR                    |  158.115 ns 
 {dut/counter_17__i1/SR   dut/counter_17__i2/SR}              
-                                         |  159.305 ns 
+                                         |  158.115 ns 
 {dut/counter_17__i3/SR   dut/counter_17__i4/SR}              
-                                         |  159.305 ns 
-dut/counter_17__i5/SR                    |  159.305 ns 
+                                         |  158.115 ns 
+dut/counter_17__i5/SR                    |  158.115 ns 
+dut/clk_c/D                              |  159.133 ns 
 dut/counter_17__i5/D                     |  160.471 ns 
 dut/counter_17__i4/D                     |  160.748 ns 
 dut/counter_17__i3/D                     |  161.025 ns 
@@ -178,10 +178,10 @@ dut/counter_17__i3/D                     |    1.882 ns
 dut/counter_17__i4/D                     |    1.882 ns 
 dut/counter_17__i5/D                     |    2.187 ns 
 {dut/counter_17__i1/SR   dut/counter_17__i2/SR}              
-                                         |    3.179 ns 
+                                         |    3.894 ns 
 {dut/counter_17__i3/SR   dut/counter_17__i4/SR}              
-                                         |    3.179 ns 
-dut/counter_17__i5/SR                    |    3.179 ns 
+                                         |    3.894 ns 
+dut/counter_17__i5/SR                    |    3.894 ns 
 -------------------------------------------------------
                                          |             
 Hold # of endpoints with negative slack: |           0 
@@ -231,13 +231,13 @@ Define the clock for these registers.
 -------------------------------------------------------------------
          Listing 7 Instance(s)          |           Type           
 -------------------------------------------------------------------
-dut/dut/a3                              |                  No Clock
-dut/dut/counter_19__i1                  |                  No Clock
-dut/dut/enable12                        |                  No Clock
 dut/dut/counter_19__i8                  |                  No Clock
+dut/dut/counter_19__i1                  |                  No Clock
 dut/dut/counter_19__i3                  |                  No Clock
-dut/dut/counter_19__i5                  |                  No Clock
 dut/dut/counter_19__i7                  |                  No Clock
+dut/dut/counter_19__i5                  |                  No Clock
+dut/dut/a3                              |                  No Clock
+dut/dut/enable12                        |                  No Clock
 -------------------------------------------------------------------
                                         |                          
 Number of registers without clock defin |                          
@@ -261,8 +261,876 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : dut/counter_17__i0/Q  (SLICE_R10C30A)
-Path End         : dut/clk_c/D  (SLICE_R11C30A)
+Path Begin       : dut/counter_17__i0/Q  (SLICE_R8C28A)
+Path End         : dut/counter_17__i0/SR  (SLICE_R8C28A)
+Source Clock     : dut/int_osc (R)
+Destination Clock: dut/int_osc (R)
+Logic Level      : 3
+Delay Ratio      : 71.2% (route), 28.8% (logic)
+Clock Skew       : 0.000 ns
+Setup Constraint : 166.666 ns 
+Path Slack       : 158.114 ns  (Passed)
+
+
+Source Clock Path
+<tapath class="path_info">
+<xmp>
+{
+    "path_begin":
+    {
+        "type":"pin",
+        "log_name":"dut/hf_osc/CLKHF",
+        "phy_name":"dut.hf_osc/CLKHF"
+    },
+    "path_end":
+    {
+        "type":"pin",
+        "log_name":"dut/counter_17__i0/CK",
+        "phy_name":"dut.SLICE_3/CLK"
+    },
+    "path_sections":[
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/int_osc",
+            "phy_name":"dut.int_osc"
+        },
+        "arrive":5.499,
+        "delay":5.499
+    }
+    ]
+}
+</xmp>
+</tapath>
+Name                                      Cell/Site Name     Delay Name       Delay  Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+dut.hf_osc/CLKHF                          HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  6       
+dut/int_osc ( CLK )                                          NET DELAY        5.499                  5.499  6       
+
+
+Data Path
+<tapath class="path_info">
+<xmp>
+{
+    "path_begin":
+    {
+        "type":"pin",
+        "log_name":"dut/counter_17__i0/Q",
+        "phy_name":"dut.SLICE_3/Q1"
+    },
+    "path_end":
+    {
+        "type":"pin",
+        "log_name":"dut/counter_17__i0/SR",
+        "phy_name":"dut.SLICE_3/LSR"
+    },
+    "path_sections":[
+    {
+        "type":"site_delay",
+        "pin0":
+        {
+            "log_name":"dut/counter_17__i0/CK",
+            "phy_name":"dut.SLICE_3/CLK"
+        },
+        "pin1":
+        {
+            "log_name":"dut/counter_17__i0/Q",
+            "phy_name":"dut.SLICE_3/Q1"
+        },
+        "arrive":6.887,
+        "delay":1.388
+    },
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/counter[0]",
+            "phy_name":"dut.counter[0]"
+        },
+        "arrive":8.962,
+        "delay":2.075
+    },
+    {
+        "type":"site_delay",
+        "pin0":
+        {
+            "log_name":"dut/i1_3_lut/A",
+            "phy_name":"dut.SLICE_11/B0"
+        },
+        "pin1":
+        {
+            "log_name":"dut/i1_3_lut/Z",
+            "phy_name":"dut.SLICE_11/F0"
+        },
+        "arrive":9.438,
+        "delay":0.476
+    },
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/n4",
+            "phy_name":"dut.n4"
+        },
+        "arrive":9.742,
+        "delay":0.304
+    },
+    {
+        "type":"site_delay",
+        "pin0":
+        {
+            "log_name":"dut/i2_4_lut/D",
+            "phy_name":"dut.SLICE_11/C1"
+        },
+        "pin1":
+        {
+            "log_name":"dut/i2_4_lut/Z",
+            "phy_name":"dut.SLICE_11/F1"
+        },
+        "arrive":10.191,
+        "delay":0.449
+    },
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/n46",
+            "phy_name":"dut.n46"
+        },
+        "arrive":13.522,
+        "delay":3.331
+    }
+    ]
+}
+</xmp>
+</tapath>
+
+dut/counter_17__i0/CK->dut/counter_17__i0/Q
+                                          SLICE_R8C28A       CLK_TO_Q1_DELAY  1.388                  6.887  2       
+dut/counter[0]                                               NET DELAY        2.075                  8.962  2       
+dut/i1_3_lut/A->dut/i1_3_lut/Z            SLICE_R9C28B       B0_TO_F0_DELAY   0.476                  9.438  1       
+dut/n4                                                       NET DELAY        0.304                  9.742  1       
+dut/i2_4_lut/D->dut/i2_4_lut/Z            SLICE_R9C28B       C1_TO_F1_DELAY   0.449                 10.191  5       
+dut/n46 ( LSR )                                              NET DELAY        3.331                 13.522  5       
+
+
+Destination Clock Path
+<tapath class="path_info">
+<xmp>
+{
+    "path_begin":
+    {
+        "type":"pin",
+        "log_name":"dut/hf_osc/CLKHF",
+        "phy_name":"dut.hf_osc/CLKHF"
+    },
+    "path_end":
+    {
+        "type":"pin",
+        "log_name":"dut/counter_17__i0/CK",
+        "phy_name":"dut.SLICE_3/CLK"
+    },
+    "path_sections":[
+    {
+        "type":"site_delay",
+        "pin0":
+        {
+            "log_name":"",
+            "phy_name":""
+        },
+        "pin1":
+        {
+            "log_name":"",
+            "phy_name":""
+        },
+        "arrive":166.666,
+        "delay":0.000
+    },
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/int_osc",
+            "phy_name":"dut.int_osc"
+        },
+        "arrive":172.165,
+        "delay":5.499
+    }
+    ]
+}
+</xmp>
+</tapath>
+
+                                                             CONSTRAINT       0.000                166.666  1       
+dut.hf_osc/CLKHF                          HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                166.666  6       
+dut/int_osc ( CLK )                                          NET DELAY        5.499                172.165  6       
+                                                             Uncertainty      0.000                172.165  
+                                                             Setup time       0.529                171.636  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Required Time                                                                                      171.636  
+Arrival Time                                                                                       -13.521  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                               158.114  
+
+
+
+
+++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : dut/counter_17__i0/Q  (SLICE_R8C28A)
+Path End         : {dut/counter_17__i1/SR   dut/counter_17__i2/SR}  (SLICE_R8C28B)
+Source Clock     : dut/int_osc (R)
+Destination Clock: dut/int_osc (R)
+Logic Level      : 3
+Delay Ratio      : 71.2% (route), 28.8% (logic)
+Clock Skew       : 0.000 ns
+Setup Constraint : 166.666 ns 
+Path Slack       : 158.114 ns  (Passed)
+
+
+Source Clock Path
+<tapath class="path_info">
+<xmp>
+{
+    "path_begin":
+    {
+        "type":"pin",
+        "log_name":"dut/hf_osc/CLKHF",
+        "phy_name":"dut.hf_osc/CLKHF"
+    },
+    "path_end":
+    {
+        "type":"pin",
+        "log_name":"dut/counter_17__i0/CK",
+        "phy_name":"dut.SLICE_3/CLK"
+    },
+    "path_sections":[
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/int_osc",
+            "phy_name":"dut.int_osc"
+        },
+        "arrive":5.499,
+        "delay":5.499
+    }
+    ]
+}
+</xmp>
+</tapath>
+Name                                      Cell/Site Name     Delay Name       Delay  Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+dut.hf_osc/CLKHF                          HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  6       
+dut/int_osc                                                  NET DELAY        5.499                  5.499  6       
+
+
+Data Path
+<tapath class="path_info">
+<xmp>
+{
+    "path_begin":
+    {
+        "type":"pin",
+        "log_name":"dut/counter_17__i0/Q",
+        "phy_name":"dut.SLICE_3/Q1"
+    },
+    "path_end":
+    {
+        "type":"pin",
+        "log_name":"{dut/counter_17__i1/SR   dut/counter_17__i2/SR}",
+        "phy_name":"dut.SLICE_2/LSR"
+    },
+    "path_sections":[
+    {
+        "type":"site_delay",
+        "pin0":
+        {
+            "log_name":"dut/counter_17__i0/CK",
+            "phy_name":"dut.SLICE_3/CLK"
+        },
+        "pin1":
+        {
+            "log_name":"dut/counter_17__i0/Q",
+            "phy_name":"dut.SLICE_3/Q1"
+        },
+        "arrive":6.887,
+        "delay":1.388
+    },
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/counter[0]",
+            "phy_name":"dut.counter[0]"
+        },
+        "arrive":8.962,
+        "delay":2.075
+    },
+    {
+        "type":"site_delay",
+        "pin0":
+        {
+            "log_name":"dut/i1_3_lut/A",
+            "phy_name":"dut.SLICE_11/B0"
+        },
+        "pin1":
+        {
+            "log_name":"dut/i1_3_lut/Z",
+            "phy_name":"dut.SLICE_11/F0"
+        },
+        "arrive":9.438,
+        "delay":0.476
+    },
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/n4",
+            "phy_name":"dut.n4"
+        },
+        "arrive":9.742,
+        "delay":0.304
+    },
+    {
+        "type":"site_delay",
+        "pin0":
+        {
+            "log_name":"dut/i2_4_lut/D",
+            "phy_name":"dut.SLICE_11/C1"
+        },
+        "pin1":
+        {
+            "log_name":"dut/i2_4_lut/Z",
+            "phy_name":"dut.SLICE_11/F1"
+        },
+        "arrive":10.191,
+        "delay":0.449
+    },
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/n46",
+            "phy_name":"dut.n46"
+        },
+        "arrive":13.522,
+        "delay":3.331
+    }
+    ]
+}
+</xmp>
+</tapath>
+
+dut/counter_17__i0/CK->dut/counter_17__i0/Q
+                                          SLICE_R8C28A       CLK_TO_Q1_DELAY  1.388                  6.887  2       
+dut/counter[0]                                               NET DELAY        2.075                  8.962  2       
+dut/i1_3_lut/A->dut/i1_3_lut/Z            SLICE_R9C28B       B0_TO_F0_DELAY   0.476                  9.438  1       
+dut/n4                                                       NET DELAY        0.304                  9.742  1       
+dut/i2_4_lut/D->dut/i2_4_lut/Z            SLICE_R9C28B       C1_TO_F1_DELAY   0.449                 10.191  5       
+dut/n46 ( LSR )                                              NET DELAY        3.331                 13.522  5       
+
+
+Destination Clock Path
+<tapath class="path_info">
+<xmp>
+{
+    "path_begin":
+    {
+        "type":"pin",
+        "log_name":"dut/hf_osc/CLKHF",
+        "phy_name":"dut.hf_osc/CLKHF"
+    },
+    "path_end":
+    {
+        "type":"pin",
+        "log_name":"dut/counter_17__i1/CK",
+        "phy_name":"dut.SLICE_2/CLK"
+    },
+    "path_sections":[
+    {
+        "type":"site_delay",
+        "pin0":
+        {
+            "log_name":"",
+            "phy_name":""
+        },
+        "pin1":
+        {
+            "log_name":"",
+            "phy_name":""
+        },
+        "arrive":166.666,
+        "delay":0.000
+    },
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/int_osc",
+            "phy_name":"dut.int_osc"
+        },
+        "arrive":172.165,
+        "delay":5.499
+    }
+    ]
+}
+</xmp>
+</tapath>
+
+                                                             CONSTRAINT       0.000                166.666  1       
+dut.hf_osc/CLKHF                          HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                166.666  6       
+dut/int_osc ( CLK )                                          NET DELAY        5.499                172.165  6       
+                                                             Uncertainty      0.000                172.165  
+                                                             Setup time       0.529                171.636  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Required Time                                                                                      171.636  
+Arrival Time                                                                                       -13.521  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                               158.114  
+
+
+
+
+++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : dut/counter_17__i0/Q  (SLICE_R8C28A)
+Path End         : {dut/counter_17__i3/SR   dut/counter_17__i4/SR}  (SLICE_R8C28C)
+Source Clock     : dut/int_osc (R)
+Destination Clock: dut/int_osc (R)
+Logic Level      : 3
+Delay Ratio      : 71.2% (route), 28.8% (logic)
+Clock Skew       : 0.000 ns
+Setup Constraint : 166.666 ns 
+Path Slack       : 158.114 ns  (Passed)
+
+
+Source Clock Path
+<tapath class="path_info">
+<xmp>
+{
+    "path_begin":
+    {
+        "type":"pin",
+        "log_name":"dut/hf_osc/CLKHF",
+        "phy_name":"dut.hf_osc/CLKHF"
+    },
+    "path_end":
+    {
+        "type":"pin",
+        "log_name":"dut/counter_17__i0/CK",
+        "phy_name":"dut.SLICE_3/CLK"
+    },
+    "path_sections":[
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/int_osc",
+            "phy_name":"dut.int_osc"
+        },
+        "arrive":5.499,
+        "delay":5.499
+    }
+    ]
+}
+</xmp>
+</tapath>
+Name                                      Cell/Site Name     Delay Name       Delay  Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+dut.hf_osc/CLKHF                          HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  6       
+dut/int_osc                                                  NET DELAY        5.499                  5.499  6       
+
+
+Data Path
+<tapath class="path_info">
+<xmp>
+{
+    "path_begin":
+    {
+        "type":"pin",
+        "log_name":"dut/counter_17__i0/Q",
+        "phy_name":"dut.SLICE_3/Q1"
+    },
+    "path_end":
+    {
+        "type":"pin",
+        "log_name":"{dut/counter_17__i3/SR   dut/counter_17__i4/SR}",
+        "phy_name":"dut.SLICE_1/LSR"
+    },
+    "path_sections":[
+    {
+        "type":"site_delay",
+        "pin0":
+        {
+            "log_name":"dut/counter_17__i0/CK",
+            "phy_name":"dut.SLICE_3/CLK"
+        },
+        "pin1":
+        {
+            "log_name":"dut/counter_17__i0/Q",
+            "phy_name":"dut.SLICE_3/Q1"
+        },
+        "arrive":6.887,
+        "delay":1.388
+    },
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/counter[0]",
+            "phy_name":"dut.counter[0]"
+        },
+        "arrive":8.962,
+        "delay":2.075
+    },
+    {
+        "type":"site_delay",
+        "pin0":
+        {
+            "log_name":"dut/i1_3_lut/A",
+            "phy_name":"dut.SLICE_11/B0"
+        },
+        "pin1":
+        {
+            "log_name":"dut/i1_3_lut/Z",
+            "phy_name":"dut.SLICE_11/F0"
+        },
+        "arrive":9.438,
+        "delay":0.476
+    },
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/n4",
+            "phy_name":"dut.n4"
+        },
+        "arrive":9.742,
+        "delay":0.304
+    },
+    {
+        "type":"site_delay",
+        "pin0":
+        {
+            "log_name":"dut/i2_4_lut/D",
+            "phy_name":"dut.SLICE_11/C1"
+        },
+        "pin1":
+        {
+            "log_name":"dut/i2_4_lut/Z",
+            "phy_name":"dut.SLICE_11/F1"
+        },
+        "arrive":10.191,
+        "delay":0.449
+    },
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/n46",
+            "phy_name":"dut.n46"
+        },
+        "arrive":13.522,
+        "delay":3.331
+    }
+    ]
+}
+</xmp>
+</tapath>
+
+dut/counter_17__i0/CK->dut/counter_17__i0/Q
+                                          SLICE_R8C28A       CLK_TO_Q1_DELAY  1.388                  6.887  2       
+dut/counter[0]                                               NET DELAY        2.075                  8.962  2       
+dut/i1_3_lut/A->dut/i1_3_lut/Z            SLICE_R9C28B       B0_TO_F0_DELAY   0.476                  9.438  1       
+dut/n4                                                       NET DELAY        0.304                  9.742  1       
+dut/i2_4_lut/D->dut/i2_4_lut/Z            SLICE_R9C28B       C1_TO_F1_DELAY   0.449                 10.191  5       
+dut/n46 ( LSR )                                              NET DELAY        3.331                 13.522  5       
+
+
+Destination Clock Path
+<tapath class="path_info">
+<xmp>
+{
+    "path_begin":
+    {
+        "type":"pin",
+        "log_name":"dut/hf_osc/CLKHF",
+        "phy_name":"dut.hf_osc/CLKHF"
+    },
+    "path_end":
+    {
+        "type":"pin",
+        "log_name":"dut/counter_17__i3/CK",
+        "phy_name":"dut.SLICE_1/CLK"
+    },
+    "path_sections":[
+    {
+        "type":"site_delay",
+        "pin0":
+        {
+            "log_name":"",
+            "phy_name":""
+        },
+        "pin1":
+        {
+            "log_name":"",
+            "phy_name":""
+        },
+        "arrive":166.666,
+        "delay":0.000
+    },
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/int_osc",
+            "phy_name":"dut.int_osc"
+        },
+        "arrive":172.165,
+        "delay":5.499
+    }
+    ]
+}
+</xmp>
+</tapath>
+
+                                                             CONSTRAINT       0.000                166.666  1       
+dut.hf_osc/CLKHF                          HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                166.666  6       
+dut/int_osc ( CLK )                                          NET DELAY        5.499                172.165  6       
+                                                             Uncertainty      0.000                172.165  
+                                                             Setup time       0.529                171.636  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Required Time                                                                                      171.636  
+Arrival Time                                                                                       -13.521  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                               158.114  
+
+
+
+
+++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : dut/counter_17__i0/Q  (SLICE_R8C28A)
+Path End         : dut/counter_17__i5/SR  (SLICE_R8C28D)
+Source Clock     : dut/int_osc (R)
+Destination Clock: dut/int_osc (R)
+Logic Level      : 3
+Delay Ratio      : 71.2% (route), 28.8% (logic)
+Clock Skew       : 0.000 ns
+Setup Constraint : 166.666 ns 
+Path Slack       : 158.114 ns  (Passed)
+
+
+Source Clock Path
+<tapath class="path_info">
+<xmp>
+{
+    "path_begin":
+    {
+        "type":"pin",
+        "log_name":"dut/hf_osc/CLKHF",
+        "phy_name":"dut.hf_osc/CLKHF"
+    },
+    "path_end":
+    {
+        "type":"pin",
+        "log_name":"dut/counter_17__i0/CK",
+        "phy_name":"dut.SLICE_3/CLK"
+    },
+    "path_sections":[
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/int_osc",
+            "phy_name":"dut.int_osc"
+        },
+        "arrive":5.499,
+        "delay":5.499
+    }
+    ]
+}
+</xmp>
+</tapath>
+Name                                      Cell/Site Name     Delay Name       Delay  Arrival/Required Time  Fanout  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+dut.hf_osc/CLKHF                          HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  6       
+dut/int_osc                                                  NET DELAY        5.499                  5.499  6       
+
+
+Data Path
+<tapath class="path_info">
+<xmp>
+{
+    "path_begin":
+    {
+        "type":"pin",
+        "log_name":"dut/counter_17__i0/Q",
+        "phy_name":"dut.SLICE_3/Q1"
+    },
+    "path_end":
+    {
+        "type":"pin",
+        "log_name":"dut/counter_17__i5/SR",
+        "phy_name":"dut.SLICE_0/LSR"
+    },
+    "path_sections":[
+    {
+        "type":"site_delay",
+        "pin0":
+        {
+            "log_name":"dut/counter_17__i0/CK",
+            "phy_name":"dut.SLICE_3/CLK"
+        },
+        "pin1":
+        {
+            "log_name":"dut/counter_17__i0/Q",
+            "phy_name":"dut.SLICE_3/Q1"
+        },
+        "arrive":6.887,
+        "delay":1.388
+    },
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/counter[0]",
+            "phy_name":"dut.counter[0]"
+        },
+        "arrive":8.962,
+        "delay":2.075
+    },
+    {
+        "type":"site_delay",
+        "pin0":
+        {
+            "log_name":"dut/i1_3_lut/A",
+            "phy_name":"dut.SLICE_11/B0"
+        },
+        "pin1":
+        {
+            "log_name":"dut/i1_3_lut/Z",
+            "phy_name":"dut.SLICE_11/F0"
+        },
+        "arrive":9.438,
+        "delay":0.476
+    },
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/n4",
+            "phy_name":"dut.n4"
+        },
+        "arrive":9.742,
+        "delay":0.304
+    },
+    {
+        "type":"site_delay",
+        "pin0":
+        {
+            "log_name":"dut/i2_4_lut/D",
+            "phy_name":"dut.SLICE_11/C1"
+        },
+        "pin1":
+        {
+            "log_name":"dut/i2_4_lut/Z",
+            "phy_name":"dut.SLICE_11/F1"
+        },
+        "arrive":10.191,
+        "delay":0.449
+    },
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/n46",
+            "phy_name":"dut.n46"
+        },
+        "arrive":13.522,
+        "delay":3.331
+    }
+    ]
+}
+</xmp>
+</tapath>
+
+dut/counter_17__i0/CK->dut/counter_17__i0/Q
+                                          SLICE_R8C28A       CLK_TO_Q1_DELAY  1.388                  6.887  2       
+dut/counter[0]                                               NET DELAY        2.075                  8.962  2       
+dut/i1_3_lut/A->dut/i1_3_lut/Z            SLICE_R9C28B       B0_TO_F0_DELAY   0.476                  9.438  1       
+dut/n4                                                       NET DELAY        0.304                  9.742  1       
+dut/i2_4_lut/D->dut/i2_4_lut/Z            SLICE_R9C28B       C1_TO_F1_DELAY   0.449                 10.191  5       
+dut/n46 ( LSR )                                              NET DELAY        3.331                 13.522  5       
+
+
+Destination Clock Path
+<tapath class="path_info">
+<xmp>
+{
+    "path_begin":
+    {
+        "type":"pin",
+        "log_name":"dut/hf_osc/CLKHF",
+        "phy_name":"dut.hf_osc/CLKHF"
+    },
+    "path_end":
+    {
+        "type":"pin",
+        "log_name":"dut/counter_17__i5/CK",
+        "phy_name":"dut.SLICE_0/CLK"
+    },
+    "path_sections":[
+    {
+        "type":"site_delay",
+        "pin0":
+        {
+            "log_name":"",
+            "phy_name":""
+        },
+        "pin1":
+        {
+            "log_name":"",
+            "phy_name":""
+        },
+        "arrive":166.666,
+        "delay":0.000
+    },
+    {
+        "type":"net_delay",
+        "net":
+        {
+            "log_name":"dut/int_osc",
+            "phy_name":"dut.int_osc"
+        },
+        "arrive":172.165,
+        "delay":5.499
+    }
+    ]
+}
+</xmp>
+</tapath>
+
+                                                             CONSTRAINT       0.000                166.666  1       
+dut.hf_osc/CLKHF                          HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                166.666  6       
+dut/int_osc ( CLK )                                          NET DELAY        5.499                172.165  6       
+                                                             Uncertainty      0.000                172.165  
+                                                             Setup time       0.529                171.636  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Required Time                                                                                      171.636  
+Arrival Time                                                                                       -13.521  
+----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                               158.114  
+
+
+
+
+++++ Path 5 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : dut/counter_17__i0/Q  (SLICE_R8C28A)
+Path End         : dut/clk_c/D  (SLICE_R9C28A)
 Source Clock     : dut/int_osc (R)
 Destination Clock: dut/int_osc (R)
 Logic Level      : 4
@@ -395,8 +1263,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n55",
-            "phy_name":"dut.n55"
+            "log_name":"dut/n46",
+            "phy_name":"dut.n46"
         },
         "arrive":12.359,
         "delay":2.168
@@ -420,8 +1288,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n34",
-            "phy_name":"dut.n34"
+            "log_name":"dut/n32",
+            "phy_name":"dut.n32"
         },
         "arrive":12.835,
         "delay":0.000
@@ -432,14 +1300,14 @@ Data Path
 </tapath>
 
 dut/counter_17__i0/CK->dut/counter_17__i0/Q
-                                          SLICE_R10C30A      CLK_TO_Q1_DELAY  1.388                  6.887  2       
+                                          SLICE_R8C28A       CLK_TO_Q1_DELAY  1.388                  6.887  2       
 dut/counter[0]                                               NET DELAY        2.075                  8.962  2       
-dut/i1_3_lut/A->dut/i1_3_lut/Z            SLICE_R11C30C      B0_TO_F0_DELAY   0.476                  9.438  1       
+dut/i1_3_lut/A->dut/i1_3_lut/Z            SLICE_R9C28B       B0_TO_F0_DELAY   0.476                  9.438  1       
 dut/n4                                                       NET DELAY        0.304                  9.742  1       
-dut/i2_4_lut/D->dut/i2_4_lut/Z            SLICE_R11C30C      C1_TO_F1_DELAY   0.449                 10.191  5       
-dut/n55                                                      NET DELAY        2.168                 12.359  5       
-dut/i1_2_lut/B->dut/i1_2_lut/Z            SLICE_R11C30A      D0_TO_F0_DELAY   0.476                 12.835  1       
-dut/n34 ( DI0 )                                              NET DELAY        0.000                 12.835  1       
+dut/i2_4_lut/D->dut/i2_4_lut/Z            SLICE_R9C28B       C1_TO_F1_DELAY   0.449                 10.191  5       
+dut/n46                                                      NET DELAY        2.168                 12.359  5       
+dut/i1_2_lut/B->dut/i1_2_lut/Z            SLICE_R9C28A       D0_TO_F0_DELAY   0.476                 12.835  1       
+dut/n32 ( DI0 )                                              NET DELAY        0.000                 12.835  1       
 
 
 Destination Clock Path
@@ -503,878 +1371,10 @@ Path Slack  (Passed)                                                            
 
 
 
-++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-
-Path Begin       : dut/counter_17__i0/Q  (SLICE_R10C30A)
-Path End         : dut/counter_17__i0/SR  (SLICE_R10C30A)
-Source Clock     : dut/int_osc (R)
-Destination Clock: dut/int_osc (R)
-Logic Level      : 3
-Delay Ratio      : 66.1% (route), 33.9% (logic)
-Clock Skew       : 0.000 ns
-Setup Constraint : 166.666 ns 
-Path Slack       : 159.304 ns  (Passed)
-
-
-Source Clock Path
-<tapath class="path_info">
-<xmp>
-{
-    "path_begin":
-    {
-        "type":"pin",
-        "log_name":"dut/hf_osc/CLKHF",
-        "phy_name":"dut.hf_osc/CLKHF"
-    },
-    "path_end":
-    {
-        "type":"pin",
-        "log_name":"dut/counter_17__i0/CK",
-        "phy_name":"dut.SLICE_3/CLK"
-    },
-    "path_sections":[
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/int_osc",
-            "phy_name":"dut.int_osc"
-        },
-        "arrive":5.499,
-        "delay":5.499
-    }
-    ]
-}
-</xmp>
-</tapath>
-Name                                      Cell/Site Name     Delay Name       Delay  Arrival/Required Time  Fanout  
-----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-dut.hf_osc/CLKHF                          HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  6       
-dut/int_osc ( CLK )                                          NET DELAY        5.499                  5.499  6       
-
-
-Data Path
-<tapath class="path_info">
-<xmp>
-{
-    "path_begin":
-    {
-        "type":"pin",
-        "log_name":"dut/counter_17__i0/Q",
-        "phy_name":"dut.SLICE_3/Q1"
-    },
-    "path_end":
-    {
-        "type":"pin",
-        "log_name":"dut/counter_17__i0/SR",
-        "phy_name":"dut.SLICE_3/LSR"
-    },
-    "path_sections":[
-    {
-        "type":"site_delay",
-        "pin0":
-        {
-            "log_name":"dut/counter_17__i0/CK",
-            "phy_name":"dut.SLICE_3/CLK"
-        },
-        "pin1":
-        {
-            "log_name":"dut/counter_17__i0/Q",
-            "phy_name":"dut.SLICE_3/Q1"
-        },
-        "arrive":6.887,
-        "delay":1.388
-    },
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/counter[0]",
-            "phy_name":"dut.counter[0]"
-        },
-        "arrive":8.962,
-        "delay":2.075
-    },
-    {
-        "type":"site_delay",
-        "pin0":
-        {
-            "log_name":"dut/i1_3_lut/A",
-            "phy_name":"dut.SLICE_11/B0"
-        },
-        "pin1":
-        {
-            "log_name":"dut/i1_3_lut/Z",
-            "phy_name":"dut.SLICE_11/F0"
-        },
-        "arrive":9.438,
-        "delay":0.476
-    },
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/n4",
-            "phy_name":"dut.n4"
-        },
-        "arrive":9.742,
-        "delay":0.304
-    },
-    {
-        "type":"site_delay",
-        "pin0":
-        {
-            "log_name":"dut/i2_4_lut/D",
-            "phy_name":"dut.SLICE_11/C1"
-        },
-        "pin1":
-        {
-            "log_name":"dut/i2_4_lut/Z",
-            "phy_name":"dut.SLICE_11/F1"
-        },
-        "arrive":10.191,
-        "delay":0.449
-    },
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/n55",
-            "phy_name":"dut.n55"
-        },
-        "arrive":12.332,
-        "delay":2.141
-    }
-    ]
-}
-</xmp>
-</tapath>
-
-dut/counter_17__i0/CK->dut/counter_17__i0/Q
-                                          SLICE_R10C30A      CLK_TO_Q1_DELAY  1.388                  6.887  2       
-dut/counter[0]                                               NET DELAY        2.075                  8.962  2       
-dut/i1_3_lut/A->dut/i1_3_lut/Z            SLICE_R11C30C      B0_TO_F0_DELAY   0.476                  9.438  1       
-dut/n4                                                       NET DELAY        0.304                  9.742  1       
-dut/i2_4_lut/D->dut/i2_4_lut/Z            SLICE_R11C30C      C1_TO_F1_DELAY   0.449                 10.191  5       
-dut/n55 ( LSR )                                              NET DELAY        2.141                 12.332  5       
-
-
-Destination Clock Path
-<tapath class="path_info">
-<xmp>
-{
-    "path_begin":
-    {
-        "type":"pin",
-        "log_name":"dut/hf_osc/CLKHF",
-        "phy_name":"dut.hf_osc/CLKHF"
-    },
-    "path_end":
-    {
-        "type":"pin",
-        "log_name":"dut/counter_17__i0/CK",
-        "phy_name":"dut.SLICE_3/CLK"
-    },
-    "path_sections":[
-    {
-        "type":"site_delay",
-        "pin0":
-        {
-            "log_name":"",
-            "phy_name":""
-        },
-        "pin1":
-        {
-            "log_name":"",
-            "phy_name":""
-        },
-        "arrive":166.666,
-        "delay":0.000
-    },
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/int_osc",
-            "phy_name":"dut.int_osc"
-        },
-        "arrive":172.165,
-        "delay":5.499
-    }
-    ]
-}
-</xmp>
-</tapath>
-
-                                                             CONSTRAINT       0.000                166.666  1       
-dut.hf_osc/CLKHF                          HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                166.666  6       
-dut/int_osc ( CLK )                                          NET DELAY        5.499                172.165  6       
-                                                             Uncertainty      0.000                172.165  
-                                                             Setup time       0.529                171.636  
-----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-Required Time                                                                                      171.636  
-Arrival Time                                                                                       -12.331  
-----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-Path Slack  (Passed)                                                                               159.304  
-
-
-
-
-++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-
-Path Begin       : dut/counter_17__i0/Q  (SLICE_R10C30A)
-Path End         : {dut/counter_17__i1/SR   dut/counter_17__i2/SR}  (SLICE_R10C30B)
-Source Clock     : dut/int_osc (R)
-Destination Clock: dut/int_osc (R)
-Logic Level      : 3
-Delay Ratio      : 66.1% (route), 33.9% (logic)
-Clock Skew       : 0.000 ns
-Setup Constraint : 166.666 ns 
-Path Slack       : 159.304 ns  (Passed)
-
-
-Source Clock Path
-<tapath class="path_info">
-<xmp>
-{
-    "path_begin":
-    {
-        "type":"pin",
-        "log_name":"dut/hf_osc/CLKHF",
-        "phy_name":"dut.hf_osc/CLKHF"
-    },
-    "path_end":
-    {
-        "type":"pin",
-        "log_name":"dut/counter_17__i0/CK",
-        "phy_name":"dut.SLICE_3/CLK"
-    },
-    "path_sections":[
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/int_osc",
-            "phy_name":"dut.int_osc"
-        },
-        "arrive":5.499,
-        "delay":5.499
-    }
-    ]
-}
-</xmp>
-</tapath>
-Name                                      Cell/Site Name     Delay Name       Delay  Arrival/Required Time  Fanout  
-----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-dut.hf_osc/CLKHF                          HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  6       
-dut/int_osc                                                  NET DELAY        5.499                  5.499  6       
-
-
-Data Path
-<tapath class="path_info">
-<xmp>
-{
-    "path_begin":
-    {
-        "type":"pin",
-        "log_name":"dut/counter_17__i0/Q",
-        "phy_name":"dut.SLICE_3/Q1"
-    },
-    "path_end":
-    {
-        "type":"pin",
-        "log_name":"{dut/counter_17__i1/SR   dut/counter_17__i2/SR}",
-        "phy_name":"dut.SLICE_2/LSR"
-    },
-    "path_sections":[
-    {
-        "type":"site_delay",
-        "pin0":
-        {
-            "log_name":"dut/counter_17__i0/CK",
-            "phy_name":"dut.SLICE_3/CLK"
-        },
-        "pin1":
-        {
-            "log_name":"dut/counter_17__i0/Q",
-            "phy_name":"dut.SLICE_3/Q1"
-        },
-        "arrive":6.887,
-        "delay":1.388
-    },
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/counter[0]",
-            "phy_name":"dut.counter[0]"
-        },
-        "arrive":8.962,
-        "delay":2.075
-    },
-    {
-        "type":"site_delay",
-        "pin0":
-        {
-            "log_name":"dut/i1_3_lut/A",
-            "phy_name":"dut.SLICE_11/B0"
-        },
-        "pin1":
-        {
-            "log_name":"dut/i1_3_lut/Z",
-            "phy_name":"dut.SLICE_11/F0"
-        },
-        "arrive":9.438,
-        "delay":0.476
-    },
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/n4",
-            "phy_name":"dut.n4"
-        },
-        "arrive":9.742,
-        "delay":0.304
-    },
-    {
-        "type":"site_delay",
-        "pin0":
-        {
-            "log_name":"dut/i2_4_lut/D",
-            "phy_name":"dut.SLICE_11/C1"
-        },
-        "pin1":
-        {
-            "log_name":"dut/i2_4_lut/Z",
-            "phy_name":"dut.SLICE_11/F1"
-        },
-        "arrive":10.191,
-        "delay":0.449
-    },
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/n55",
-            "phy_name":"dut.n55"
-        },
-        "arrive":12.332,
-        "delay":2.141
-    }
-    ]
-}
-</xmp>
-</tapath>
-
-dut/counter_17__i0/CK->dut/counter_17__i0/Q
-                                          SLICE_R10C30A      CLK_TO_Q1_DELAY  1.388                  6.887  2       
-dut/counter[0]                                               NET DELAY        2.075                  8.962  2       
-dut/i1_3_lut/A->dut/i1_3_lut/Z            SLICE_R11C30C      B0_TO_F0_DELAY   0.476                  9.438  1       
-dut/n4                                                       NET DELAY        0.304                  9.742  1       
-dut/i2_4_lut/D->dut/i2_4_lut/Z            SLICE_R11C30C      C1_TO_F1_DELAY   0.449                 10.191  5       
-dut/n55 ( LSR )                                              NET DELAY        2.141                 12.332  5       
-
-
-Destination Clock Path
-<tapath class="path_info">
-<xmp>
-{
-    "path_begin":
-    {
-        "type":"pin",
-        "log_name":"dut/hf_osc/CLKHF",
-        "phy_name":"dut.hf_osc/CLKHF"
-    },
-    "path_end":
-    {
-        "type":"pin",
-        "log_name":"dut/counter_17__i1/CK",
-        "phy_name":"dut.SLICE_2/CLK"
-    },
-    "path_sections":[
-    {
-        "type":"site_delay",
-        "pin0":
-        {
-            "log_name":"",
-            "phy_name":""
-        },
-        "pin1":
-        {
-            "log_name":"",
-            "phy_name":""
-        },
-        "arrive":166.666,
-        "delay":0.000
-    },
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/int_osc",
-            "phy_name":"dut.int_osc"
-        },
-        "arrive":172.165,
-        "delay":5.499
-    }
-    ]
-}
-</xmp>
-</tapath>
-
-                                                             CONSTRAINT       0.000                166.666  1       
-dut.hf_osc/CLKHF                          HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                166.666  6       
-dut/int_osc ( CLK )                                          NET DELAY        5.499                172.165  6       
-                                                             Uncertainty      0.000                172.165  
-                                                             Setup time       0.529                171.636  
-----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-Required Time                                                                                      171.636  
-Arrival Time                                                                                       -12.331  
-----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-Path Slack  (Passed)                                                                               159.304  
-
-
-
-
-++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-
-Path Begin       : dut/counter_17__i0/Q  (SLICE_R10C30A)
-Path End         : {dut/counter_17__i3/SR   dut/counter_17__i4/SR}  (SLICE_R10C30C)
-Source Clock     : dut/int_osc (R)
-Destination Clock: dut/int_osc (R)
-Logic Level      : 3
-Delay Ratio      : 66.1% (route), 33.9% (logic)
-Clock Skew       : 0.000 ns
-Setup Constraint : 166.666 ns 
-Path Slack       : 159.304 ns  (Passed)
-
-
-Source Clock Path
-<tapath class="path_info">
-<xmp>
-{
-    "path_begin":
-    {
-        "type":"pin",
-        "log_name":"dut/hf_osc/CLKHF",
-        "phy_name":"dut.hf_osc/CLKHF"
-    },
-    "path_end":
-    {
-        "type":"pin",
-        "log_name":"dut/counter_17__i0/CK",
-        "phy_name":"dut.SLICE_3/CLK"
-    },
-    "path_sections":[
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/int_osc",
-            "phy_name":"dut.int_osc"
-        },
-        "arrive":5.499,
-        "delay":5.499
-    }
-    ]
-}
-</xmp>
-</tapath>
-Name                                      Cell/Site Name     Delay Name       Delay  Arrival/Required Time  Fanout  
-----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-dut.hf_osc/CLKHF                          HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  6       
-dut/int_osc                                                  NET DELAY        5.499                  5.499  6       
-
-
-Data Path
-<tapath class="path_info">
-<xmp>
-{
-    "path_begin":
-    {
-        "type":"pin",
-        "log_name":"dut/counter_17__i0/Q",
-        "phy_name":"dut.SLICE_3/Q1"
-    },
-    "path_end":
-    {
-        "type":"pin",
-        "log_name":"{dut/counter_17__i3/SR   dut/counter_17__i4/SR}",
-        "phy_name":"dut.SLICE_1/LSR"
-    },
-    "path_sections":[
-    {
-        "type":"site_delay",
-        "pin0":
-        {
-            "log_name":"dut/counter_17__i0/CK",
-            "phy_name":"dut.SLICE_3/CLK"
-        },
-        "pin1":
-        {
-            "log_name":"dut/counter_17__i0/Q",
-            "phy_name":"dut.SLICE_3/Q1"
-        },
-        "arrive":6.887,
-        "delay":1.388
-    },
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/counter[0]",
-            "phy_name":"dut.counter[0]"
-        },
-        "arrive":8.962,
-        "delay":2.075
-    },
-    {
-        "type":"site_delay",
-        "pin0":
-        {
-            "log_name":"dut/i1_3_lut/A",
-            "phy_name":"dut.SLICE_11/B0"
-        },
-        "pin1":
-        {
-            "log_name":"dut/i1_3_lut/Z",
-            "phy_name":"dut.SLICE_11/F0"
-        },
-        "arrive":9.438,
-        "delay":0.476
-    },
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/n4",
-            "phy_name":"dut.n4"
-        },
-        "arrive":9.742,
-        "delay":0.304
-    },
-    {
-        "type":"site_delay",
-        "pin0":
-        {
-            "log_name":"dut/i2_4_lut/D",
-            "phy_name":"dut.SLICE_11/C1"
-        },
-        "pin1":
-        {
-            "log_name":"dut/i2_4_lut/Z",
-            "phy_name":"dut.SLICE_11/F1"
-        },
-        "arrive":10.191,
-        "delay":0.449
-    },
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/n55",
-            "phy_name":"dut.n55"
-        },
-        "arrive":12.332,
-        "delay":2.141
-    }
-    ]
-}
-</xmp>
-</tapath>
-
-dut/counter_17__i0/CK->dut/counter_17__i0/Q
-                                          SLICE_R10C30A      CLK_TO_Q1_DELAY  1.388                  6.887  2       
-dut/counter[0]                                               NET DELAY        2.075                  8.962  2       
-dut/i1_3_lut/A->dut/i1_3_lut/Z            SLICE_R11C30C      B0_TO_F0_DELAY   0.476                  9.438  1       
-dut/n4                                                       NET DELAY        0.304                  9.742  1       
-dut/i2_4_lut/D->dut/i2_4_lut/Z            SLICE_R11C30C      C1_TO_F1_DELAY   0.449                 10.191  5       
-dut/n55 ( LSR )                                              NET DELAY        2.141                 12.332  5       
-
-
-Destination Clock Path
-<tapath class="path_info">
-<xmp>
-{
-    "path_begin":
-    {
-        "type":"pin",
-        "log_name":"dut/hf_osc/CLKHF",
-        "phy_name":"dut.hf_osc/CLKHF"
-    },
-    "path_end":
-    {
-        "type":"pin",
-        "log_name":"dut/counter_17__i3/CK",
-        "phy_name":"dut.SLICE_1/CLK"
-    },
-    "path_sections":[
-    {
-        "type":"site_delay",
-        "pin0":
-        {
-            "log_name":"",
-            "phy_name":""
-        },
-        "pin1":
-        {
-            "log_name":"",
-            "phy_name":""
-        },
-        "arrive":166.666,
-        "delay":0.000
-    },
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/int_osc",
-            "phy_name":"dut.int_osc"
-        },
-        "arrive":172.165,
-        "delay":5.499
-    }
-    ]
-}
-</xmp>
-</tapath>
-
-                                                             CONSTRAINT       0.000                166.666  1       
-dut.hf_osc/CLKHF                          HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                166.666  6       
-dut/int_osc ( CLK )                                          NET DELAY        5.499                172.165  6       
-                                                             Uncertainty      0.000                172.165  
-                                                             Setup time       0.529                171.636  
-----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-Required Time                                                                                      171.636  
-Arrival Time                                                                                       -12.331  
-----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-Path Slack  (Passed)                                                                               159.304  
-
-
-
-
-++++ Path 5 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-
-Path Begin       : dut/counter_17__i0/Q  (SLICE_R10C30A)
-Path End         : dut/counter_17__i5/SR  (SLICE_R10C30D)
-Source Clock     : dut/int_osc (R)
-Destination Clock: dut/int_osc (R)
-Logic Level      : 3
-Delay Ratio      : 66.1% (route), 33.9% (logic)
-Clock Skew       : 0.000 ns
-Setup Constraint : 166.666 ns 
-Path Slack       : 159.304 ns  (Passed)
-
-
-Source Clock Path
-<tapath class="path_info">
-<xmp>
-{
-    "path_begin":
-    {
-        "type":"pin",
-        "log_name":"dut/hf_osc/CLKHF",
-        "phy_name":"dut.hf_osc/CLKHF"
-    },
-    "path_end":
-    {
-        "type":"pin",
-        "log_name":"dut/counter_17__i0/CK",
-        "phy_name":"dut.SLICE_3/CLK"
-    },
-    "path_sections":[
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/int_osc",
-            "phy_name":"dut.int_osc"
-        },
-        "arrive":5.499,
-        "delay":5.499
-    }
-    ]
-}
-</xmp>
-</tapath>
-Name                                      Cell/Site Name     Delay Name       Delay  Arrival/Required Time  Fanout  
-----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-dut.hf_osc/CLKHF                          HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                  0.000  6       
-dut/int_osc                                                  NET DELAY        5.499                  5.499  6       
-
-
-Data Path
-<tapath class="path_info">
-<xmp>
-{
-    "path_begin":
-    {
-        "type":"pin",
-        "log_name":"dut/counter_17__i0/Q",
-        "phy_name":"dut.SLICE_3/Q1"
-    },
-    "path_end":
-    {
-        "type":"pin",
-        "log_name":"dut/counter_17__i5/SR",
-        "phy_name":"dut.SLICE_0/LSR"
-    },
-    "path_sections":[
-    {
-        "type":"site_delay",
-        "pin0":
-        {
-            "log_name":"dut/counter_17__i0/CK",
-            "phy_name":"dut.SLICE_3/CLK"
-        },
-        "pin1":
-        {
-            "log_name":"dut/counter_17__i0/Q",
-            "phy_name":"dut.SLICE_3/Q1"
-        },
-        "arrive":6.887,
-        "delay":1.388
-    },
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/counter[0]",
-            "phy_name":"dut.counter[0]"
-        },
-        "arrive":8.962,
-        "delay":2.075
-    },
-    {
-        "type":"site_delay",
-        "pin0":
-        {
-            "log_name":"dut/i1_3_lut/A",
-            "phy_name":"dut.SLICE_11/B0"
-        },
-        "pin1":
-        {
-            "log_name":"dut/i1_3_lut/Z",
-            "phy_name":"dut.SLICE_11/F0"
-        },
-        "arrive":9.438,
-        "delay":0.476
-    },
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/n4",
-            "phy_name":"dut.n4"
-        },
-        "arrive":9.742,
-        "delay":0.304
-    },
-    {
-        "type":"site_delay",
-        "pin0":
-        {
-            "log_name":"dut/i2_4_lut/D",
-            "phy_name":"dut.SLICE_11/C1"
-        },
-        "pin1":
-        {
-            "log_name":"dut/i2_4_lut/Z",
-            "phy_name":"dut.SLICE_11/F1"
-        },
-        "arrive":10.191,
-        "delay":0.449
-    },
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/n55",
-            "phy_name":"dut.n55"
-        },
-        "arrive":12.332,
-        "delay":2.141
-    }
-    ]
-}
-</xmp>
-</tapath>
-
-dut/counter_17__i0/CK->dut/counter_17__i0/Q
-                                          SLICE_R10C30A      CLK_TO_Q1_DELAY  1.388                  6.887  2       
-dut/counter[0]                                               NET DELAY        2.075                  8.962  2       
-dut/i1_3_lut/A->dut/i1_3_lut/Z            SLICE_R11C30C      B0_TO_F0_DELAY   0.476                  9.438  1       
-dut/n4                                                       NET DELAY        0.304                  9.742  1       
-dut/i2_4_lut/D->dut/i2_4_lut/Z            SLICE_R11C30C      C1_TO_F1_DELAY   0.449                 10.191  5       
-dut/n55 ( LSR )                                              NET DELAY        2.141                 12.332  5       
-
-
-Destination Clock Path
-<tapath class="path_info">
-<xmp>
-{
-    "path_begin":
-    {
-        "type":"pin",
-        "log_name":"dut/hf_osc/CLKHF",
-        "phy_name":"dut.hf_osc/CLKHF"
-    },
-    "path_end":
-    {
-        "type":"pin",
-        "log_name":"dut/counter_17__i5/CK",
-        "phy_name":"dut.SLICE_0/CLK"
-    },
-    "path_sections":[
-    {
-        "type":"site_delay",
-        "pin0":
-        {
-            "log_name":"",
-            "phy_name":""
-        },
-        "pin1":
-        {
-            "log_name":"",
-            "phy_name":""
-        },
-        "arrive":166.666,
-        "delay":0.000
-    },
-    {
-        "type":"net_delay",
-        "net":
-        {
-            "log_name":"dut/int_osc",
-            "phy_name":"dut.int_osc"
-        },
-        "arrive":172.165,
-        "delay":5.499
-    }
-    ]
-}
-</xmp>
-</tapath>
-
-                                                             CONSTRAINT       0.000                166.666  1       
-dut.hf_osc/CLKHF                          HFOSC_HFOSC_R1C32  CLOCK LATENCY    0.000                166.666  6       
-dut/int_osc ( CLK )                                          NET DELAY        5.499                172.165  6       
-                                                             Uncertainty      0.000                172.165  
-                                                             Setup time       0.529                171.636  
-----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-Required Time                                                                                      171.636  
-Arrival Time                                                                                       -12.331  
-----------------------------------------  -----------------  ---------------  -----  ---------------------  ------  
-Path Slack  (Passed)                                                                               159.304  
-
-
-
-
 ++++ Path 6 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : dut/counter_17__i0/Q  (SLICE_R10C30A)
-Path End         : dut/counter_17__i5/D  (SLICE_R10C30D)
+Path Begin       : dut/counter_17__i0/Q  (SLICE_R8C28A)
+Path End         : dut/counter_17__i5/D  (SLICE_R8C28D)
 Source Clock     : dut/int_osc (R)
 Destination Clock: dut/int_osc (R)
 Logic Level      : 7
@@ -1482,8 +1482,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n106",
-            "phy_name":"dut.n106"
+            "log_name":"dut/n84",
+            "phy_name":"dut.n84"
         },
         "arrive":9.252,
         "delay":0.000
@@ -1507,8 +1507,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n351",
-            "phy_name":"dut.n351"
+            "log_name":"dut/n322",
+            "phy_name":"dut.n322"
         },
         "arrive":9.529,
         "delay":0.000
@@ -1532,8 +1532,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n108",
-            "phy_name":"dut.n108"
+            "log_name":"dut/n86",
+            "phy_name":"dut.n86"
         },
         "arrive":9.806,
         "delay":0.000
@@ -1557,8 +1557,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n369",
-            "phy_name":"dut.n369"
+            "log_name":"dut/n325",
+            "phy_name":"dut.n325"
         },
         "arrive":10.083,
         "delay":0.000
@@ -1582,8 +1582,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n110",
-            "phy_name":"dut.n110"
+            "log_name":"dut/n88",
+            "phy_name":"dut.n88"
         },
         "arrive":11.021,
         "delay":0.661
@@ -1619,25 +1619,25 @@ Data Path
 </tapath>
 
 dut/counter_17__i0/CK->dut/counter_17__i0/Q
-                                          SLICE_R10C30A      CLK_TO_Q1_DELAY      1.388                  6.887  2       
+                                          SLICE_R8C28A       CLK_TO_Q1_DELAY      1.388                  6.887  2       
 dut/counter[0]                                               NET DELAY            2.022                  8.909  2       
 dut/counter_17_add_4_1/C1->dut/counter_17_add_4_1/CO1
-                                          SLICE_R10C30A      C1_TO_COUT1_DELAY    0.343                  9.252  2       
-dut/n106                                                     NET DELAY            0.000                  9.252  2       
+                                          SLICE_R8C28A       C1_TO_COUT1_DELAY    0.343                  9.252  2       
+dut/n84                                                      NET DELAY            0.000                  9.252  2       
 dut/counter_17_add_4_3/CI0->dut/counter_17_add_4_3/CO0
-                                          SLICE_R10C30B      CIN0_TO_COUT0_DELAY  0.277                  9.529  2       
-dut/n351                                                     NET DELAY            0.000                  9.529  2       
+                                          SLICE_R8C28B       CIN0_TO_COUT0_DELAY  0.277                  9.529  2       
+dut/n322                                                     NET DELAY            0.000                  9.529  2       
 dut/counter_17_add_4_3/CI1->dut/counter_17_add_4_3/CO1
-                                          SLICE_R10C30B      CIN1_TO_COUT1_DELAY  0.277                  9.806  2       
-dut/n108                                                     NET DELAY            0.000                  9.806  2       
+                                          SLICE_R8C28B       CIN1_TO_COUT1_DELAY  0.277                  9.806  2       
+dut/n86                                                      NET DELAY            0.000                  9.806  2       
 dut/counter_17_add_4_5/CI0->dut/counter_17_add_4_5/CO0
-                                          SLICE_R10C30C      CIN0_TO_COUT0_DELAY  0.277                 10.083  2       
-dut/n369                                                     NET DELAY            0.000                 10.083  2       
+                                          SLICE_R8C28C       CIN0_TO_COUT0_DELAY  0.277                 10.083  2       
+dut/n325                                                     NET DELAY            0.000                 10.083  2       
 dut/counter_17_add_4_5/CI1->dut/counter_17_add_4_5/CO1
-                                          SLICE_R10C30C      CIN1_TO_COUT1_DELAY  0.277                 10.360  2       
-dut/n110                                                     NET DELAY            0.661                 11.021  2       
+                                          SLICE_R8C28C       CIN1_TO_COUT1_DELAY  0.277                 10.360  2       
+dut/n88                                                      NET DELAY            0.661                 11.021  2       
 dut/counter_17_add_4_7/D0->dut/counter_17_add_4_7/S0
-                                          SLICE_R10C30D      D0_TO_F0_DELAY       0.476                 11.497  1       
+                                          SLICE_R8C28D       D0_TO_F0_DELAY       0.476                 11.497  1       
 dut/n29[5] ( DI0 )                                           NET DELAY            0.000                 11.497  1       
 
 
@@ -1704,8 +1704,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 7 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : dut/counter_17__i0/Q  (SLICE_R10C30A)
-Path End         : dut/counter_17__i4/D  (SLICE_R10C30C)
+Path Begin       : dut/counter_17__i0/Q  (SLICE_R8C28A)
+Path End         : dut/counter_17__i4/D  (SLICE_R8C28C)
 Source Clock     : dut/int_osc (R)
 Destination Clock: dut/int_osc (R)
 Logic Level      : 6
@@ -1813,8 +1813,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n106",
-            "phy_name":"dut.n106"
+            "log_name":"dut/n84",
+            "phy_name":"dut.n84"
         },
         "arrive":9.252,
         "delay":0.000
@@ -1838,8 +1838,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n351",
-            "phy_name":"dut.n351"
+            "log_name":"dut/n322",
+            "phy_name":"dut.n322"
         },
         "arrive":9.529,
         "delay":0.000
@@ -1863,8 +1863,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n108",
-            "phy_name":"dut.n108"
+            "log_name":"dut/n86",
+            "phy_name":"dut.n86"
         },
         "arrive":9.806,
         "delay":0.000
@@ -1888,8 +1888,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n369",
-            "phy_name":"dut.n369"
+            "log_name":"dut/n325",
+            "phy_name":"dut.n325"
         },
         "arrive":10.744,
         "delay":0.661
@@ -1925,22 +1925,22 @@ Data Path
 </tapath>
 
 dut/counter_17__i0/CK->dut/counter_17__i0/Q
-                                          SLICE_R10C30A      CLK_TO_Q1_DELAY      1.388                  6.887  2       
+                                          SLICE_R8C28A       CLK_TO_Q1_DELAY      1.388                  6.887  2       
 dut/counter[0]                                               NET DELAY            2.022                  8.909  2       
 dut/counter_17_add_4_1/C1->dut/counter_17_add_4_1/CO1
-                                          SLICE_R10C30A      C1_TO_COUT1_DELAY    0.343                  9.252  2       
-dut/n106                                                     NET DELAY            0.000                  9.252  2       
+                                          SLICE_R8C28A       C1_TO_COUT1_DELAY    0.343                  9.252  2       
+dut/n84                                                      NET DELAY            0.000                  9.252  2       
 dut/counter_17_add_4_3/CI0->dut/counter_17_add_4_3/CO0
-                                          SLICE_R10C30B      CIN0_TO_COUT0_DELAY  0.277                  9.529  2       
-dut/n351                                                     NET DELAY            0.000                  9.529  2       
+                                          SLICE_R8C28B       CIN0_TO_COUT0_DELAY  0.277                  9.529  2       
+dut/n322                                                     NET DELAY            0.000                  9.529  2       
 dut/counter_17_add_4_3/CI1->dut/counter_17_add_4_3/CO1
-                                          SLICE_R10C30B      CIN1_TO_COUT1_DELAY  0.277                  9.806  2       
-dut/n108                                                     NET DELAY            0.000                  9.806  2       
+                                          SLICE_R8C28B       CIN1_TO_COUT1_DELAY  0.277                  9.806  2       
+dut/n86                                                      NET DELAY            0.000                  9.806  2       
 dut/counter_17_add_4_5/CI0->dut/counter_17_add_4_5/CO0
-                                          SLICE_R10C30C      CIN0_TO_COUT0_DELAY  0.277                 10.083  2       
-dut/n369                                                     NET DELAY            0.661                 10.744  2       
+                                          SLICE_R8C28C       CIN0_TO_COUT0_DELAY  0.277                 10.083  2       
+dut/n325                                                     NET DELAY            0.661                 10.744  2       
 dut/counter_17_add_4_5/D1->dut/counter_17_add_4_5/S1
-                                          SLICE_R10C30C      D1_TO_F1_DELAY       0.476                 11.220  1       
+                                          SLICE_R8C28C       D1_TO_F1_DELAY       0.476                 11.220  1       
 dut/n29[4] ( DI1 )                                           NET DELAY            0.000                 11.220  1       
 
 
@@ -2007,8 +2007,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 8 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : dut/counter_17__i0/Q  (SLICE_R10C30A)
-Path End         : dut/counter_17__i3/D  (SLICE_R10C30C)
+Path Begin       : dut/counter_17__i0/Q  (SLICE_R8C28A)
+Path End         : dut/counter_17__i3/D  (SLICE_R8C28C)
 Source Clock     : dut/int_osc (R)
 Destination Clock: dut/int_osc (R)
 Logic Level      : 5
@@ -2116,8 +2116,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n106",
-            "phy_name":"dut.n106"
+            "log_name":"dut/n84",
+            "phy_name":"dut.n84"
         },
         "arrive":9.252,
         "delay":0.000
@@ -2141,8 +2141,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n351",
-            "phy_name":"dut.n351"
+            "log_name":"dut/n322",
+            "phy_name":"dut.n322"
         },
         "arrive":9.529,
         "delay":0.000
@@ -2166,8 +2166,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n108",
-            "phy_name":"dut.n108"
+            "log_name":"dut/n86",
+            "phy_name":"dut.n86"
         },
         "arrive":10.467,
         "delay":0.661
@@ -2203,19 +2203,19 @@ Data Path
 </tapath>
 
 dut/counter_17__i0/CK->dut/counter_17__i0/Q
-                                          SLICE_R10C30A      CLK_TO_Q1_DELAY      1.388                  6.887  2       
+                                          SLICE_R8C28A       CLK_TO_Q1_DELAY      1.388                  6.887  2       
 dut/counter[0]                                               NET DELAY            2.022                  8.909  2       
 dut/counter_17_add_4_1/C1->dut/counter_17_add_4_1/CO1
-                                          SLICE_R10C30A      C1_TO_COUT1_DELAY    0.343                  9.252  2       
-dut/n106                                                     NET DELAY            0.000                  9.252  2       
+                                          SLICE_R8C28A       C1_TO_COUT1_DELAY    0.343                  9.252  2       
+dut/n84                                                      NET DELAY            0.000                  9.252  2       
 dut/counter_17_add_4_3/CI0->dut/counter_17_add_4_3/CO0
-                                          SLICE_R10C30B      CIN0_TO_COUT0_DELAY  0.277                  9.529  2       
-dut/n351                                                     NET DELAY            0.000                  9.529  2       
+                                          SLICE_R8C28B       CIN0_TO_COUT0_DELAY  0.277                  9.529  2       
+dut/n322                                                     NET DELAY            0.000                  9.529  2       
 dut/counter_17_add_4_3/CI1->dut/counter_17_add_4_3/CO1
-                                          SLICE_R10C30B      CIN1_TO_COUT1_DELAY  0.277                  9.806  2       
-dut/n108                                                     NET DELAY            0.661                 10.467  2       
+                                          SLICE_R8C28B       CIN1_TO_COUT1_DELAY  0.277                  9.806  2       
+dut/n86                                                      NET DELAY            0.661                 10.467  2       
 dut/counter_17_add_4_5/D0->dut/counter_17_add_4_5/S0
-                                          SLICE_R10C30C      D0_TO_F0_DELAY       0.476                 10.943  1       
+                                          SLICE_R8C28C       D0_TO_F0_DELAY       0.476                 10.943  1       
 dut/n29[3] ( DI0 )                                           NET DELAY            0.000                 10.943  1       
 
 
@@ -2282,8 +2282,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 9 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : dut/counter_17__i0/Q  (SLICE_R10C30A)
-Path End         : dut/counter_17__i2/D  (SLICE_R10C30B)
+Path Begin       : dut/counter_17__i0/Q  (SLICE_R8C28A)
+Path End         : dut/counter_17__i2/D  (SLICE_R8C28B)
 Source Clock     : dut/int_osc (R)
 Destination Clock: dut/int_osc (R)
 Logic Level      : 4
@@ -2391,8 +2391,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n106",
-            "phy_name":"dut.n106"
+            "log_name":"dut/n84",
+            "phy_name":"dut.n84"
         },
         "arrive":9.252,
         "delay":0.000
@@ -2416,8 +2416,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n351",
-            "phy_name":"dut.n351"
+            "log_name":"dut/n322",
+            "phy_name":"dut.n322"
         },
         "arrive":10.190,
         "delay":0.661
@@ -2453,16 +2453,16 @@ Data Path
 </tapath>
 
 dut/counter_17__i0/CK->dut/counter_17__i0/Q
-                                          SLICE_R10C30A      CLK_TO_Q1_DELAY      1.388                  6.887  2       
+                                          SLICE_R8C28A       CLK_TO_Q1_DELAY      1.388                  6.887  2       
 dut/counter[0]                                               NET DELAY            2.022                  8.909  2       
 dut/counter_17_add_4_1/C1->dut/counter_17_add_4_1/CO1
-                                          SLICE_R10C30A      C1_TO_COUT1_DELAY    0.343                  9.252  2       
-dut/n106                                                     NET DELAY            0.000                  9.252  2       
+                                          SLICE_R8C28A       C1_TO_COUT1_DELAY    0.343                  9.252  2       
+dut/n84                                                      NET DELAY            0.000                  9.252  2       
 dut/counter_17_add_4_3/CI0->dut/counter_17_add_4_3/CO0
-                                          SLICE_R10C30B      CIN0_TO_COUT0_DELAY  0.277                  9.529  2       
-dut/n351                                                     NET DELAY            0.661                 10.190  2       
+                                          SLICE_R8C28B       CIN0_TO_COUT0_DELAY  0.277                  9.529  2       
+dut/n322                                                     NET DELAY            0.661                 10.190  2       
 dut/counter_17_add_4_3/D1->dut/counter_17_add_4_3/S1
-                                          SLICE_R10C30B      D1_TO_F1_DELAY       0.476                 10.666  1       
+                                          SLICE_R8C28B       D1_TO_F1_DELAY       0.476                 10.666  1       
 dut/n29[2] ( DI1 )                                           NET DELAY            0.000                 10.666  1       
 
 
@@ -2529,8 +2529,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 10 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : dut/counter_17__i0/Q  (SLICE_R10C30A)
-Path End         : dut/counter_17__i1/D  (SLICE_R10C30B)
+Path Begin       : dut/counter_17__i0/Q  (SLICE_R8C28A)
+Path End         : dut/counter_17__i1/D  (SLICE_R8C28B)
 Source Clock     : dut/int_osc (R)
 Destination Clock: dut/int_osc (R)
 Logic Level      : 3
@@ -2638,8 +2638,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n106",
-            "phy_name":"dut.n106"
+            "log_name":"dut/n84",
+            "phy_name":"dut.n84"
         },
         "arrive":9.913,
         "delay":0.661
@@ -2675,13 +2675,13 @@ Data Path
 </tapath>
 
 dut/counter_17__i0/CK->dut/counter_17__i0/Q
-                                          SLICE_R10C30A      CLK_TO_Q1_DELAY    1.388                  6.887  2       
+                                          SLICE_R8C28A       CLK_TO_Q1_DELAY    1.388                  6.887  2       
 dut/counter[0]                                               NET DELAY          2.022                  8.909  2       
 dut/counter_17_add_4_1/C1->dut/counter_17_add_4_1/CO1
-                                          SLICE_R10C30A      C1_TO_COUT1_DELAY  0.343                  9.252  2       
-dut/n106                                                     NET DELAY          0.661                  9.913  2       
+                                          SLICE_R8C28A       C1_TO_COUT1_DELAY  0.343                  9.252  2       
+dut/n84                                                      NET DELAY          0.661                  9.913  2       
 dut/counter_17_add_4_3/D0->dut/counter_17_add_4_3/S0
-                                          SLICE_R10C30B      D0_TO_F0_DELAY     0.476                 10.389  1       
+                                          SLICE_R8C28B       D0_TO_F0_DELAY     0.476                 10.389  1       
 dut/n29[1] ( DI0 )                                           NET DELAY          0.000                 10.389  1       
 
 
@@ -2767,8 +2767,8 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : dut/clk_c/Q  (SLICE_R11C30A)
-Path End         : dut/clk_c/D  (SLICE_R11C30A)
+Path Begin       : dut/clk_c/Q  (SLICE_R9C28A)
+Path End         : dut/clk_c/D  (SLICE_R9C28A)
 Source Clock     : dut/int_osc (R)
 Destination Clock: dut/int_osc (R)
 Logic Level      : 2
@@ -2876,8 +2876,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n34",
-            "phy_name":"dut.n34"
+            "log_name":"dut/n32",
+            "phy_name":"dut.n32"
         },
         "arrive":4.917,
         "delay":0.000
@@ -2887,10 +2887,10 @@ Data Path
 </xmp>
 </tapath>
 
-dut/clk_c/CK->dut/clk_c/Q                 SLICE_R11C30A      CLK_TO_Q0_DELAY  0.766                  3.801  8       
+dut/clk_c/CK->dut/clk_c/Q                 SLICE_R9C28A       CLK_TO_Q0_DELAY  0.766                  3.801  8       
 dut/dut/clk                                                  NET DELAY        0.868                  4.669  8       
-dut/i1_2_lut/A->dut/i1_2_lut/Z            SLICE_R11C30A      C0_TO_F0_DELAY   0.248                  4.917  1       
-dut/n34 ( DI0 )                                              NET DELAY        0.000                  4.917  1       
+dut/i1_2_lut/A->dut/i1_2_lut/Z            SLICE_R9C28A       C0_TO_F0_DELAY   0.248                  4.917  1       
+dut/n32 ( DI0 )                                              NET DELAY        0.000                  4.917  1       
 
 
 Destination Clock Path
@@ -2956,8 +2956,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : dut/counter_17__i0/Q  (SLICE_R10C30A)
-Path End         : dut/counter_17__i0/D  (SLICE_R10C30A)
+Path Begin       : dut/counter_17__i0/Q  (SLICE_R8C28A)
+Path End         : dut/counter_17__i0/D  (SLICE_R8C28A)
 Source Clock     : dut/int_osc (R)
 Destination Clock: dut/int_osc (R)
 Logic Level      : 2
@@ -3077,10 +3077,10 @@ Data Path
 </tapath>
 
 dut/counter_17__i0/CK->dut/counter_17__i0/Q
-                                          SLICE_R10C30A      CLK_TO_Q1_DELAY  0.766                  3.801  2       
+                                          SLICE_R8C28A       CLK_TO_Q1_DELAY  0.766                  3.801  2       
 dut/counter[0]                                               NET DELAY        0.868                  4.669  2       
 dut/counter_17_add_4_1/C1->dut/counter_17_add_4_1/S1
-                                          SLICE_R10C30A      C1_TO_F1_DELAY   0.248                  4.917  1       
+                                          SLICE_R8C28A       C1_TO_F1_DELAY   0.248                  4.917  1       
 dut/n29[0] ( DI1 )                                           NET DELAY        0.000                  4.917  1       
 
 
@@ -3147,8 +3147,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : dut/counter_17__i1/Q  (SLICE_R10C30B)
-Path End         : dut/counter_17__i1/D  (SLICE_R10C30B)
+Path Begin       : dut/counter_17__i1/Q  (SLICE_R8C28B)
+Path End         : dut/counter_17__i1/D  (SLICE_R8C28B)
 Source Clock     : dut/int_osc (R)
 Destination Clock: dut/int_osc (R)
 Logic Level      : 2
@@ -3268,10 +3268,10 @@ Data Path
 </tapath>
 
 dut/counter_17__i1/CK->dut/counter_17__i1/Q
-                                          SLICE_R10C30B      CLK_TO_Q0_DELAY  0.766                  3.801  2       
+                                          SLICE_R8C28B       CLK_TO_Q0_DELAY  0.766                  3.801  2       
 dut/counter[1]                                               NET DELAY        0.868                  4.669  2       
 dut/counter_17_add_4_3/C0->dut/counter_17_add_4_3/S0
-                                          SLICE_R10C30B      C0_TO_F0_DELAY   0.248                  4.917  1       
+                                          SLICE_R8C28B       C0_TO_F0_DELAY   0.248                  4.917  1       
 dut/n29[1] ( DI0 )                                           NET DELAY        0.000                  4.917  1       
 
 
@@ -3338,8 +3338,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : dut/counter_17__i2/Q  (SLICE_R10C30B)
-Path End         : dut/counter_17__i2/D  (SLICE_R10C30B)
+Path Begin       : dut/counter_17__i2/Q  (SLICE_R8C28B)
+Path End         : dut/counter_17__i2/D  (SLICE_R8C28B)
 Source Clock     : dut/int_osc (R)
 Destination Clock: dut/int_osc (R)
 Logic Level      : 2
@@ -3459,10 +3459,10 @@ Data Path
 </tapath>
 
 dut/counter_17__i2/CK->dut/counter_17__i2/Q
-                                          SLICE_R10C30B      CLK_TO_Q1_DELAY  0.766                  3.801  2       
+                                          SLICE_R8C28B       CLK_TO_Q1_DELAY  0.766                  3.801  2       
 dut/counter[2]                                               NET DELAY        0.868                  4.669  2       
 dut/counter_17_add_4_3/C1->dut/counter_17_add_4_3/S1
-                                          SLICE_R10C30B      C1_TO_F1_DELAY   0.248                  4.917  1       
+                                          SLICE_R8C28B       C1_TO_F1_DELAY   0.248                  4.917  1       
 dut/n29[2] ( DI1 )                                           NET DELAY        0.000                  4.917  1       
 
 
@@ -3529,8 +3529,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 5 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : dut/counter_17__i3/Q  (SLICE_R10C30C)
-Path End         : dut/counter_17__i3/D  (SLICE_R10C30C)
+Path Begin       : dut/counter_17__i3/Q  (SLICE_R8C28C)
+Path End         : dut/counter_17__i3/D  (SLICE_R8C28C)
 Source Clock     : dut/int_osc (R)
 Destination Clock: dut/int_osc (R)
 Logic Level      : 2
@@ -3650,10 +3650,10 @@ Data Path
 </tapath>
 
 dut/counter_17__i3/CK->dut/counter_17__i3/Q
-                                          SLICE_R10C30C      CLK_TO_Q0_DELAY  0.766                  3.801  2       
+                                          SLICE_R8C28C       CLK_TO_Q0_DELAY  0.766                  3.801  2       
 dut/counter[3]                                               NET DELAY        0.868                  4.669  2       
 dut/counter_17_add_4_5/C0->dut/counter_17_add_4_5/S0
-                                          SLICE_R10C30C      C0_TO_F0_DELAY   0.248                  4.917  1       
+                                          SLICE_R8C28C       C0_TO_F0_DELAY   0.248                  4.917  1       
 dut/n29[3] ( DI0 )                                           NET DELAY        0.000                  4.917  1       
 
 
@@ -3720,8 +3720,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 6 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : dut/counter_17__i4/Q  (SLICE_R10C30C)
-Path End         : dut/counter_17__i4/D  (SLICE_R10C30C)
+Path Begin       : dut/counter_17__i4/Q  (SLICE_R8C28C)
+Path End         : dut/counter_17__i4/D  (SLICE_R8C28C)
 Source Clock     : dut/int_osc (R)
 Destination Clock: dut/int_osc (R)
 Logic Level      : 2
@@ -3841,10 +3841,10 @@ Data Path
 </tapath>
 
 dut/counter_17__i4/CK->dut/counter_17__i4/Q
-                                          SLICE_R10C30C      CLK_TO_Q1_DELAY  0.766                  3.801  2       
+                                          SLICE_R8C28C       CLK_TO_Q1_DELAY  0.766                  3.801  2       
 dut/counter[4]                                               NET DELAY        0.868                  4.669  2       
 dut/counter_17_add_4_5/C1->dut/counter_17_add_4_5/S1
-                                          SLICE_R10C30C      C1_TO_F1_DELAY   0.248                  4.917  1       
+                                          SLICE_R8C28C       C1_TO_F1_DELAY   0.248                  4.917  1       
 dut/n29[4] ( DI1 )                                           NET DELAY        0.000                  4.917  1       
 
 
@@ -3911,8 +3911,8 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 7 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : dut/counter_17__i4/Q  (SLICE_R10C30C)
-Path End         : dut/counter_17__i5/D  (SLICE_R10C30D)
+Path Begin       : dut/counter_17__i4/Q  (SLICE_R8C28C)
+Path End         : dut/counter_17__i5/D  (SLICE_R8C28D)
 Source Clock     : dut/int_osc (R)
 Destination Clock: dut/int_osc (R)
 Logic Level      : 3
@@ -4020,8 +4020,8 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n110",
-            "phy_name":"dut.n110"
+            "log_name":"dut/n88",
+            "phy_name":"dut.n88"
         },
         "arrive":4.974,
         "delay":0.277
@@ -4057,13 +4057,13 @@ Data Path
 </tapath>
 
 dut/counter_17__i4/CK->dut/counter_17__i4/Q
-                                          SLICE_R10C30C      CLK_TO_Q1_DELAY    0.766                  3.801  2       
+                                          SLICE_R8C28C       CLK_TO_Q1_DELAY    0.766                  3.801  2       
 dut/counter[4]                                               NET DELAY          0.868                  4.669  2       
 dut/counter_17_add_4_5/C1->dut/counter_17_add_4_5/CO1
-                                          SLICE_R10C30C      C1_TO_COUT1_DELAY  0.028                  4.697  2       
-dut/n110                                                     NET DELAY          0.277                  4.974  2       
+                                          SLICE_R8C28C       C1_TO_COUT1_DELAY  0.028                  4.697  2       
+dut/n88                                                      NET DELAY          0.277                  4.974  2       
 dut/counter_17_add_4_7/D0->dut/counter_17_add_4_7/S0
-                                          SLICE_R10C30D      D0_TO_F0_DELAY     0.248                  5.222  1       
+                                          SLICE_R8C28D       D0_TO_F0_DELAY     0.248                  5.222  1       
 dut/n29[5] ( DI0 )                                           NET DELAY          0.000                  5.222  1       
 
 
@@ -4130,15 +4130,15 @@ Path Slack  (Passed)                                                            
 
 ++++ Path 8 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : dut/counter_17__i4/Q  (SLICE_R10C30C)
-Path End         : {dut/counter_17__i1/SR   dut/counter_17__i2/SR}  (SLICE_R10C30B)
+Path Begin       : dut/counter_17__i4/Q  (SLICE_R8C28C)
+Path End         : {dut/counter_17__i1/SR   dut/counter_17__i2/SR}  (SLICE_R8C28B)
 Source Clock     : dut/int_osc (R)
 Destination Clock: dut/int_osc (R)
 Logic Level      : 2
-Delay Ratio      : 61.4% (route), 38.6% (logic)
+Delay Ratio      : 69.6% (route), 30.4% (logic)
 Clock Skew       : 0.000 ns
 Hold Constraint  : 0.000 ns 
-Path Slack       : 3.179 ns  (Passed)
+Path Slack       : 3.894 ns  (Passed)
 
 
 Source Clock Path
@@ -4239,11 +4239,11 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n55",
-            "phy_name":"dut.n55"
+            "log_name":"dut/n46",
+            "phy_name":"dut.n46"
         },
-        "arrive":5.698,
-        "delay":0.934
+        "arrive":6.413,
+        "delay":1.649
     }
     ]
 }
@@ -4251,10 +4251,10 @@ Data Path
 </tapath>
 
 dut/counter_17__i4/CK->dut/counter_17__i4/Q
-                                          SLICE_R10C30C      CLK_TO_Q1_DELAY   0.766                  3.801  2       
+                                          SLICE_R8C28C       CLK_TO_Q1_DELAY   0.766                  3.801  2       
 dut/counter[4]                                               NET DELAY         0.701                  4.502  2       
-dut/i2_4_lut/C->dut/i2_4_lut/Z            SLICE_R11C30C      D1_TO_F1_DELAY    0.262                  4.764  5       
-dut/n55 ( LSR )                                              NET DELAY         0.934                  5.698  5       
+dut/i2_4_lut/C->dut/i2_4_lut/Z            SLICE_R9C28B       D1_TO_F1_DELAY    0.262                  4.764  5       
+dut/n46 ( LSR )                                              NET DELAY         1.649                  6.413  5       
 
 
 Destination Clock Path
@@ -4311,24 +4311,24 @@ dut/int_osc ( CLK )                                          NET DELAY         3
                                                              Hold time        -0.516                  2.519  
 ----------------------------------------  -----------------  ---------------  ------  ---------------------  ------  
 Required Time                                                                                        -2.519  
-Arrival Time                                                                                          5.698  
+Arrival Time                                                                                          6.413  
 ----------------------------------------  -----------------  ---------------  ------  ---------------------  ------  
-Path Slack  (Passed)                                                                                  3.179  
+Path Slack  (Passed)                                                                                  3.894  
 
 
 
 
 ++++ Path 9 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : dut/counter_17__i4/Q  (SLICE_R10C30C)
-Path End         : {dut/counter_17__i3/SR   dut/counter_17__i4/SR}  (SLICE_R10C30C)
+Path Begin       : dut/counter_17__i4/Q  (SLICE_R8C28C)
+Path End         : {dut/counter_17__i3/SR   dut/counter_17__i4/SR}  (SLICE_R8C28C)
 Source Clock     : dut/int_osc (R)
 Destination Clock: dut/int_osc (R)
 Logic Level      : 2
-Delay Ratio      : 61.4% (route), 38.6% (logic)
+Delay Ratio      : 69.6% (route), 30.4% (logic)
 Clock Skew       : 0.000 ns
 Hold Constraint  : 0.000 ns 
-Path Slack       : 3.179 ns  (Passed)
+Path Slack       : 3.894 ns  (Passed)
 
 
 Source Clock Path
@@ -4429,11 +4429,11 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n55",
-            "phy_name":"dut.n55"
+            "log_name":"dut/n46",
+            "phy_name":"dut.n46"
         },
-        "arrive":5.698,
-        "delay":0.934
+        "arrive":6.413,
+        "delay":1.649
     }
     ]
 }
@@ -4441,10 +4441,10 @@ Data Path
 </tapath>
 
 dut/counter_17__i4/CK->dut/counter_17__i4/Q
-                                          SLICE_R10C30C      CLK_TO_Q1_DELAY   0.766                  3.801  2       
+                                          SLICE_R8C28C       CLK_TO_Q1_DELAY   0.766                  3.801  2       
 dut/counter[4]                                               NET DELAY         0.701                  4.502  2       
-dut/i2_4_lut/C->dut/i2_4_lut/Z            SLICE_R11C30C      D1_TO_F1_DELAY    0.262                  4.764  5       
-dut/n55 ( LSR )                                              NET DELAY         0.934                  5.698  5       
+dut/i2_4_lut/C->dut/i2_4_lut/Z            SLICE_R9C28B       D1_TO_F1_DELAY    0.262                  4.764  5       
+dut/n46 ( LSR )                                              NET DELAY         1.649                  6.413  5       
 
 
 Destination Clock Path
@@ -4501,24 +4501,24 @@ dut/int_osc ( CLK )                                          NET DELAY         3
                                                              Hold time        -0.516                  2.519  
 ----------------------------------------  -----------------  ---------------  ------  ---------------------  ------  
 Required Time                                                                                        -2.519  
-Arrival Time                                                                                          5.698  
+Arrival Time                                                                                          6.413  
 ----------------------------------------  -----------------  ---------------  ------  ---------------------  ------  
-Path Slack  (Passed)                                                                                  3.179  
+Path Slack  (Passed)                                                                                  3.894  
 
 
 
 
 ++++ Path 10 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin       : dut/counter_17__i4/Q  (SLICE_R10C30C)
-Path End         : dut/counter_17__i5/SR  (SLICE_R10C30D)
+Path Begin       : dut/counter_17__i4/Q  (SLICE_R8C28C)
+Path End         : dut/counter_17__i5/SR  (SLICE_R8C28D)
 Source Clock     : dut/int_osc (R)
 Destination Clock: dut/int_osc (R)
 Logic Level      : 2
-Delay Ratio      : 61.4% (route), 38.6% (logic)
+Delay Ratio      : 69.6% (route), 30.4% (logic)
 Clock Skew       : 0.000 ns
 Hold Constraint  : 0.000 ns 
-Path Slack       : 3.179 ns  (Passed)
+Path Slack       : 3.894 ns  (Passed)
 
 
 Source Clock Path
@@ -4619,11 +4619,11 @@ Data Path
         "type":"net_delay",
         "net":
         {
-            "log_name":"dut/n55",
-            "phy_name":"dut.n55"
+            "log_name":"dut/n46",
+            "phy_name":"dut.n46"
         },
-        "arrive":5.698,
-        "delay":0.934
+        "arrive":6.413,
+        "delay":1.649
     }
     ]
 }
@@ -4631,10 +4631,10 @@ Data Path
 </tapath>
 
 dut/counter_17__i4/CK->dut/counter_17__i4/Q
-                                          SLICE_R10C30C      CLK_TO_Q1_DELAY   0.766                  3.801  2       
+                                          SLICE_R8C28C       CLK_TO_Q1_DELAY   0.766                  3.801  2       
 dut/counter[4]                                               NET DELAY         0.701                  4.502  2       
-dut/i2_4_lut/C->dut/i2_4_lut/Z            SLICE_R11C30C      D1_TO_F1_DELAY    0.262                  4.764  5       
-dut/n55 ( LSR )                                              NET DELAY         0.934                  5.698  5       
+dut/i2_4_lut/C->dut/i2_4_lut/Z            SLICE_R9C28B       D1_TO_F1_DELAY    0.262                  4.764  5       
+dut/n46 ( LSR )                                              NET DELAY         1.649                  6.413  5       
 
 
 Destination Clock Path
@@ -4691,9 +4691,9 @@ dut/int_osc ( CLK )                                          NET DELAY         3
                                                              Hold time        -0.516                  2.519  
 ----------------------------------------  -----------------  ---------------  ------  ---------------------  ------  
 Required Time                                                                                        -2.519  
-Arrival Time                                                                                          5.698  
+Arrival Time                                                                                          6.413  
 ----------------------------------------  -----------------  ---------------  ------  ---------------------  ------  
-Path Slack  (Passed)                                                                                  3.179  
+Path Slack  (Passed)                                                                                  3.894  
 
 
 

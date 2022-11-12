@@ -9,12 +9,12 @@ I/O cells:      7
                          HSOSC_CORE         1          100.0
                                  IB         1          100.0
                               IOL_B         1          100.0
-                               LUT4         9          100.0
+                               LUT4         7          100.0
                                  OB         6          100.0
 SUB MODULES
                    motor_controller         1
                                 top         1
-                              TOTAL        45
+                              TOTAL        43
 ----------------------------------------------------------------------
 Report for cell top.v1
 Instance Path : dut
@@ -24,10 +24,10 @@ Instance Path : dut
                             FD1P3XZ        16          100.0
                          HSOSC_CORE         1          100.0
                               IOL_B         1          100.0
-                               LUT4         9          100.0
+                               LUT4         7          100.0
 SUB MODULES
                    motor_controller         1
-                              TOTAL        37
+                              TOTAL        35
 ----------------------------------------------------------------------
 Report for cell motor_controller.v1
 Instance Path : dut.dut
@@ -36,5 +36,5 @@ Instance Path : dut.dut
                                 FA2         5           55.6
                             FD1P3XZ         9           56.2
                               IOL_B         1          100.0
-                               LUT4         6           66.7
-                              TOTAL        21
+                               LUT4         4           57.1
+                              TOTAL        19

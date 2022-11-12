@@ -8,7 +8,7 @@ module top_wrapper(
 	output logic a4
 );
 	
-	top dut(reset, 1'd1, 7'd100, 1'd1, 7'd50, enable12, enable34, a1, a2, a3, a4);
+	top dut(reset, 1'd0, 7'd50, 1'd1, 7'd50, enable12, enable34, a1, a2, a3, a4);
 endmodule
 
 

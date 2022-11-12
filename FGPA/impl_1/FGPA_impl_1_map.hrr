@@ -4,31 +4,31 @@ Report for cell top_wrapper
                      Cell usage:
                                   cell	      count    Res Usage(%)
                                  IOLGC	       1.00        100.0
-                                  LUT4	         29        100.0
+                                  LUT4	         27        100.0
                                  IOREG	          1        100.0
                                  IOBUF	          7        100.0
                                 PFUREG	         16        100.0
 SUB MODULES
                                   cell	      count    LUT4 Usage(%)
-                                   top	          1        93.1
+                                   top	          1        92.6
 ---------------------------------------------------
 Report for cell top
    Instance path: top_wrapper/dut
                      Cell usage:
                                   cell	      count    Res Usage(%)
                                  IOLGC	       1.00        100.0
-                                  LUT4	         27        93.1
+                                  LUT4	         25        92.6
                                  IOREG	          1        100.0
                                 PFUREG	         16        100.0
 SUB MODULES
                                   cell	      count    LUT4 Usage(%)
-                      motor_controller	          1        55.2
+                      motor_controller	          1        51.9
 ---------------------------------------------------
 Report for cell motor_controller
    Instance path: top_wrapper/dut/dut
                      Cell usage:
                                   cell	      count    Res Usage(%)
                                  IOLGC	       1.00        100.0
-                                  LUT4	         16        55.2
+                                  LUT4	         14        51.9
                                  IOREG	          1        100.0
                                 PFUREG	          9        56.2

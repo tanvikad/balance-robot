@@ -16,8 +16,6 @@ module motor_controller(
 
 	logic [7:0] counter;
 	
-	logic[7:0] motor1_upper_limit;
-	logic[7:0] motor2_upper_limit;
 	
 	always_ff @(posedge clk)
 		begin
@@ -25,8 +23,6 @@ module motor_controller(
 			if(reset == 1'b1)
 				begin
 					counter <= 8'd0;
-					motor1_upper_limit <= motor1_period>>1;
-					motor2_upper_limit <= motor2_period>>1;
 					a3 <= 1'b1;
 					enable12 <= 1'b0;
 					enable34 <= 1'b0;
@@ -37,9 +33,11 @@ module motor_controller(
 					a1<= (motor1_sign);
 					a2<= (!motor1_sign);
 					if(counter < motor1_period) counter <= counter + 1;
-					else counter <= 0;
-					if(counter < motor1_upper_limit) enable12 <= 1'b1;
-					else enable12 <= 1'b0;
+					else 
+						begin
+							enable12 <= !enable12;
+							counter <= 0;
+						end
 				end
 		end
 endmodule
