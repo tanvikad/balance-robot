@@ -145,7 +145,7 @@ int main(void) {
   //encrypt(key, plaintext, cyphertext);
   m1_val = (char) 40 | 0b1000000;
   printf("m1 val is %d", m1_val);
-  m2_val = (char) 100;
+  m2_val = (char) 20;
   spin_motor(m1_val, m2_val);
   
 
