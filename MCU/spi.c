@@ -12,6 +12,7 @@
 #include "lib/STM32L432KC.h"
 #include <stdbool.h>
 #include <math.h>
+#include <time.h>
 
 ////////////////////////////////////////////////
 // Constants
@@ -85,6 +86,7 @@ int binaryToDecimal(int n)
 
 
 
+
 int decimalToBinary(int n)
 {
     // array to store binary number
@@ -141,9 +143,21 @@ int main(void) {
   
   // hardware accelerated encryption
   //encrypt(key, plaintext, cyphertext);
-  m1_val = (char) 50;
-  m2_val = (char) 20;
+  m1_val = (char) 40 | 0b1000000;
+  printf("m1 val is %d", m1_val);
+  m2_val = (char) 100;
   spin_motor(m1_val, m2_val);
+  
+
+  for (int j = 0; j < 20; j++)
+  {
+    spin_motor(m1_val, m2_val);
+    for (int i = 0; i < 200000; i++) 
+      ;
+    spin_motor(m2_val, m2_val);
+    for (int i = 0; i < 200000; i++) 
+      ;
+  }
 }
 
 ////////////////////////////////////////////////

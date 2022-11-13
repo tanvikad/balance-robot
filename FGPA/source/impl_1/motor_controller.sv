@@ -19,19 +19,27 @@ module motor_controller(
 	logic [6:0] counter;
 	parameter [6:0] upper_limit = 7'd100;
 
-	
+	logic [6:0] old_motor1_upperlimit;
+	logic [6:0] old_motor2_upperlimit;
 	always_ff @(posedge clk)
 		begin
 			//Here we are changing the inputs based on the direction of the motor1 and motor2 input
-			if(reset == 1'b1 || load == 1'b1)
+			if(reset == 1'b1)
 				begin
 					counter <= 8'd0;
 					debug_light <= 1'b1;
 					enable12 <= 1'b0;
 					enable34 <= 1'b0;
+					//old_motor1_upperlimit <= 8'd50;
+					//old_motor2_upperlimit <= 8'd50;
 				end
 			else
 				begin
+					if(load == 1'b1)
+						begin
+							old_motor1_upperlimit <= motor1_upperlimit;
+							old_motor2_upperlimit <= motor2_upperlimit;
+						end
 					debug_light <= 1'b0;
 					a1<=(motor1_sign);
 					a2<=(!motor1_sign);
@@ -40,8 +48,8 @@ module motor_controller(
 					if(counter < upper_limit) counter <= counter + 1;
 					else counter <= 0;
 					
-					enable12 <= (counter <= motor1_upperlimit);
-					enable34 <= (counter <= motor2_upperlimit);
+					enable12 <= (counter <= old_motor1_upperlimit);
+					enable34 <= (counter <= old_motor2_upperlimit);
 						
 				end
 		end
