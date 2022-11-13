@@ -23,7 +23,7 @@ module motor_controller(
 	always_ff @(posedge clk)
 		begin
 			//Here we are changing the inputs based on the direction of the motor1 and motor2 input
-			if(reset == 1'b1)
+			if(reset == 1'b1 || load == 1'b1)
 				begin
 					counter <= 8'd0;
 					debug_light <= 1'b1;

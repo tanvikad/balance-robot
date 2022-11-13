@@ -1,8 +1,1 @@
-C:/Users/tdasari/balance-robot/FGPA/source/impl_1/motor_controller.sv {1 {vlog -work work -sv -stats=none C:/Users/tdasari/balance-robot/FGPA/source/impl_1/motor_controller.sv
-Model Technology ModelSim DE-64 vlog 2022.3 Compiler 2022.07 Jul 18 2022
--- Compiling module motor_controller
 
-Top level modules:
-	motor_controller
-
-} {} {}}

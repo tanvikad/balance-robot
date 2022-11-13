@@ -1,4 +1,4 @@
-module top_wrapper(
+module top_spi(
 	input logic reset,
 	input logic sck,
 	input logic sdi,
