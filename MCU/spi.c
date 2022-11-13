@@ -66,26 +66,24 @@ int main(void) {
   // configure motor
   m1_val = set_val(-40);
   printf("m1 val is %d", m1_val);
-<<<<<<< HEAD
-  m2_val = (char) 20;
-=======
   m2_val = set_val(40);
->>>>>>> 42ad9e532eb18e8a09035ce46a98dce6d5795fa9
   spin_motor(m1_val, m2_val);
   
 
   for (int j = 0; j < 20; j++)
   {
     digitalWrite(PA9, j%2);
-    force_reset()
+    //force_reset();
     spin_motor(m1_val, m2_val);
     for (int i = 0; i < 200000; i++) 
       ;
-    force_reset()
-    spin_motor(m2_val, m2_val);
+    //force_reset();
+    spin_motor(m2_val, m1_val);
     for (int i = 0; i < 200000; i++) 
       ;
   }
+  char final_val = set_val(100);
+  spin_motor(final_val, final_val);
 }
 
 ////////////////////////////////////////////////
@@ -160,5 +158,8 @@ char set_val_helper(bool reverse, int value){
 
 void force_reset(){
   digitalWrite(PA6, 1);
+  //delaying between the pin input
+  for(int i = 0; i < 200000; i++)
+    ;
   digitalWrite(PA6, 0);
 }
