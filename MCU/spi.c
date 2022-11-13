@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <stm32l432xx.h>
 #include "lib/STM32L432KC.h"
+#include <stdbool.h>
+#include <math.h>
 
 ////////////////////////////////////////////////
 // Constants
@@ -46,14 +48,77 @@ char ct[16] = {0x69, 0xC4, 0xE0, 0xD8, 0x6A, 0x7B, 0x04, 0x30,
 void encrypt(char*, char*, char*);
 void checkAnswer(char*, char*, char*);
 
+void spin_motor(char m1_val, char m2_val) {
+  int i; 
+  digitalWrite(PA5, 1);
+ /* for(i = 0; i < 16; i++){
+    spiSendReceive(m1_val[i]);
+  }
+  for(i = 0; i < 16; i++){
+    spiSendReceive(m2_val[i]);
+  }*/
+
+  spiSendReceiveTwoChar(m1_val, m2_val);
+  while(SPI1->SR & SPI_SR_BSY);
+  digitalWrite(PA5, 0);
+}
+
+int binaryToDecimal(int n)
+{
+    int num = n;
+    int dec_value = 0;
+ 
+    // Initializing base value to 1, i.e 2^0
+    int base = 1;
+ 
+    int temp = num;
+    while (temp) {
+        int last_digit = temp % 10;
+        temp = temp / 10;
+ 
+        dec_value += last_digit * base;
+        base = base * 2;
+    }
+    printf("the decimal number is %d\n", dec_value);
+    return dec_value;
+}
+
+
+
+int decimalToBinary(int n)
+{
+    // array to store binary number
+    int binaryNum = 0;
+  
+    // counter for binary array
+    int base = 1;
+    int i = 0;
+    while (n > 0) {
+        // storing remainder in binary array
+        binaryNum += (n % 2) * base;
+        n = n / 2;
+        base = base * 10;
+        i++;
+        
+        if(i >= 7) break;
+    }
+    // printing binary array in reverse order
+    printf("the binary number is %d \n", binaryNum);
+    return binaryNum;
+}
+
+
 ////////////////////////////////////////////////
 // Main
 ////////////////////////////////////////////////
 
 int main(void) {
+
+  int bin = decimalToBinary(20);
+  int dec = binaryToDecimal(bin);
   char cyphertext[16];
-  char m1_val[2];
-  char m2_val[2];
+  char m1_val;
+  char m2_val;
 
   // Configure flash latency and set clock to run at 84 MHz
 
@@ -84,26 +149,10 @@ int main(void) {
 ////////////////////////////////////////////////
 
 void set_val(bool forward, int value){
-
-
-
-
+  return;
 }
 
 
-void spin_motor(char * m1_val, char * m2_val) {
-  int i; 
-  digitalWrite(PA5, 1);
-  for(i = 0; i < 16; i++){
-    spiSendReceive(m1_val[i]);
-  }
-  for(i = 0; i < 16; i++){
-    spiSendReceive(m2_val[i]);
-  }
-  while(SPI->SR & SPI_SR_BSY);
-  digitalWrite(PA5, 0);
-
-}
 
 void encrypt(char * key, char * plaintext, char * cyphertext) {
   int i;
