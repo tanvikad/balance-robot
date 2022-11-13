@@ -45,8 +45,8 @@ char ct[16] = {0x69, 0xC4, 0xE0, 0xD8, 0x6A, 0x7B, 0x04, 0x30,
 // Function Prototypes
 ////////////////////////////////////////////////
 
-void encrypt(char*, char*, char*);
-void checkAnswer(char*, char*, char*);
+// void encrypt(char*, char*, char*);
+// void checkAnswer(char*, char*, char*);
 
 void spin_motor(char m1_val, char m2_val) {
   int i; 
@@ -141,6 +141,8 @@ int main(void) {
   
   // hardware accelerated encryption
   //encrypt(key, plaintext, cyphertext);
+  m1_val = (char) 50;
+  m2_val = (char) 20;
   spin_motor(m1_val, m2_val);
 }
 
@@ -154,28 +156,28 @@ void set_val(bool forward, int value){
 
 
 
-void encrypt(char * key, char * plaintext, char * cyphertext) {
-  int i;
+// void encrypt(char * key, char * plaintext, char * cyphertext) {
+//   int i;
 
-  // Write LOAD high
-  digitalWrite(PA5, 1);
+//   // Write LOAD high
+//   digitalWrite(PA5, 1);
 
-  // Send plaintext
-  for(i = 0; i < 16; i++) {
-    spiSendReceive(plaintext[i]);
-  }
+//   // Send plaintext
+//   for(i = 0; i < 16; i++) {
+//     spiSendReceive(plaintext[i]);
+//   }
 
-  // Send the key
-  for(i = 0; i < 16; i++) {
-    spiSendReceive(key[i]);
-  }
+//   // Send the key
+//   for(i = 0; i < 16; i++) {
+//     spiSendReceive(key[i]);
+//   }
 
-  while(SPI1->SR & SPI_SR_BSY); // Confirm all SPI transactions are completed
-  digitalWrite(PA5, 0); // Write LOAD low
+//   while(SPI1->SR & SPI_SR_BSY); // Confirm all SPI transactions are completed
+//   digitalWrite(PA5, 0); // Write LOAD low
 
-  // Wait for DONE signal to be asserted by FPGA signifying that the data is ready to be read out.
-  while(!digitalRead(PA6));
+//   // Wait for DONE signal to be asserted by FPGA signifying that the data is ready to be read out.
+//   while(!digitalRead(PA6));
 
-  for(i = 0; i < 16; i++) {
-    cyphertext[i] = spiSendReceive(0);  }
-}
+//   for(i = 0; i < 16; i++) {
+//     cyphertext[i] = spiSendReceive(0);  }
+// }
