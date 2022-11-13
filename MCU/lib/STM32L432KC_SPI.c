@@ -54,3 +54,14 @@ char spiSendReceive(char send) {
     char rec = (volatile char) SPI1->DR;
     return rec; // Return received character
 }
+
+/* Transmits two characters over SPI and returns the last received character*/
+char spiSendReceiveTwoChar(char send1, char send2) {
+    while(!(SPI1->SR & SPI_SR_TXE)); // Wait until the transmit buffer is empty
+    *(volatile char *) (&SPI1->DR) = send1; // Transmit the character over SPI
+    while(!(SPI1->SR & SPI_SR_RXNE)); // Wait until data has been received
+     while(!(SPI1->SR & SPI_SR_TXE)); // Wait until the transmit buffer is empty
+    *(volatile char *) (&SPI1->DR) = send2; // Transmit the character over SPI
+    char rec = (volatile char) SPI1->DR;
+    return rec; // Return received character
+}

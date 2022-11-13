@@ -30,4 +30,7 @@ void initSPI(int br, int cpol, int cpha);
  *    -- return: the character received over SPI */
 char spiSendReceive(char send);
 
+
+/* Transmits two characters over SPI and returns the last received character*/
+char spiSendReceiveTwoChar(char send1, char send2);
 #endif
