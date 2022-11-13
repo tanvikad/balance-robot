@@ -1,23 +1,14 @@
-module pwm(input logic sck
+module pwm(input logic sck,
+			input logic sdi,
+			output logic sdo,
+			input logic load);
+		
+		logic [7:0] motor1, motor2;
+		
+		pwm_spi spi(sck, sdi, sdo, motor1, motor2);
+endmodule 
 
-/////////////////////////////////////////////
-// aes
-//   Top level module with SPI interface and SPI core
-/////////////////////////////////////////////
-
-module aes(input  logic clk,
-           input  logic sck, 
-           input  logic sdi,
-           output logic sdo,
-           input  logic load,
-           output logic done);
-                    
-    logic [127:0] key, plaintext, cyphertext;
-            
-    aes_spi spi(sck, sdi, sdo, done, key, plaintext, cyphertext);   
-    aes_core core(clk, loa
-
-module spi(input logic sck,
+module pwm_spi(input logic sck,
        input logic sdi,
 	   output logic sdo,
 	   output logic [7:0] motor1,
@@ -27,6 +18,7 @@ module spi(input logic sck,
 	begin
 	{motor1, motor2} = {motor1[6:0], motor2, sdi};
 	end
-	   
-
+	
+	assign sdo = 0;
+	  
 endmodule
