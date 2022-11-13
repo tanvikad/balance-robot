@@ -1,5 +1,6 @@
 module motor_controller(
 	input logic reset,
+	input logic load,
 	input logic clk,
 	input logic motor1_sign,
 	input logic[6:0] motor1_upperlimit,

@@ -1,5 +1,9 @@
 module top_wrapper(
 	input logic reset,
+	input logic sck,
+	input logic sdi,
+	input logic load,
+	output logic sdo,
 	output logic enable12,
 	output logic enable34,
 	output logic a1,
@@ -8,8 +12,11 @@ module top_wrapper(
 	output logic a4,
 	output logic debug_light
 );
-	
-	top dut(reset, 1'd1, 7'd25, 1'd1, 7'd50, enable12, enable34, a1, a2, a3, a4, debug_light);
+	logic [7:0] motor1, motor2;
+	pwm_spi spi(sck, sdi, sdo, motor1, motor2);
+	// top dut(reset, 1'd1, 7'd25, 1'd1, 7'd50, enable12, enable34, a1, a2, a3, a4, debug_light);
+	top dut(reset, load, motor1[7], motor1[6:0], motor2[7], motor2[6:0], enable12, enable34, a1, a2, a3, a4, debug_light);
+
 endmodule
 
 
@@ -17,6 +24,7 @@ endmodule
 
 module top(
 	input logic reset,
+	input logic load,
 	input logic motor1_sign,
 	input logic[6:0] motor1_upperlimit,
 	input logic motor2_sign,
@@ -48,46 +56,6 @@ module top(
 				counter <= 0;
 			end
 	end
-	motor_controller dut(reset, clk,  motor1_sign, motor1_upperlimit, motor2_sign, motor2_upperlimit, enable12, enable34, a1, a2, a3, a4, debug_light);
+	motor_controller dut(reset, load, clk,  motor1_sign, motor1_upperlimit, motor2_sign, motor2_upperlimit, enable12, enable34, a1, a2, a3, a4, debug_light);
 endmodule 
 
-
-
-module motor_controller_tb();
-	logic motor1_sign;
-	logic[6:0] motor1_upperlimit;
-	logic motor2_sign;
-	logic[6:0] motor2_upperlimit;
-	logic enable12;
-	logic enable34;
-	logic a1;
-	logic a2;
-	logic a3;
-	logic a4;
-	logic clk;
-	logic reset;
-	logic debug_light; 
-	 
-	always begin
-		  clk = 1'b0; #5;
-		  clk = 1'b1; #5;
-	 end
-	 initial begin
-		motor1_sign <= 1'b1;
-		motor2_sign <= 1'b0;
-		motor1_upperlimit <= 7'd30;
-		motor2_upperlimit <= 7'd100;
-	 end
-	 
-	 initial begin
-		  
-		  #10 
-		  reset <= 1'b1;
-		  // Check outputs
-		  #10;
-		  reset <= 1'b0;
-	  end
-	 
-	  motor_controller dut(reset, clk, motor1_sign, motor1_upperlimit, motor2_sign, motor2_upperlimit, enable12, enable34, a1, a2, a3, a4, debug_light);
-	
-endmodule
