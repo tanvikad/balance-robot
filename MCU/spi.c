@@ -7,29 +7,11 @@
     @author Josh Brake
     @version 1.0 7/13/2021
 */
-#include <stdio.h>
-#include <stm32l432xx.h>
-#include "lib/STM32L432KC.h"
-#include <stdbool.h>
-#include <math.h>
-#include <time.h>
 
-////////////////////////////////////////////////
-// Constants
-////////////////////////////////////////////////
+#include "spi.h"
 
-#define MCK_FREQ 100000
 
-////////////////////////////////////////////////
-// Function Prototypes
-////////////////////////////////////////////////
 
-void spin_motor(char, char);
-int binaryToDecimal(int);
-int decimalToBinary(int);
-char set_val(int);
-char set_val_helper(bool, int);
-void force_reset();
 
 ////////////////////////////////////////////////
 // Main
@@ -163,4 +145,40 @@ void force_reset(){
   for(int i = 0; i < 200000; i++)
     ;
   digitalWrite(PA6, 0);
+}
+
+void write_imu(char address, char write) {
+  char imu_response;
+  printf("trying to write to %d with write block %d \n", address, write);
+  digitalWrite(PA5, 0);
+  digitalWrite(PA11, 0);
+  digitalWrite(PA9, 0);
+  digitalWrite(PB6, 0);
+  imu_response = spiSendReceiveTwoChar(address, write);
+  while(SPI1->SR & SPI_SR_BSY);
+  //digitalWrite(PB6, 1);
+  digitalWrite(PA11, 1);
+  digitalWrite(PA5, 1);
+  digitalWrite(PA9, 1);
+  digitalWrite(PB6, 1);
+  //return imu_response;
+}
+
+char read_imu(char address) {
+  char imu_response;
+  address |= 0b10000000;
+  printf("trying to read from %d \n", address);
+  //digitalWrite(PB6, 0);
+  digitalWrite(PA5, 0);
+  digitalWrite(PA11, 0);
+  digitalWrite(PA9, 0);
+  digitalWrite(PB6, 0);
+  imu_response = spiSendReceiveTwoChar(address, 0b00000000);
+  while(SPI1->SR & SPI_SR_BSY);
+  //digitalWrite(PB6, 1);
+  digitalWrite(PA11, 1);
+  digitalWrite(PA5, 1);
+  digitalWrite(PA9, 1);
+  digitalWrite(PB6, 1);
+  return imu_response;
 }
