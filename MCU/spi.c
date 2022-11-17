@@ -30,6 +30,7 @@ int decimalToBinary(int);
 char set_val(int);
 char set_val_helper(bool, int);
 void force_reset();
+char read_imu(char);
 
 ////////////////////////////////////////////////
 // Main
@@ -42,6 +43,7 @@ int main(void) {
   char cyphertext[16];
   char m1_val;
   char m2_val;
+  char imu_wai;
 
   // Configure flash latency and set clock to run at 84 MHz
 
@@ -56,7 +58,9 @@ int main(void) {
   // Load and done pins
   pinMode(PA5, GPIO_OUTPUT);  // LOAD
   pinMode(PA6, GPIO_OUTPUT);  // Reset on FPGA
+  pinMode(PB6, GPIO_OUTPUT);
   digitalWrite(PA5, 1);       // set the chip select high when idle.
+  digitalWrite(PB6, 1);
 
   // debugging LEDs
   pinMode(PA9, GPIO_OUTPUT);
@@ -64,33 +68,53 @@ int main(void) {
   digitalWrite(PA9, 0);
   digitalWrite(PA10, 0);
   
-  // configure motor
-  m1_val = set_val(-40);
-  printf("m1 val is %d", m1_val);
-  m2_val = set_val(40);
-  spin_motor(m1_val, m2_val);
+  // imu
+  // Read from who_am_I, expected value = 01101011
+  while(1){
+    imu_wai = read_imu((char)0b00001111);
+    printf("imu returned %d \n", imu_wai);
+  }
+
+
+  // // configure motor
+  // m1_val = set_val(-40);
+  // printf("m1 val is %d", m1_val);
+  // m2_val = set_val(40);
+  // spin_motor(m1_val, m2_val);
   
 
-  for (int j = 0; j < 20; j++)
-  {
-    digitalWrite(PA9, j%2);
-    //force_reset();
-    spin_motor(m1_val, m2_val);
-    for (int i = 0; i < 200000; i++) 
-      ;
-    //force_reset();
-    spin_motor(m2_val, m1_val);
-    for (int i = 0; i < 200000; i++) 
-      ;
-  }
-  char final_val = set_val(100);
-  spin_motor(final_val, final_val);
+  // for (int j = 0; j < 20; j++)
+  // {
+  //   digitalWrite(PA9, j%2);
+  //   //force_reset();
+  //   spin_motor(m1_val, m2_val);
+  //   for (int i = 0; i < 200000; i++) 
+  //     ;
+  //   //force_reset();
+  //   spin_motor(m2_val, m1_val);
+  //   for (int i = 0; i < 200000; i++) 
+  //     ;
+  // }
+  // char final_val = set_val(100);
+  // spin_motor(final_val, final_val);
 }
 
 ////////////////////////////////////////////////
 // Functions
 ////////////////////////////////////////////////
-
+char read_imu(char address) {
+  char imu_response;
+  address |= 0b10000000;
+  printf("trying to read from %d \n", address);
+  //digitalWrite(PB6, 0);
+  digitalWrite(PA5, 0);
+  imu_response = spiSendReceiveTwoChar(address, 0b00000000);
+  while(SPI1->SR & SPI_SR_BSY);
+  //digitalWrite(PB6, 1);
+  digitalWrite(PA5, 1);
+  printf("direct imu reply %d \n", imu_response);
+  return imu_response;
+}
 
 void spin_motor(char m1_val, char m2_val) {
   int i; 
@@ -160,7 +184,6 @@ char set_val_helper(bool reverse, int value){
 void force_reset(){
   digitalWrite(PA6, 1);
   //delaying between the pin input
-  for(int i = 0; i < 200000; i++)
-    ;
+  for(int i = 0; i < 200000; i++);
   digitalWrite(PA6, 0);
 }
