@@ -19,6 +19,20 @@
 ////////////////////////////////////////////////
 
 #define MCK_FREQ 100000
+#define WHO_AM_I 0b00001111
+#define OUTX_L_G 0b00100010
+#define OUTX_H_G 0b00100011
+#define OUTY_L_G 0b00100100
+#define OUTY_H_G 0b00100101
+#define OUTZ_L_G 0b00100110
+#define OUTZ_H_G 0b00100111
+#define OUTX_L_A 0b00101000
+#define OUTX_H_A 0b00101001
+#define OUTY_L_A 0b00101010
+#define OUTY_H_A 0b00101011
+#define OUTZ_L_A 0b00101100
+#define OUTZ_H_A 0b00101101
+#define FIFO_CTRL3 0b00001001
 
 ////////////////////////////////////////////////
 // Function Prototypes
@@ -31,6 +45,7 @@ char set_val(int);
 char set_val_helper(bool, int);
 void force_reset();
 char read_imu(char);
+void write_imu(char, char);
 
 ////////////////////////////////////////////////
 // Main
@@ -44,6 +59,9 @@ int main(void) {
   char m1_val;
   char m2_val;
   char imu_wai;
+  char imu_yaw_h;
+  char imu_yaw_l;
+  char temp;
 
   // Configure flash latency and set clock to run at 84 MHz
 
@@ -58,14 +76,18 @@ int main(void) {
   // Load and done pins
   pinMode(PA5, GPIO_OUTPUT);  // LOAD
   pinMode(PA6, GPIO_OUTPUT);  // Reset on FPGA
+  pinMode(PA9, GPIO_OUTPUT);
+  pinMode(PA11, GPIO_OUTPUT);
   pinMode(PB6, GPIO_OUTPUT);
   digitalWrite(PA5, 1);       // set the chip select high when idle.
   digitalWrite(PB6, 1);
+  digitalWrite(PA11, 1);
+  digitalWrite(PA9, 1);
 
   // debugging LEDs
   pinMode(PA9, GPIO_OUTPUT);
   pinMode(PA10, GPIO_OUTPUT);
-  digitalWrite(PA9, 0);
+  //digitalWrite(PA9, 0);
   digitalWrite(PA10, 0);
   
   // imu
@@ -73,6 +95,24 @@ int main(void) {
   while(1){
     imu_wai = read_imu((char)0b00001111);
     printf("imu returned %d \n", imu_wai);
+
+    
+    write_imu((char)(0b00011000), (char)(0b11100010));  
+    temp = read_imu((char)(0b00011000));
+
+    printf("configuration 9 %d \n", temp);
+
+    write_imu((char) FIFO_CTRL3, (char)0b00010001);  
+
+    imu_yaw_h = read_imu((char)OUTZ_H_G);
+    printf("imu yaw h returned %d \n", imu_yaw_h);
+    
+    
+    imu_yaw_l = read_imu((char)OUTZ_L_G);
+    printf("imu yaw l returned %d \n", imu_yaw_l);
+
+
+
   }
 
 
@@ -108,12 +148,34 @@ char read_imu(char address) {
   printf("trying to read from %d \n", address);
   //digitalWrite(PB6, 0);
   digitalWrite(PA5, 0);
+  digitalWrite(PA11, 0);
+  digitalWrite(PA9, 0);
+  digitalWrite(PB6, 0);
   imu_response = spiSendReceiveTwoChar(address, 0b00000000);
   while(SPI1->SR & SPI_SR_BSY);
   //digitalWrite(PB6, 1);
+  digitalWrite(PA11, 1);
   digitalWrite(PA5, 1);
-  printf("direct imu reply %d \n", imu_response);
+  digitalWrite(PA9, 1);
+  digitalWrite(PB6, 1);
   return imu_response;
+}
+
+void write_imu(char address, char write) {
+  char imu_response;
+  printf("trying to write to %d with write block %d \n", address, write);
+  digitalWrite(PA5, 0);
+  digitalWrite(PA11, 0);
+  digitalWrite(PA9, 0);
+  digitalWrite(PB6, 0);
+  imu_response = spiSendReceiveTwoChar(address, write);
+  while(SPI1->SR & SPI_SR_BSY);
+  //digitalWrite(PB6, 1);
+  digitalWrite(PA11, 1);
+  digitalWrite(PA5, 1);
+  digitalWrite(PA9, 1);
+  digitalWrite(PB6, 1);
+  //return imu_response;
 }
 
 void spin_motor(char m1_val, char m2_val) {

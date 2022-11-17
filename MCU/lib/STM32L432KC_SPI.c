@@ -63,6 +63,7 @@ char spiSendReceiveTwoChar(char send1, char send2) {
     char rec = (volatile char) SPI1->DR;
      while(!(SPI1->SR & SPI_SR_TXE)); // Wait until the transmit buffer is empty
     *(volatile char *) (&SPI1->DR) = send2; // Transmit the character over SPI
+    while(!(SPI1->SR & SPI_SR_RXNE)); // Wait until data has been received
     rec = (volatile char) SPI1->DR;
     return rec; // Return received character
 }
