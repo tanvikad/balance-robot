@@ -50,13 +50,13 @@ int main(void) {
 
   // "clock divide" = master clock frequency / desired baud rate
   // the phase for the SPI clock is 1 and the polarity is 0
-  initSPI(1, 1, 1);
+  initSPI(1, 0, 0);
 
 
   // Load and done pins
   pinMode(PA5, GPIO_OUTPUT);  // LOAD
   pinMode(PA6, GPIO_OUTPUT);  // Reset on FPGA
-  digitalWrite(PA5, 1);       // set the chip select high when idle.
+  digitalWrite(PA5, 0);       // set the chip select high when idle.
 
   // debugging LEDs
   pinMode(PA9, GPIO_OUTPUT);
@@ -94,10 +94,10 @@ int main(void) {
 
 void spin_motor(char m1_val, char m2_val) {
   int i; 
-  digitalWrite(PA5, 0);
+  digitalWrite(PA5, 1);
   spiSendReceiveTwoChar(m1_val, m2_val);
   while(SPI1->SR & SPI_SR_BSY);
-  digitalWrite(PA5, 1);
+  digitalWrite(PA5, 0);
 }
 
 int binaryToDecimal(int n)
