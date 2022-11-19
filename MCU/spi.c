@@ -19,37 +19,38 @@
 
 int main(void) {
 
-  int bin = decimalToBinary(20);
-  int dec = binaryToDecimal(bin);
-  char cyphertext[16];
-  char m1_val;
-  char m2_val;
-
-
-  init()
-  // configure motor
-  m1_val = set_val(-40);
-  printf("m1 val is %d", m1_val);
-  m2_val = set_val(40);
-  spin_motor(m1_val, m2_val);
-  
-
-  for (int j = 0; j < 20; j++)
-  {
-    digitalWrite(DEBUG_LED_PIN_1, j%2);
-    //force_reset();
-    spin_motor(m1_val, m2_val);
-    for (int i = 0; i < 200000; i++) 
-      ;
-    //force_reset();
-    spin_motor(m2_val, m1_val);
-    for (int i = 0; i < 200000; i++) 
-      ;
-  }
-  char final_val = set_val(100);
-  spin_motor(final_val, final_val);
+  init();
+  loop();
 }
 
+void loop(){
+  char m1_val;
+  char m2_val;
+  char imu_wai;
+  char imu_yaw_h;
+  char imu_yaw_l;
+  char temp;
+  char z_high;
+  char z_low;
+  char x_high;
+  char x_low;
+  while(1){
+    imu_wai = read_imu((char)WHO_AM_I);
+    printf("imu returned %d \n", imu_wai);
+    
+    write_imu((char) CTRL1_XL, (char)0b01010000);
+    
+    z_high = read_imu((char) OUTZ_H_A);
+    printf("IMU z high returned %d \n", z_high);
+    z_low = read_imu((char) OUTZ_L_A);
+    printf("IMU z low returned %d \n", z_low);
+
+    x_high = read_imu((char) OUTX_H_A);
+    printf("IMU x high returned %d \n", x_high);
+    x_low = read_imu((char) OUTX_L_A);
+    printf("IMU x low returned %d \n", x_low);
+  }
+}
 ////////////////////////////////////////////////
 // Functions
 ////////////////////////////////////////////////
