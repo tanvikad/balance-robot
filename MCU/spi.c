@@ -37,37 +37,32 @@ void loop(){
   char y_high;
   char y_low;
 
+  m1_val = set_val(40);
+
   while(1){
+    spin_motor(m1_val, m1_val);
     imu_wai = read_imu((char)0b00001111);
     printf("imu returned %d \n", imu_wai);
     
     write_imu((char) CTRL1_XL, (char)0b01010000);
     
     z_high = read_imu((char) OUTZ_H_A);
-    // printf("IMU z high returned %d \n", z_high);
     z_low = read_imu((char) OUTZ_L_A);
-    // printf("IMU z low returned %d \n", z_low);
     float z = scale_accel(twosComplement_to_int(z_high, z_low));
     int z_int = (int)(z * 100);
-    printf("IMU z: %f\n", z);
     printf("IMU z: %d\n", z_int);
 
     x_high = read_imu((char) OUTX_H_A);
-    // printf("IMU x high returned %d \n", x_high);
     x_low = read_imu((char) OUTX_L_A);
-    // printf("IMU x low returned %d \n", x_low);
+
     float x = scale_accel(twosComplement_to_int(x_high, x_low));
     int x_int = (int)(x * 100);
-    printf("IMU x: %f\n", x);
     printf("IMU x: %d\n", x_int);
 
     y_high = read_imu((char) OUTY_H_A);
-    // printf("IMU y high returned %d \n", y_high);
     y_low = read_imu((char) OUTY_L_A);
-    // printf("IMU y low returned %d \n", y_low);
     float y = scale_accel(twosComplement_to_int(y_high, y_low));
     int y_int = (int)(y * 100);
-    printf("IMU y: %f\n", y);
     printf("IMU y: %d\n", y_int);
   }
 }
