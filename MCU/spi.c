@@ -25,27 +25,8 @@ int main(void) {
   char m1_val;
   char m2_val;
 
-  // Configure flash latency and set clock to run at 84 MHz
 
-  // Enable GPIOA clock
-  RCC->AHB2ENR |= (RCC_AHB2ENR_GPIOAEN | RCC_AHB2ENR_GPIOBEN | RCC_AHB2ENR_GPIOCEN);
-
-  // "clock divide" = master clock frequency / desired baud rate
-  // the phase for the SPI clock is 1 and the polarity is 0
-  initSPI(1, 0, 0);
-
-
-  // Load and done pins
-  pinMode(PA5, GPIO_OUTPUT);  // LOAD
-  pinMode(PA6, GPIO_OUTPUT);  // Reset on FPGA
-  digitalWrite(PA5, 0);       // set the chip select high when idle.
-
-  // debugging LEDs
-  pinMode(PA9, GPIO_OUTPUT);
-  pinMode(PA10, GPIO_OUTPUT);
-  digitalWrite(PA9, 0);
-  digitalWrite(PA10, 0);
-  
+  init()
   // configure motor
   m1_val = set_val(-40);
   printf("m1 val is %d", m1_val);
@@ -55,7 +36,7 @@ int main(void) {
 
   for (int j = 0; j < 20; j++)
   {
-    digitalWrite(PA9, j%2);
+    digitalWrite(DEBUG_LED_PIN_1, j%2);
     //force_reset();
     spin_motor(m1_val, m2_val);
     for (int i = 0; i < 200000; i++) 
@@ -73,13 +54,44 @@ int main(void) {
 // Functions
 ////////////////////////////////////////////////
 
+void init() {
+  // Configure flash latency and set clock to run at 84 MHz
 
+  // Enable GPIOA clock
+  RCC->AHB2ENR |= (RCC_AHB2ENR_GPIOAEN | RCC_AHB2ENR_GPIOBEN | RCC_AHB2ENR_GPIOCEN);
+
+  // "clock divide" = master clock frequency / desired baud rate
+  // the phase for the SPI clock is 1 and the polarity is 0
+  initSPI(1, 1, 1);
+
+
+  // Load and done pins
+  pinMode(FPGA_LOAD_PIN, GPIO_OUTPUT);  // LOAD
+  pinMode(FPGA_RESET_PIN, GPIO_OUTPUT);  // Reset on FPGA
+  pinMode(PB6, GPIO_OUTPUT);
+  
+
+  // debugging LEDs
+  pinMode(DEBUG_LED_PIN_1, GPIO_OUTPUT);
+  pinMode(DEBUG_LED_PIN_2, GPIO_OUTPUT);
+  pinMode(DEBUG_LED_PIN_3, GPIO_OUTPUT);
+
+    
+  digitalWrite(FPGA_LOAD_PIN, 0);       // set the chip select high when idle.
+  digitalWrite(IMU_LOAD_PIN, 1);
+  
+  digitalWrite(DEBUG_LED_PIN_1, 1);
+  digitalWrite(DEBUG_LED_PIN_2, 0);
+  digitalWrite(DEBUG_LED_PIN_3, 1);
+
+
+}
 void spin_motor(char m1_val, char m2_val) {
   int i; 
-  digitalWrite(PA5, 1);
+  digitalWrite(FPGA_LOAD_PIN, 0);
   spiSendReceiveTwoChar(m1_val, m2_val);
   while(SPI1->SR & SPI_SR_BSY);
-  digitalWrite(PA5, 0);
+  digitalWrite(FPGA_LOAD_PIN, 1);
 }
 
 int binaryToDecimal(int n)
@@ -140,11 +152,11 @@ char set_val_helper(bool reverse, int value){
 }
 
 void force_reset(){
-  digitalWrite(PA6, 1);
+  digitalWrite(FPGA_RESET_PIN, 1);
   //delaying between the pin input
   for(int i = 0; i < 200000; i++)
     ;
-  digitalWrite(PA6, 0);
+  digitalWrite(FPGA_RESET_PIN, 0);
 }
 
 void write_imu(char address, char write) {
@@ -153,32 +165,32 @@ void write_imu(char address, char write) {
   digitalWrite(PA5, 0);
   digitalWrite(PA11, 0);
   digitalWrite(PA9, 0);
-  digitalWrite(PB6, 0);
+  digitalWrite(IMU_LOAD_PIN, 0);
   imu_response = spiSendReceiveTwoChar(address, write);
   while(SPI1->SR & SPI_SR_BSY);
   //digitalWrite(PB6, 1);
   digitalWrite(PA11, 1);
   digitalWrite(PA5, 1);
   digitalWrite(PA9, 1);
-  digitalWrite(PB6, 1);
+  digitalWrite(IMU_LOAD_PIN, 1);
   //return imu_response;
 }
 
 char read_imu(char address) {
   char imu_response;
-  address |= 0b10000000;
+  address |= IMU_READ_ADDRESS;
   printf("trying to read from %d \n", address);
   //digitalWrite(PB6, 0);
   digitalWrite(PA5, 0);
   digitalWrite(PA11, 0);
   digitalWrite(PA9, 0);
-  digitalWrite(PB6, 0);
+  digitalWrite(IMU_LOAD_PIN, 0);
   imu_response = spiSendReceiveTwoChar(address, 0b00000000);
   while(SPI1->SR & SPI_SR_BSY);
   //digitalWrite(PB6, 1);
   digitalWrite(PA11, 1);
   digitalWrite(PA5, 1);
   digitalWrite(PA9, 1);
-  digitalWrite(PB6, 1);
+  digitalWrite(IMU_LOAD_PIN, 1);
   return imu_response;
 }

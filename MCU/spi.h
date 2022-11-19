@@ -31,6 +31,24 @@
 #define FIFO_CTRL3 0b00001001
 
 
+
+
+////////////////////////////////////////////////
+// Pin Names
+////////////////////////////////////////////////
+#define FPGA_LOAD_PIN PA5
+#define FPGA_RESET_PIN PA6
+
+#define IMU_LOAD_PIN PB6
+#define IMU_READ_ADDRESS 0b10000000
+
+#define DEBUG_LED_PIN_1 PA9
+#define DEBUG_LED_PIN_2 PA10
+#define DEBUG_LED_PIN_3 PA11    
+
+
+
+
 ////////////////////////////////////////////////
 // Function Prototypes
 ////////////////////////////////////////////////

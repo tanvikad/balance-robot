@@ -51,6 +51,9 @@
     <folder Name="Source Files">
       <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
       <file file_name="spi.c" />
+      <file file_name="pid.c" />
+      <file file_name="pid.h" />
+      <file file_name="spi.h" />
     </folder>
     <folder Name="System Files">
       <file file_name="SEGGER_THUMB_Startup.s" />

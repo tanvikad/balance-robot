@@ -35,7 +35,7 @@ module motor_controller(
 				end
 			else
 				begin
-					if(load == 1'b0)
+					if(load == 1'b1)
 						begin
 							old_motor1_upperlimit <= motor1_upperlimit;
 							old_motor2_upperlimit <= motor2_upperlimit;
