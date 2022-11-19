@@ -34,21 +34,41 @@ void loop(){
   char z_low;
   char x_high;
   char x_low;
+  char y_high;
+  char y_low;
+
   while(1){
-    imu_wai = read_imu((char)WHO_AM_I);
+    imu_wai = read_imu((char)0b00001111);
     printf("imu returned %d \n", imu_wai);
     
     write_imu((char) CTRL1_XL, (char)0b01010000);
     
     z_high = read_imu((char) OUTZ_H_A);
-    printf("IMU z high returned %d \n", z_high);
+    // printf("IMU z high returned %d \n", z_high);
     z_low = read_imu((char) OUTZ_L_A);
-    printf("IMU z low returned %d \n", z_low);
+    // printf("IMU z low returned %d \n", z_low);
+    float z = scale_accel(twosComplement_to_int(z_high, z_low));
+    int z_int = (int)(z * 100);
+    printf("IMU z: %f\n", z);
+    printf("IMU z: %d\n", z_int);
 
     x_high = read_imu((char) OUTX_H_A);
-    printf("IMU x high returned %d \n", x_high);
+    // printf("IMU x high returned %d \n", x_high);
     x_low = read_imu((char) OUTX_L_A);
-    printf("IMU x low returned %d \n", x_low);
+    // printf("IMU x low returned %d \n", x_low);
+    float x = scale_accel(twosComplement_to_int(x_high, x_low));
+    int x_int = (int)(x * 100);
+    printf("IMU x: %f\n", x);
+    printf("IMU x: %d\n", x_int);
+
+    y_high = read_imu((char) OUTY_H_A);
+    // printf("IMU y high returned %d \n", y_high);
+    y_low = read_imu((char) OUTY_L_A);
+    // printf("IMU y low returned %d \n", y_low);
+    float y = scale_accel(twosComplement_to_int(y_high, y_low));
+    int y_int = (int)(y * 100);
+    printf("IMU y: %f\n", y);
+    printf("IMU y: %d\n", y_int);
   }
 }
 ////////////////////////////////////////////////
@@ -94,6 +114,20 @@ void spin_motor(char m1_val, char m2_val) {
   while(SPI1->SR & SPI_SR_BSY);
   digitalWrite(FPGA_LOAD_PIN, 1);
 }
+
+
+int16_t twosComplement_to_int(char higher, char lower) {
+ return (int16_t) (higher << 8 | lower);
+}
+
+float scale_accel(int16_t raw) {
+ return (float) (raw * ACCEL_SCALE_2G * 9.807/1000.0);
+}
+
+float get_angle(int16_t raw) {
+ return (float) (raw * GYRO_SCALE_125 * 0.017453293/1000.0);
+}
+
 
 int binaryToDecimal(int n)
 {

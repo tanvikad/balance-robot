@@ -49,11 +49,22 @@
 #define DEBUG_LED_PIN_3 PA11    
 
 
+////////////////////////////////////////////////
+// IMU Values
+////////////////////////////////////////////////
 
+#define ACCEL_SCALE_2G 0.061
+#define ACCEL_SCALE_4G 0.122
+#define GYRO_SCALE_125 4.375
+#define GYRO_SCALE_250 8.75
 
 ////////////////////////////////////////////////
 // Function Prototypes
 ////////////////////////////////////////////////
+
+void init();
+void loop();
+
 
 void spin_motor(char, char);
 int binaryToDecimal(int);
@@ -64,3 +75,7 @@ void force_reset();
 
 char read_imu(char);
 void write_imu(char, char);
+
+int16_t twosComplement_to_int(char, char);
+float scale_accel(int16_t);
+float get_angle(int16_t);
