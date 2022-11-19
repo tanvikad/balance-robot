@@ -192,16 +192,9 @@ void force_reset(){
 void write_imu(char address, char write) {
   char imu_response;
   printf("trying to write to %d with write block %d \n", address, write);
-  digitalWrite(PA5, 0);
-  digitalWrite(PA11, 0);
-  digitalWrite(PA9, 0);
   digitalWrite(IMU_LOAD_PIN, 0);
   imu_response = spiSendReceiveTwoChar(address, write);
   while(SPI1->SR & SPI_SR_BSY);
-  //digitalWrite(PB6, 1);
-  digitalWrite(PA11, 1);
-  digitalWrite(PA5, 1);
-  digitalWrite(PA9, 1);
   digitalWrite(IMU_LOAD_PIN, 1);
   //return imu_response;
 }
@@ -210,17 +203,9 @@ char read_imu(char address) {
   char imu_response;
   address |= IMU_READ_ADDRESS;
   printf("trying to read from %d \n", address);
-  //digitalWrite(PB6, 0);
-  digitalWrite(PA5, 0);
-  digitalWrite(PA11, 0);
-  digitalWrite(PA9, 0);
   digitalWrite(IMU_LOAD_PIN, 0);
   imu_response = spiSendReceiveTwoChar(address, 0b00000000);
   while(SPI1->SR & SPI_SR_BSY);
-  //digitalWrite(PB6, 1);
-  digitalWrite(PA11, 1);
-  digitalWrite(PA5, 1);
-  digitalWrite(PA9, 1);
   digitalWrite(IMU_LOAD_PIN, 1);
   return imu_response;
 }
