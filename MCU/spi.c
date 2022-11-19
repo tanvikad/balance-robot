@@ -33,6 +33,7 @@
 #define OUTZ_L_A 0b00101100
 #define OUTZ_H_A 0b00101101
 #define FIFO_CTRL3 0b00001001
+#define CTRL1_XL 0b00010000
 
 ////////////////////////////////////////////////
 // Function Prototypes
@@ -62,7 +63,10 @@ int main(void) {
   char imu_yaw_h;
   char imu_yaw_l;
   char temp;
-
+  char z_high;
+  char z_low;
+  char x_high;
+  char x_low;
   // Configure flash latency and set clock to run at 84 MHz
 
   // Enable GPIOA clock
@@ -95,21 +99,32 @@ int main(void) {
   while(1){
     imu_wai = read_imu((char)0b00001111);
     printf("imu returned %d \n", imu_wai);
-
     
-    write_imu((char)(0b00011000), (char)(0b11100010));  
-    temp = read_imu((char)(0b00011000));
+    write_imu((char) CTRL1_XL, (char)0b01010000);
+    
+    z_high = read_imu((char) OUTZ_H_A);
+    printf("IMU z high returned %d \n", z_high);
+    z_low = read_imu((char) OUTZ_L_A);
+    printf("IMU z low returned %d \n", z_low);
 
-    printf("configuration 9 %d \n", temp);
+    x_high = read_imu((char) OUTX_H_A);
+    printf("IMU x high returned %d \n", x_high);
+    x_low = read_imu((char) OUTX_L_A);
+    printf("IMU x low returned %d \n", x_low);
+    
+    //write_imu((char)(0b00011000), (char)(0b11100010));  
+    //temp = read_imu((char)(0b00011000));
 
-    write_imu((char) FIFO_CTRL3, (char)0b00010001);  
+    //printf("configuration 9 %d \n", temp);
 
-    imu_yaw_h = read_imu((char)OUTZ_H_G);
-    printf("imu yaw h returned %d \n", imu_yaw_h);
+    //write_imu((char) FIFO_CTRL3, (char)0b00010001);  
+
+    //imu_yaw_h = read_imu((char)OUTZ_H_G);
+    //printf("imu yaw h returned %d \n", imu_yaw_h);
     
     
-    imu_yaw_l = read_imu((char)OUTZ_L_G);
-    printf("imu yaw l returned %d \n", imu_yaw_l);
+    //imu_yaw_l = read_imu((char)OUTZ_L_G);
+    //printf("imu yaw l returned %d \n", imu_yaw_l);
 
 
 
