@@ -14,7 +14,7 @@ module spi(
 	output logic debug_light
 );
 	logic [7:0] motor1, motor2;
-	pwm_spi spi(sck, sdi, sdo, motor1, motor2);
+	pwm_spi spi(sck, load, sdi, sdo, motor1, motor2);
 	// top dut(reset, 1'd1, 7'd25, 1'd1, 7'd50, enable12, enable34, a1, a2, a3, a4, debug_light);
 	motor_controller controller(reset, load, clk, motor1[7], motor1[6:0], motor2[7], motor2[6:0], enable12, enable34, a1, a2, a3, a4, debug_light);
 

@@ -5,10 +5,11 @@ module pwm(input logic sck,
 		
 		logic [7:0] motor1, motor2;
 		
-		pwm_spi spi(sck, sdi, sdo, motor1, motor2);
+		pwm_spi spi(sck, load, sdi, sdo, motor1, motor2);
 endmodule 
 
 module pwm_spi(input logic sck,
+	   input logic load,
        input logic sdi,
 	   output logic sdo,
 	   output logic [7:0] motor1,
@@ -16,7 +17,10 @@ module pwm_spi(input logic sck,
 	   
 	always_ff @(posedge sck) 
 	begin
-	{motor1, motor2} = {motor1[6:0], motor2, sdi};
+		if (load == 0'b0)
+		begin
+				{motor1, motor2} = {motor1[6:0], motor2, sdi};
+		end
 	end
 	
 	assign sdo = 0;
