@@ -37,7 +37,7 @@ void loop(){
   char y_high;
   char y_low;
 
-  m1_val = set_val(40);
+  m1_val = set_val(80);
 
   while(1){
     spin_motor(m1_val, m1_val);
@@ -82,9 +82,9 @@ void init() {
 
 
   // Load and done pins
-  pinMode(FPGA_LOAD_PIN, GPIO_OUTPUT);  // LOAD
+  pinMode(FPGA_LOAD_PIN, GPIO_OUTPUT);  // SPI to FPGA
   pinMode(FPGA_RESET_PIN, GPIO_OUTPUT);  // Reset on FPGA
-  pinMode(PB6, GPIO_OUTPUT);
+  pinMode(IMU_LOAD_PIN, GPIO_OUTPUT);   // SPI to IMU
   
 
   // debugging LEDs
@@ -93,7 +93,7 @@ void init() {
   pinMode(DEBUG_LED_PIN_3, GPIO_OUTPUT);
 
     
-  digitalWrite(FPGA_LOAD_PIN, 0);       // set the chip select high when idle.
+  digitalWrite(FPGA_LOAD_PIN, 1);       // set the chip select high when idle.
   digitalWrite(IMU_LOAD_PIN, 1);
   
   digitalWrite(DEBUG_LED_PIN_1, 1);
@@ -103,7 +103,6 @@ void init() {
 
 }
 void spin_motor(char m1_val, char m2_val) {
-  int i; 
   digitalWrite(FPGA_LOAD_PIN, 0);
   spiSendReceiveTwoChar(m1_val, m2_val);
   while(SPI1->SR & SPI_SR_BSY);
@@ -122,7 +121,6 @@ float scale_accel(int16_t raw) {
 float get_angle(int16_t raw) {
  return (float) (raw * GYRO_SCALE_125 * 0.017453293/1000.0);
 }
-
 
 int binaryToDecimal(int n)
 {
@@ -201,8 +199,8 @@ void write_imu(char address, char write) {
 
 char read_imu(char address) {
   char imu_response;
-  address |= IMU_READ_ADDRESS;
   printf("trying to read from %d \n", address);
+  address |= IMU_READ_ADDRESS;
   digitalWrite(IMU_LOAD_PIN, 0);
   imu_response = spiSendReceiveTwoChar(address, 0b00000000);
   while(SPI1->SR & SPI_SR_BSY);
