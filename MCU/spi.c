@@ -11,8 +11,6 @@
 #include "spi.h"
 
 
-
-
 ////////////////////////////////////////////////
 // Main
 ////////////////////////////////////////////////
@@ -36,6 +34,12 @@ void loop(){
   char x_low;
   char y_high;
   char y_low;
+  char rot_z_high;
+  char rot_z_low;
+  char rot_x_high;
+  char rot_x_low;
+  char rot_y_high;
+  char rot_y_low;
 
   m1_val = set_val(80);
 
@@ -45,25 +49,43 @@ void loop(){
     printf("imu returned %d \n", imu_wai);
     
     write_imu((char) CTRL1_XL, (char)0b01010000);
+    write_imu((char) CTRL2_G,  (char)0b01010000);
     
-    z_high = read_imu((char) OUTZ_H_A);
-    z_low = read_imu((char) OUTZ_L_A);
-    float z = scale_accel(twosComplement_to_int(z_high, z_low));
-    int z_int = (int)(z * 100);
-    printf("IMU z: %d\n", z_int);
+    // z_high = read_imu((char) OUTZ_H_A);
+    // z_low = read_imu((char) OUTZ_L_A);
+    // float z = scale_accel(twosComplement_to_int(z_high, z_low));
+    // int z_int = (int)(z * 100);
+    // printf("IMU z: %d\n", z_int);
 
-    x_high = read_imu((char) OUTX_H_A);
-    x_low = read_imu((char) OUTX_L_A);
+    // x_high = read_imu((char) OUTX_H_A);
+    // x_low = read_imu((char) OUTX_L_A);
+    // float x = scale_accel(twosComplement_to_int(x_high, x_low));
+    // int x_int = (int)(x * 100);
+    // printf("IMU x: %d\n", x_int);
 
-    float x = scale_accel(twosComplement_to_int(x_high, x_low));
-    int x_int = (int)(x * 100);
-    printf("IMU x: %d\n", x_int);
+    // y_high = read_imu((char) OUTY_H_A);
+    // y_low = read_imu((char) OUTY_L_A);
+    // float y = scale_accel(twosComplement_to_int(y_high, y_low));
+    // int y_int = (int)(y * 100);
+    // printf("IMU y: %d\n", y_int);
 
-    y_high = read_imu((char) OUTY_H_A);
-    y_low = read_imu((char) OUTY_L_A);
-    float y = scale_accel(twosComplement_to_int(y_high, y_low));
-    int y_int = (int)(y * 100);
-    printf("IMU y: %d\n", y_int);
+    rot_z_high = read_imu((char) OUTZ_H_G);
+    rot_z_low = read_imu((char) OUTZ_L_G);
+    float rot_z = get_angle(twosComplement_to_int(rot_z_high, rot_z_low));
+    int rot_z_int = (int)(rot_z * 100);
+    printf("IMU z angle: %d\n", rot_z_int);
+
+    rot_x_high = read_imu((char) OUTX_H_G);
+    rot_x_low = read_imu((char) OUTX_L_G);
+    float rot_x = get_angle(twosComplement_to_int(rot_x_high, rot_x_low));
+    int rot_x_int = (int)(rot_x * 100);
+    printf("IMU x angle: %d\n", rot_x_int);
+
+    rot_y_high = read_imu((char) OUTY_H_G);
+    rot_y_low = read_imu((char) OUTY_L_G);
+    float rot_y = get_angle(twosComplement_to_int(rot_y_high, rot_y_low));
+    int rot_y_int = (int)(rot_y * 100);
+    printf("IMU y angle: %d\n", rot_y_int);
   }
 }
 ////////////////////////////////////////////////

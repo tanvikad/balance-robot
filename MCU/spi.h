@@ -30,6 +30,7 @@
 #define OUTZ_H_A 0b00101101
 #define FIFO_CTRL3 0b00001001
 #define CTRL1_XL 0b00010000
+#define CTRL2_G 0b00010001
 
 
 
