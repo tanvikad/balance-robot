@@ -3,7 +3,8 @@
 #include "lib/STM32L432KC.h"
 #include <stdbool.h>
 #include <math.h>
-#include <time.h>
+#include <stdint.h>
+//#include <time.h>
 
 ////////////////////////////////////////////////
 // Constants
@@ -31,8 +32,11 @@
 #define FIFO_CTRL3 0b00001001
 #define CTRL1_XL 0b00010000
 #define CTRL2_G 0b00010001
-
-
+#define CTRL10_C 0b00011001
+#define TIMESTAMP0 0b01000000
+#define TIMESTAMP1 0b01000001
+#define TIMESTAMP2 0b01000010
+#define TIMESTAMP3 0b01000011
 
 
 
@@ -80,3 +84,4 @@ void write_imu(char, char);
 int16_t twosComplement_to_int(char, char);
 float scale_accel(int16_t);
 float get_angle(int16_t);
+uint32_t get_time(char, char, char, char);

@@ -40,16 +40,41 @@ void loop(){
   char rot_x_low;
   char rot_y_high;
   char rot_y_low;
+  //unsigned int last_seconds;
+  uint32_t current_seconds;
+  uint32_t dt;
 
   m1_val = set_val(80);
+  // last_seconds = time(NULL);
+
+  write_imu((char) CTRL10_C, (char)0b00100000);
+  char time0 = read_imu((char) TIMESTAMP0);
+  char time1 = read_imu((char) TIMESTAMP1);
+  char time2 = read_imu((char) TIMESTAMP2);
+  char time3 = read_imu((char) TIMESTAMP3);
+  uint32_t last_seconds = get_time(time0, time1, time2, time3);
 
   while(1){
+    // current_seconds = time(NULL);
+    // dt = current_seconds - last_seconds;
+    // last_seconds = current_seconds;
+    // printf("dt: %d\n", dt);
     spin_motor(m1_val, m1_val);
     imu_wai = read_imu((char)0b00001111);
     printf("imu returned %d \n", imu_wai);
     
     write_imu((char) CTRL1_XL, (char)0b01010000);
     write_imu((char) CTRL2_G,  (char)0b01010000);
+
+    time0 = read_imu((char) TIMESTAMP0);
+    time1 = read_imu((char) TIMESTAMP1);
+    time2 = read_imu((char) TIMESTAMP2);
+    time3 = read_imu((char) TIMESTAMP3);
+    current_seconds = get_time(time0, time1, time2, time3);
+    dt = current_seconds - last_seconds;
+    last_seconds = current_seconds;
+    printf("current time: %u\n", current_seconds);
+    printf("time in micro seconds: %u\n", dt);
     
     // z_high = read_imu((char) OUTZ_H_A);
     // z_low = read_imu((char) OUTZ_L_A);
@@ -124,6 +149,12 @@ void init() {
 
 
 }
+
+uint32_t get_time(char time0, char time1, char time2, char time3) {
+  return time3 << 24 | time2 << 16 | time1 << 8 |  time0;
+
+}
+
 void spin_motor(char m1_val, char m2_val) {
   digitalWrite(FPGA_LOAD_PIN, 0);
   spiSendReceiveTwoChar(m1_val, m2_val);
