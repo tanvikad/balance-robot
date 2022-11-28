@@ -9,6 +9,8 @@
 */
 
 #include "spi.h"
+#define RCC_BASE_ADR (0x40021000UL)
+#define RCC_APB1ENR1 ((uint32_t*)(RCC_BASE_ADR + 0x58))
 
 
 ////////////////////////////////////////////////
@@ -92,6 +94,22 @@ void loop(){
 // Functions
 ////////////////////////////////////////////////
 
+void waiting(int i)
+{
+  if(i % 2 == 0)
+    digitalWrite(DEBUG_LED_PIN_1, 1);
+  else
+    digitalWrite(DEBUG_LED_PIN_1, 0);
+}
+
+void after_waiting()
+{
+  printf("after waiting \n");
+  int a = 5;
+}
+
+
+
 void init() {
   // Configure flash latency and set clock to run at 84 MHz
 
@@ -121,6 +139,16 @@ void init() {
   digitalWrite(DEBUG_LED_PIN_1, 1);
   digitalWrite(DEBUG_LED_PIN_2, 0);
   digitalWrite(DEBUG_LED_PIN_3, 1);
+
+  //initializing a timer
+  //RCC_APB1ENR1 |= (RCC_APB1ENR1_TIM6EN);
+  RCC->AHB1ENR |= (RCC_APB1ENR1_TIM6EN);
+  *RCC_APB1ENR1 |= (1<<4);
+  *RCC_APB1ENR1 |= (1<<5);
+  
+  
+  initTIM(TIM6);
+  tim_main(TIM6, 5000, waiting, after_waiting);
 
 
 }

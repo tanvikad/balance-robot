@@ -23,4 +23,35 @@ void delay_millis(TIM_TypeDef * TIMx, uint32_t ms){
   TIMx->CNT = 0;      // Reset count
 
   while(!(TIMx->SR & 1)); // Wait for UIF to go high
+  
+}
+
+
+
+
+void tim_main(TIM_TypeDef * TIMx, uint32_t ms, void (*event_during_waiting)(int),  void (*event_after_waiting)())
+{
+  TIMx->ARR = ms;// Set timer max count
+  TIMx->EGR |= 1;     // Force update
+  TIMx->SR &= ~(0x1); // Clear UIF
+  TIMx->CNT = 0;      // Reset count
+
+  int i = 0;
+  printf("The ARR is currently: %d", TIMx->ARR);
+  while(1)
+  {
+    while(!(TIMx->SR & 1)) // Wait for UIF to go high
+    {
+      event_during_waiting(i);
+    }
+    
+    //reseting the event 
+    TIMx->SR &= ~(0x1);
+
+    i++;
+    event_after_waiting();
+
+    printf("The counter is currently: %d \n", TIMx->CNT);
+  }
+  
 }
