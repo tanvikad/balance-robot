@@ -18,6 +18,7 @@
 #include "STM32L432KC_FLASH.h"
 #include "STM32L432KC_USART.h"
 #include "STM32L432KC_SPI.h"
+#include "helper.h"
 
 // Global defines
 

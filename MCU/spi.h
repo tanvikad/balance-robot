@@ -59,6 +59,12 @@
 #define GYRO_SCALE_125 4.375
 #define GYRO_SCALE_250 8.75
 
+
+
+
+
+
+
 ////////////////////////////////////////////////
 // Function Prototypes
 ////////////////////////////////////////////////
@@ -80,3 +86,11 @@ void write_imu(char, char);
 int16_t twosComplement_to_int(char, char);
 float scale_accel(int16_t);
 float get_angle(int16_t);
+
+
+
+void waiting(int i, struct imu_values* values);
+
+void after_waiting(struct imu_values* values);
+
+

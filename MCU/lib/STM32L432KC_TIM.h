@@ -7,6 +7,7 @@
 #include <stdint.h> // Include stdint header
 #include "STM32L432KC_GPIO.h"
 #include <stdio.h>
+#include "helper.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 // Function prototypes
@@ -15,6 +16,9 @@
 void initTIM(TIM_TypeDef * TIMx);
 void delay_millis(TIM_TypeDef * TIMx, uint32_t ms);
 void delay_micros(TIM_TypeDef * TIMx, uint32_t us);
-void tim_main(TIM_TypeDef * TIMx, uint32_t ms, void (*event_during_waiting)(int),  void (*event_after_waiting)());
+
+
+
+void tim_main(TIM_TypeDef * TIMx, uint32_t ms, void (*event_during_waiting)(int, struct imu_values*),  void (*event_after_waiting)(struct imu_values*));
 
 #endif

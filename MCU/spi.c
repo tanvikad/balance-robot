@@ -9,6 +9,7 @@
 */
 
 #include "spi.h"
+#include "helper.h"
 #define RCC_BASE_ADR (0x40021000UL)
 #define RCC_APB1ENR1 ((uint32_t*)(RCC_BASE_ADR + 0x58))
 
@@ -23,8 +24,37 @@ int main(void) {
   loop();
 }
 
+
+
+
+
+
+void waiting(int i, struct imu_values * values)
+{
+  if(i % 2 == 0)
+    digitalWrite(DEBUG_LED_PIN_1, 1);
+  else
+    digitalWrite(DEBUG_LED_PIN_1, 0);
+
+  char z_high = read_imu((char) OUTZ_H_A);
+  char z_low = read_imu((char) OUTZ_L_A);
+  float z = scale_accel(twosComplement_to_int(z_high, z_low));
+  int z_int = (int)(z * 100);
+  //printf("in waiting %d \n", z_int);
+  values->z_acc = z_int;
+}
+
+void after_waiting(struct imu_values * values)
+{
+  printf("\n after waiting acceleration value %d \n", values->z_acc);
+}
+
+
 void loop(){
-  char m1_val;
+
+  tim_main(TIM6, 1000, waiting, after_waiting);
+
+  /*char m1_val;
   char m2_val;
   char imu_wai;
   char imu_yaw_h;
@@ -47,17 +77,13 @@ void loop(){
 
   while(1){
     spin_motor(m1_val, m1_val);
-    imu_wai = read_imu((char)0b00001111);
-    printf("imu returned %d \n", imu_wai);
+ 
     
-    write_imu((char) CTRL1_XL, (char)0b01010000);
-    write_imu((char) CTRL2_G,  (char)0b01010000);
-    
-    // z_high = read_imu((char) OUTZ_H_A);
-    // z_low = read_imu((char) OUTZ_L_A);
-    // float z = scale_accel(twosComplement_to_int(z_high, z_low));
-    // int z_int = (int)(z * 100);
-    // printf("IMU z: %d\n", z_int);
+     z_high = read_imu((char) OUTZ_H_A);
+     z_low = read_imu((char) OUTZ_L_A);
+     float z = scale_accel(twosComplement_to_int(z_high, z_low));
+     int z_int = (int)(z * 100);
+     printf("IMU z: %d\n", z_int);
 
     // x_high = read_imu((char) OUTX_H_A);
     // x_low = read_imu((char) OUTX_L_A);
@@ -88,25 +114,11 @@ void loop(){
     float rot_y = get_angle(twosComplement_to_int(rot_y_high, rot_y_low));
     int rot_y_int = (int)(rot_y * 100);
     printf("IMU y angle: %d\n", rot_y_int);
-  }
+  }*/
 }
 ////////////////////////////////////////////////
 // Functions
 ////////////////////////////////////////////////
-
-void waiting(int i)
-{
-  if(i % 2 == 0)
-    digitalWrite(DEBUG_LED_PIN_1, 1);
-  else
-    digitalWrite(DEBUG_LED_PIN_1, 0);
-}
-
-void after_waiting()
-{
-  printf("after waiting \n");
-  int a = 5;
-}
 
 
 
@@ -145,10 +157,17 @@ void init() {
   RCC->AHB1ENR |= (RCC_APB1ENR1_TIM6EN);
   *RCC_APB1ENR1 |= (1<<4);
   *RCC_APB1ENR1 |= (1<<5);
-  
-  
   initTIM(TIM6);
-  tim_main(TIM6, 5000, waiting, after_waiting);
+
+
+
+  //checking if the IMU is working 
+  char imu_wai = read_imu((char)0b00001111);
+  printf("imu returned %d \n", imu_wai);
+    
+  write_imu((char) CTRL1_XL, (char)0b01010000);
+  write_imu((char) CTRL2_G,  (char)0b01010000);
+  
 
 
 }
@@ -249,7 +268,7 @@ void write_imu(char address, char write) {
 
 char read_imu(char address) {
   char imu_response;
-  printf("trying to read from %d \n", address);
+  //printf("trying to read from %d \n", address);
   address |= IMU_READ_ADDRESS;
   digitalWrite(IMU_LOAD_PIN, 0);
   imu_response = spiSendReceiveTwoChar(address, 0b00000000);
