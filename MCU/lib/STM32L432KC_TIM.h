@@ -8,6 +8,7 @@
 #include "STM32L432KC_GPIO.h"
 #include <stdio.h>
 #include "helper.h"
+#include "PID.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 // Function prototypes
@@ -19,6 +20,7 @@ void delay_micros(TIM_TypeDef * TIMx, uint32_t us);
 
 
 
-void tim_main(TIM_TypeDef * TIMx, uint32_t ms, void (*event_during_waiting)(int, struct imu_values*),  void (*event_after_waiting)(struct imu_values*));
+void tim_main(TIM_TypeDef * TIMx, uint32_t ms, void (*event_during_waiting)(int, struct imu_values*),  void (*event_after_waiting)(struct imu_values*, struct controller*));
 
 #endif
+

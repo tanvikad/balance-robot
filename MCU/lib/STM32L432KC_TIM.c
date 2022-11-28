@@ -29,7 +29,7 @@ void delay_millis(TIM_TypeDef * TIMx, uint32_t ms){
 
 
 
-void tim_main(TIM_TypeDef * TIMx, uint32_t ms, void (*event_during_waiting)(int, struct imu_values*),  void (*event_after_waiting)(struct imu_values*))
+void tim_main(TIM_TypeDef * TIMx, uint32_t ms, void (*event_during_waiting)(int, struct imu_values*),  void (*event_after_waiting)(struct imu_values*, struct controller*))
 {
   TIMx->ARR = ms;// Set timer max count
   TIMx->EGR |= 1;     // Force update
@@ -39,6 +39,12 @@ void tim_main(TIM_TypeDef * TIMx, uint32_t ms, void (*event_during_waiting)(int,
   int i = 0;
   printf("The ARR is currently: %d", TIMx->ARR);
   struct imu_values values;
+  struct controller pid_controller;
+
+  pid_init(&pid_controller);
+  
+
+
   while(1)
   {
     while(!(TIMx->SR & 1)) // Wait for UIF to go high
@@ -50,7 +56,7 @@ void tim_main(TIM_TypeDef * TIMx, uint32_t ms, void (*event_during_waiting)(int,
     TIMx->SR &= ~(0x1);
 
     i++;
-    event_after_waiting(&values);
+    event_after_waiting(&values, &pid_controller);
 
     printf("\n The counter delay is: %d \n", TIMx->CNT);
   }

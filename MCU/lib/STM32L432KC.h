@@ -20,6 +20,7 @@
 #include "STM32L432KC_SPI.h"
 #include "helper.h"
 
+
 // Global defines
 
 #define HSI_FREQ 16000000 // HSI clock is 16 MHz

@@ -1,16 +1,4 @@
-#include "pid.h"
-
-struct controller {
-  float k_p;
-  float k_i;
-  float k_d;
-  float integral_total_error;
-  float dt;
-  float previous_error;
-  float current_error;
-};
-
-float pid_update(struct controller *, float);
+#include "lib/PID.h"
 
 float pid_update(struct controller * c, float current_angle){
   float control_effort;
@@ -19,14 +7,27 @@ float pid_update(struct controller * c, float current_angle){
   c->previous_error = c->current_error;
   c->current_error = 0 - current_angle;
   
-  control_effort = c->k_p * c->current_error;
+  control_effort = c->k_p * (c->current_error);
   c->integral_total_error += c->current_error * c->dt;
-  control_effort += c->k_i * c->integral_total_error;
+  control_effort += c->k_i * (c->integral_total_error);
 
   derivative_error = (c->current_error - c->previous_error) / c->dt;
-  control_effort += c->k_d * derivative_error;
+  control_effort += c->k_d * (derivative_error);
 
   return control_effort;
+}
+
+void pid_init(struct controller * c)
+{
+  c->current_error = 0;
+  c->integral_total_error = 0;
+  c->previous_error = 0;
+  c->k_p = 2;
+  c->k_i = 10;
+  c->k_d = 20;
+  c->dt = 1;
+
+  printf("\n initalized the pid \n");
 }
 
 

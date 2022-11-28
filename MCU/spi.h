@@ -1,3 +1,6 @@
+#ifndef SPI_H
+#define SPI_H
+
 #include <stdio.h>
 #include <stm32l432xx.h>
 #include "lib/STM32L432KC.h"
@@ -91,6 +94,10 @@ float get_angle(int16_t);
 
 void waiting(int i, struct imu_values* values);
 
-void after_waiting(struct imu_values* values);
+void after_waiting(struct imu_values * values, struct controller* c);
 
 
+
+
+
+#endif
