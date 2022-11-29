@@ -10,6 +10,7 @@
 
 #include "spi.h"
 #include "lib/helper.h"
+#include <float.h>
 #define RCC_BASE_ADR (0x40021000UL)
 #define RCC_APB1ENR1 ((uint32_t*)(RCC_BASE_ADR + 0x58))
 
@@ -26,7 +27,12 @@ int main(void) {
 
 
 
-
+void print_float(float f)
+{
+  int before_decimal_place = (int)(f);
+  int after_decimal_place = (f - before_decimal_place) * 1000;
+  printf("%d.%d", before_decimal_place, after_decimal_place);
+}
 
 
 void waiting(int i, struct imu_values * values)
@@ -39,43 +45,36 @@ void waiting(int i, struct imu_values * values)
   char z_high = read_imu((char) OUTZ_H_A);
   char z_low = read_imu((char) OUTZ_L_A);
   float z = scale_accel(twosComplement_to_int(z_high, z_low));
-  int z_int = (int)(z * 100);
-  values->z_acc = z_int;
+  values->z_acc = z;
 
   char x_high = read_imu((char) OUTX_H_A);
   char x_low = read_imu((char) OUTX_L_A);
   float x = scale_accel(twosComplement_to_int(x_high, x_low));
-  int x_int = (int)(x * 100);
   //printf("IMU x: %d\n", x_int);
-  values->x_acc = x_int;
+  values->x_acc = x;
 
   char y_high = read_imu((char) OUTY_H_A);
   char y_low = read_imu((char) OUTY_L_A);
   float y = scale_accel(twosComplement_to_int(y_high, y_low));
-  int y_int = (int)(y * 100);
   //printf("IMU y: %d\n", y_int);
-  values->y_acc = y_int;
+  values->y_acc = y;
 
   char rot_z_high = read_imu((char) OUTZ_H_G);
   char rot_z_low = read_imu((char) OUTZ_L_G);
   float rot_z = get_angle(twosComplement_to_int(rot_z_high, rot_z_low));
-  int rot_z_int = (int)(rot_z * 100);
-  //printf("IMU z angle: %d\n", rot_z_int);
-  values->z_rot = rot_z_int;
+  values->z_rot = rot_z;
 
   char rot_x_high = read_imu((char) OUTX_H_G);
   char rot_x_low = read_imu((char) OUTX_L_G);
   float rot_x = get_angle(twosComplement_to_int(rot_x_high, rot_x_low));
-  int rot_x_int = (int)(rot_x * 100);
   //printf("IMU x angle: %d\n", rot_x_int);
-  values->x_rot = rot_x_int;
+  values->x_rot = rot_x;
 
   char rot_y_high = read_imu((char) OUTY_H_G);
   char rot_y_low = read_imu((char) OUTY_L_G);
   float rot_y = get_angle(twosComplement_to_int(rot_y_high, rot_y_low));
-  int rot_y_int = (int)(rot_y * 100);
   //printf("IMU y angle: %d\n", rot_y_int);
-  values->y_rot = rot_y_int;
+  values->y_rot = rot_y;
 
 
 
@@ -83,11 +82,22 @@ void waiting(int i, struct imu_values * values)
 
 void after_waiting(struct imu_values * values, struct controller* c)
 {
-  printf("\n after waiting z-acceleration value %d \n", values->z_acc);
-  printf("\n after waiting x-acceleration value %d \n", values->x_acc);
-  printf("\n after waiting y-rotation value %d \n", values->y_rot);
-  printf("\n after waiting x-rotation value %d \n", values->x_rot);
+  printf("\n after waiting z-acceleration value ");
+  print_float(values->z_acc);
+  printf("\n");
 
+  printf("\n after waiting y-acceleration value ");
+  print_float(values->y_acc);
+  printf("\n");
+
+
+  printf("\n after waiting x-acceleration value ");
+  print_float(values->x_acc);
+  printf("\n");
+
+  printf("\n after waiting y-rotation value ");
+  print_float(values->y_rot);
+  printf("\n");
 
   float ce = pid_update(c, (float)(values->y_rot));
 

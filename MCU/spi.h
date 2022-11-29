@@ -96,6 +96,8 @@ void waiting(int i, struct imu_values* values);
 
 void after_waiting(struct imu_values * values, struct controller* c);
 
+void print_float(float f);
+
 
 
 
