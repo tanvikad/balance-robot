@@ -99,7 +99,7 @@ void after_waiting(struct imu_values * values, struct controller* c);
 
 void print_float(float f);
 
-
+float sigmoid(float x);
 
 
 

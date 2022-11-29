@@ -11,6 +11,7 @@
 #include "spi.h"
 #include "lib/helper.h"
 #include <float.h>
+#include <math.h>
 #define RCC_BASE_ADR (0x40021000UL)
 #define RCC_APB1ENR1 ((uint32_t*)(RCC_BASE_ADR + 0x58))
 
@@ -25,7 +26,10 @@ int main(void) {
   loop();
 }
 
-
+float sigmoid_m(float x){
+  float scaler = 1;
+  return 2*((1.0/(1.0+exp(-1*(x*scaler))))-0.5);
+}
 
 void print_float(float f)
 {
@@ -107,8 +111,12 @@ void after_waiting(struct imu_values * values, struct controller* c)
   float ce = pid_update(c, (float)(error));
 
   printf("\n The CONTROL EFFORT IS %d \n", (int)(ce));
+  
+  int sigmoid_ce = (int) (sigmoid_m(ce)*100);
+  printf("Try to spin motor with %d", sigmoid_ce);
+  char motor_output = set_val(sigmoid_ce);
+  spin_motor(motor_output, motor_output);
 }
-
 
 
 
