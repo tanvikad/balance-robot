@@ -34,6 +34,7 @@
 #define FIFO_CTRL3 0b00001001
 #define CTRL1_XL 0b00010000
 #define CTRL2_G 0b00010001
+#define CTRL7_G 00010110
 
 
 

@@ -86,20 +86,25 @@ void after_waiting(struct imu_values * values, struct controller* c)
   print_float(values->z_acc);
   printf("\n");
 
-  printf("\n after waiting y-acceleration value ");
-  print_float(values->y_acc);
-  printf("\n");
-
 
   printf("\n after waiting x-acceleration value ");
   print_float(values->x_acc);
   printf("\n");
 
-  printf("\n after waiting y-rotation value ");
-  print_float(values->y_rot);
+
+  bool falling_forward = (values->x_acc < 2.0);
+  printf("Falling forward %d \n ", falling_forward);
+
+  float error =   10.0 - values->z_acc;
+  if(error < 0) error = error*-1;
+
+  printf("The error is ");
+  print_float(error);
   printf("\n");
 
-  float ce = pid_update(c, (float)(values->y_rot));
+  if(falling_forward) error = error * -1;
+
+  float ce = pid_update(c, (float)(error));
 
   printf("\n The CONTROL EFFORT IS %d \n", (int)(ce));
 }
@@ -223,8 +228,14 @@ void init() {
   char imu_wai = read_imu((char)0b00001111);
   printf("imu returned %d \n", imu_wai);
     
-  write_imu((char) CTRL1_XL, (char)0b01010000);
-  write_imu((char) CTRL2_G,  (char)0b01010000);
+  //write_imu((char) CTRL1_XL, (char)0b01010000);
+  //write_imu((char) CTRL2_G,  (char)0b01010000);
+
+
+  write_imu((char) CTRL1_XL, (char)0b10100000);
+  write_imu((char) CTRL2_G,  (char)0b10100000);
+
+  write_imu((char) CTRL7_G,  (char)0b01000000);
   
 
 
