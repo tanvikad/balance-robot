@@ -11,6 +11,7 @@ struct controller {
   float k_p;
   float k_i;
   float k_d;
+  float integration_cap;
 };
 
 

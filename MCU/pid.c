@@ -5,11 +5,17 @@ float pid_update(struct controller * c, float current_angle){
   float derivative_error;
 
   c->previous_error = c->current_error;
-  c->current_error = 0 - current_angle;
+  c->current_error = current_angle;
   
   control_effort = c->k_p * (c->current_error);
   c->integral_total_error += c->current_error * c->dt;
-  control_effort += c->k_i * (c->integral_total_error);
+
+  //we are capping the integration effort between -integration cap and +integration cap
+  float integration_effort = c->k_i * (c->integral_total_error);
+  if (integration_effort > c->integration_cap) integration_effort = c->integration_cap;
+  else if(integration_effort < -1 * c->integration_cap) integration_effort = -1 * c->integration_cap;
+
+  control_effort += integration_effort; 
 
   derivative_error = (c->current_error - c->previous_error) / c->dt;
   control_effort += c->k_d * (derivative_error);
@@ -22,10 +28,11 @@ void pid_init(struct controller * c)
   c->current_error = 0;
   c->integral_total_error = 0;
   c->previous_error = 0;
-  c->k_p = 2;
+  c->k_p = 60;
   c->k_i = 10;
-  c->k_d = 20;
-  c->dt = 1;
+  c->k_d = 1;
+  c->dt = 20;
+  c->integration_cap = 10;
 
   printf("\n initalized the pid \n");
 }

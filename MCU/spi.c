@@ -27,8 +27,11 @@ int main(void) {
 }
 
 float sigmoid_m(float x){
-  float scaler = 1;
-  return 2*((1.0/(1.0+exp(-1*(x*scaler))))-0.5);
+  //float scaler = 0.01;
+  //return 2*((1.0/(1.0+exp(-1*(x*scaler))))-0.5);
+  if(x < -100) return -100;
+  if(x > 100) return 100;
+  return x;
 }
 
 void print_float(float f)
@@ -90,17 +93,21 @@ void after_waiting(struct imu_values * values, struct controller* c)
   print_float(values->z_acc);
   printf("\n");
 
+  printf("\n after waiting y-acceleration value ");
+  print_float(values->y_acc);
+  printf("\n");
 
   printf("\n after waiting x-acceleration value ");
   print_float(values->x_acc);
   printf("\n");
 
 
-  bool falling_forward = (values->x_acc < 2.0);
+  bool falling_forward = (values->y_acc < 0.0);
   printf("Falling forward %d \n ", falling_forward);
 
   float error =   10.0 - values->z_acc;
-  if(error < 0) error = error*-1;
+  //if the gravity is showing up as more than 10, we will just assume that it is balanced
+  if(error < 0) error = 0;
 
   printf("The error is ");
   print_float(error);
@@ -112,7 +119,11 @@ void after_waiting(struct imu_values * values, struct controller* c)
 
   printf("\n The CONTROL EFFORT IS %d \n", (int)(ce));
   
-  int sigmoid_ce = (int) (sigmoid_m(ce)*100);
+  /*bool control_less_zero = ce < 0;
+  ce = abs(pow(ce, 1.2));
+  if(control_less_zero) ce = ce*-1;*/
+
+  int sigmoid_ce = (int) (sigmoid_m(ce));
   printf("Try to spin motor with %d", sigmoid_ce);
   char motor_output = set_val(sigmoid_ce);
   spin_motor(motor_output, motor_output);
@@ -123,7 +134,7 @@ void after_waiting(struct imu_values * values, struct controller* c)
 
 void loop(){
 
-  tim_main(TIM6, 1000, waiting, after_waiting);
+  tim_main(TIM6, 20, waiting, after_waiting);
 
   /*char m1_val;
   char m2_val;
