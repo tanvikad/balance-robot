@@ -12,6 +12,8 @@ struct controller {
   float k_i;
   float k_d;
   float integration_cap;
+  float previous_control_effort[5];
+  int array_pointer;
 };
 
 

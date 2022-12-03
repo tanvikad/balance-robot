@@ -20,6 +20,17 @@ float pid_update(struct controller * c, float current_angle){
   derivative_error = (c->current_error - c->previous_error) / c->dt;
   control_effort += c->k_d * (derivative_error);
 
+  c->previous_control_effort[c->array_pointer] = control_effort;
+  c->array_pointer += 1;
+  c->array_pointer = c->array_pointer % 5;
+
+  float sum = 0;
+  for(int i = 0; i < 5; i++)
+  {
+    sum += c->previous_control_effort[i];
+  }
+  return sum/5.0;
+
   return control_effort;
 }
 
@@ -28,11 +39,16 @@ void pid_init(struct controller * c)
   c->current_error = 0;
   c->integral_total_error = 0;
   c->previous_error = 0;
-  c->k_p = 60;
+  c->k_p = 100;
   c->k_i = 10;
-  c->k_d = 1;
+  c->k_d = 0.3;
   c->dt = 20;
   c->integration_cap = 10;
+  for(int i = 0; i < 5; i++)
+  {
+    c->previous_control_effort[i] =0;
+  }
+  c->array_pointer = 0;
 
   printf("\n initalized the pid \n");
 }
