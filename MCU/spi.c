@@ -89,6 +89,7 @@ void waiting(int i, struct imu_values * values)
 
 void after_waiting(struct imu_values * values, struct controller* c)
 {
+
   printf("\n after waiting z-acceleration value ");
   print_float(values->z_acc);
   printf("\n");
@@ -125,7 +126,14 @@ void after_waiting(struct imu_values * values, struct controller* c)
 
   int sigmoid_ce = (int) (sigmoid_m(ce));
   printf("Try to spin motor with %d", sigmoid_ce);
+
   char motor_output = set_val(sigmoid_ce);
+
+  //trying bang bang
+  /*if(falling_forward) motor_output = set_val(-100);
+  else motor_output = set_val(100);*/
+
+
   spin_motor(motor_output, motor_output);
 }
 

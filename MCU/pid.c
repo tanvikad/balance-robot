@@ -24,12 +24,12 @@ float pid_update(struct controller * c, float current_angle){
   c->array_pointer += 1;
   c->array_pointer = c->array_pointer % 5;
 
-  float sum = 0;
+  /*float sum = 0;9
   for(int i = 0; i < 5; i++)
   {
     sum += c->previous_control_effort[i];
   }
-  return sum/5.0;
+  return sum/5.0;*/
 
   return control_effort;
 }
@@ -39,9 +39,9 @@ void pid_init(struct controller * c)
   c->current_error = 0;
   c->integral_total_error = 0;
   c->previous_error = 0;
-  c->k_p = 100;
-  c->k_i = 10;
-  c->k_d = 0.3;
+  c->k_p = 750;
+  c->k_i = 0; // 10;
+  c->k_d = 0; //0.3;
   c->dt = 20;
   c->integration_cap = 10;
   for(int i = 0; i < 5; i++)
