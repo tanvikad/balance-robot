@@ -18,9 +18,9 @@ The FPGA code for the project is located in the Github repository [here](https:/
 | Item | Part Number | Quantity | Unit Price | Link |
 | ---- | ----------- | ----- | ---- | ---- |
 | 4xAA Battery  |  N.A | 1 | $7.00 |  N.A |
-| Adafruit 6 DoF IMU  |  4502 | 1 | $19.95 |  [link]( [link](https://www.adafruit.com/ product/4502 description) |
+| Adafruit 6 DoF IMU  |  4502 | 1 | $19.95 |  [link](https://www.adafruit.com/ product/4502 description) |
 | Battery Holder |  3859 | 1 | $2.95 |  [link](https://www.adafruit.com/product/3859) |
 | Adafruit Robot Kit  |  3244 | 1 | $24.95 |  [link](https://www.adafruit.com/product/3244) |
-| H-Bridge  |  STM L293D | 1 | [link](https://www.mouser.com/ProductDetail/STMicroelectronics/L293D) | $8.52 |
+| H-Bridge  |  STM L293D | 1  | $8.52 | [link](https://www.mouser.com/ProductDetail/STMicroelectronics/L293D)|
 
 **Total cost: $14.95**
