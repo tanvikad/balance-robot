@@ -20,7 +20,16 @@ The goal of our final project is to create a self balancing two wheel robot. Whe
 # Authors
 
 <div style="text-align: left">
-<a href="https://www.linkedin.com/in/eric-chen-2b8726208/" rel="some text">![Foo](./assets/img/Logo.png)</a>
+<a href="https://www.linkedin.com/in/eric-chen-2b8726208/" rel="some text">![Foo](http://www.google.com.au/images/nav_logo7.png)</a>
+</div>
+
+
+<div style="text-align: left">
+<a href="https://www.linkedin.com/in/eric-chen-2b8726208/">![Foo](http://www.google.com.au/images/nav_logo7.png)</a>
+</div>
+
+<div style="text-align: left">
+<a href="https://www.linkedin.com/in/eric-chen-2b8726208/" rel="some text"></a><img src="./assets/img/Logo.png" alt="logo" width="100" />
 </div>
 
 # Project Motivation
