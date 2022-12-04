@@ -10,13 +10,17 @@ permalink: /doc/
 # Source Code Overview
 <!-- This section should include information to describe the organization of the code base and highlight how the code connects. -->
 
-The source code for the project is located in the Github repository [here](https://github.com/joshbrake/example-project-portfolio/tree/main/src).
+The FPGA code for the project is located in the Github repository [here](https://github.com/tanvikad/balance-robot/tree/main/FGPA/source/impl_1) and the MCU code for the project is located in the repository [here](https://github.com/tanvikad/balance-robot/tree/main/MCU).
 
 # Bill of Materials
 <!-- The bill of materials should include all the parts used in your project along with the prices and links.  -->
 
 | Item | Part Number | Quantity | Unit Price | Link |
 | ---- | ----------- | ----- | ---- | ---- |
-| Adafruit VL53L0X Time of Flight Distance Sensor |  3317 | 1 | $14.95 |  [link](https://www.adafruit.com/product/3317) |
+| 4xAA Battery  |  N.A | 1 | $7.00 |  N.A |
+| Adafruit 6 DoF IMU  |  4502 | 1 | $19.95 |  [link]( [link](https://www.adafruit.com/ product/4502 description) |
+| Battery Holder |  3859 | 1 | $2.95 |  [link](https://www.adafruit.com/product/3859) |
+| Adafruit Robot Kit  |  3244 | 1 | $24.95 |  [link](https://www.adafruit.com/product/3244) |
+| H-Bridge  |  STM L293D | 1 | [link](https://www.mouser.com/ProductDetail/STMicroelectronics/L293D) | $8.52 |
 
 **Total cost: $14.95**
