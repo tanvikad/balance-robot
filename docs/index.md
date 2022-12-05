@@ -32,6 +32,14 @@ The goal of our final project is to create a self balancing two wheel robot. Whe
 <a href="https://www.linkedin.com/in/eric-chen-2b8726208/" rel="some text"></a><img src="./assets/img/Logo.png" alt="logo" width="100" />
 </div>
 
+<div style="text-align: left">
+<span>Open image link in a new tab: 
+ <a href="http://www.google.com" target="_blank">
+  <img src="./assets/img/Logo.png" />
+ </a>
+</span>
+</div>
+
 # Project Motivation
 
 Our motivation is experiment with control algorithms by using the IMU, our new sensor
