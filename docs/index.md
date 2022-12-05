@@ -21,8 +21,8 @@ The goal of our final project is to create a self balancing two wheel robot. Whe
 
 <div style="text-align: left">
 <span>
- <a href="http://www.google.com" target="_blank">
-  <img src="./assets/img/Eric_Chen_Image.jpg" alt = "logo" width="100" />
+ <a href="https://www.linkedin.com/in/eric-chen-2b8726208/" target="_blank">
+  <img src="./assets/img/Eric_Chen_Image.jpg" alt = "logo" width="30" />
  </a>
 </span>
 </div>
