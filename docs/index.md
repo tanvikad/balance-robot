@@ -20,9 +20,9 @@ The goal of our final project is to create a self balancing two wheel robot. Whe
 # Authors
 
 <div style="text-align: left">
-<span>Open image link in a new tab: 
+<span>
  <a href="http://www.google.com" target="_blank">
-  <img src="./assets/img/Eric_Chen_Image.jpg" alt = "logo" width="30" />
+  <img src="./assets/img/Eric_Chen_Image.jpg" alt = "logo" width="100" />
  </a>
 </span>
 </div>
