@@ -4,8 +4,6 @@ title: Self Balancing Robot
 permalink: /
 exclude: true
 ---
-<iframe width="560" height="315" src="<iframe width="320" height="560" src="https://www.youtube.com/embed/tRsg7kjJD0k" title="Self-balancing Robot" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tRsg7kjJD0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -33,14 +31,9 @@ The goal of our final project is to create a self balancing two wheel robot. Whe
 
 
 <div style="text-align: left">
-<img src="./assets/img/Results.PNG" width="100" />
+<img src="./assets/img/Results.png" width="100" />
 </div>
 
 <div style="text-align: left">
   <img src="./assets/img/Logo.png" alt="logo" width="100" />
-</div>
-
-
-<div style="text-align: left">
-  <img src="./assets/img/Results.PNG" alt="logo" width="100" />
 </div>

@@ -96,9 +96,6 @@ However, there were some difficulties with the hardware design of the robot. As 
 
 Though the robot was able to regain balance after being pushed, we were unable to exactly tune the robot to minimize the oscillations. The robot takes few seconds to recover from slight imbalances. 
 
-<div style="text-align: left">
-<img src="./assets/img/Results.PNG" width="100" />
-</div>
 
 <div style="text-align: left">
   <img src="https://tanvikad.github.io/balance-robot/assets/img/Logo.png" alt="logo" width="100" />
@@ -106,5 +103,5 @@ Though the robot was able to regain balance after being pushed, we were unable t
 
 
 <div style="text-align: left">
-  <img src="https://tanvikad.github.io/balance-robot/assets/img/Results.PNG" alt="logo" width="100" />
+  <img src="https://tanvikad.github.io/balance-robot/assets/img/Results.png" alt="results" width="100" />
 </div>
