@@ -1,36 +1,24 @@
 /**
-    Main: Contains main function for AES SPI communication with FPGA.
-    Sends the plaintext and key over SPI to the FPGA and then receives back
-    the cyphertext. The cyphertext is then compared against the solution
-    listed in Appendix A of the AES FIPS 197 standard.
-    @file lab7.c
-    @author Josh Brake
-    @version 1.0 7/13/2021
+  
+    @file cpi.c
+    @author Eric Chen, Tanvika Dasari
+    @version 1.0 12/08/2022
 */
 
 #include "spi.h"
 #include "lib/helper.h"
+#include "lib/STM32L432KC_TIM.h"
 #include <float.h>
 #include <math.h>
 #define RCC_BASE_ADR (0x40021000UL)
 #define RCC_APB1ENR1 ((uint32_t*)(RCC_BASE_ADR + 0x58))
 
 
-////////////////////////////////////////////////
-// Main
-////////////////////////////////////////////////
-int main(void) {
-  init();
-  tim_main(TIM6, 20, waiting, after_waiting);
-
-}
 
 ////////////////////////////////////////////////
 // control_cap: takes in x, the control effort and caps it at our two limit
 ////////////////////////////////////////////////
 float control_cap(float x){
-  //float scaler = 0.01;
-  //return 2*((1.0/(1.0+exp(-1*(x*scaler))))-0.5);
   if(x < -100) return -100;
   if(x > 100) return 100;
   return x;
@@ -118,11 +106,14 @@ void after_waiting(struct imu_values * values, struct controller* c)
   print_float(values->x_acc);
   printf("\n");
 
-
+  //we check that the robot is falling based on if the y_acceleration is less than 0 
   bool falling_forward = (values->y_acc < 0.0);
   printf("Falling forward %d \n ", falling_forward);
 
+  //we estimate gravity to be 10.0
+  //since upright is when z_acc = 10.0 our error on magnitude is the difference
   float error =   10.0 - values->z_acc;
+  
   //if the gravity is showing up as more than 10, we will just assume that it is balanced
   if(error < 0) error = 0;
 
@@ -130,33 +121,30 @@ void after_waiting(struct imu_values * values, struct controller* c)
   print_float(error);
   printf("\n");
 
+  //we want to use the direction to change the error going into the control effort
   if(falling_forward) error = error * -1;
 
+  //we update the controller with our error
   float ce = pid_update(c, (float)(error));
 
   printf("\n The CONTROL EFFORT IS %d \n", (int)(ce));
-  
-  /*bool control_less_zero = ce < 0;
-  ce = abs(pow(ce, 1.2));
-  if(control_less_zero) ce = ce*-1;*/
 
+  //we make sure our control is capped so that we can create a PWM signal
   int capped_control = (int) (control_cap(ce));
   printf("Try to spin motor with %d", capped_control);
 
+  //convert the integer capped control into our 8 bits of control based our FPGA specification
   char motor_output = set_val(capped_control);
 
+  //send the control for both motors through SPI
   spin_motor(motor_output, motor_output);
 }
 
 
 ////////////////////////////////////////////////
-// Functions
+// init: We initialize the pins, clock, timer and IMU
 ////////////////////////////////////////////////
-
-
-
 void init() {
-  // Configure flash latency and set clock to run at 84 MHz
 
   // Enable GPIOA clock
   RCC->AHB2ENR |= (RCC_AHB2ENR_GPIOAEN | RCC_AHB2ENR_GPIOBEN | RCC_AHB2ENR_GPIOCEN);
@@ -177,8 +165,8 @@ void init() {
   pinMode(DEBUG_LED_PIN_2, GPIO_OUTPUT);
   pinMode(DEBUG_LED_PIN_3, GPIO_OUTPUT);
 
-    
-  digitalWrite(FPGA_LOAD_PIN, 1);       // set the chip select high when idle.
+  // set the chip select high when idle.
+  digitalWrite(FPGA_LOAD_PIN, 1);
   digitalWrite(IMU_LOAD_PIN, 1);
   
   digitalWrite(DEBUG_LED_PIN_1, 1);
@@ -196,20 +184,20 @@ void init() {
 
   //checking if the IMU is working 
   char imu_wai = read_imu((char)0b00001111);
-  printf("imu returned %d \n", imu_wai);
-    
-  //write_imu((char) CTRL1_XL, (char)0b01010000);
-  //write_imu((char) CTRL2_G,  (char)0b01010000);
+  if(imu_wai == (char)(170))
+    printf("IMU returned the correct WhoAmI register");
+  else
+    printf("IMU returned the wrong WhoAmI register");
 
-
+  
+  //set accelerometer 
   write_imu((char) CTRL1_XL, (char)0b10100000);
   write_imu((char) CTRL2_G,  (char)0b10100000);
-
   write_imu((char) CTRL7_G,  (char)0b01000000);
   
-
-
 }
+
+
 void spin_motor(char m1_val, char m2_val) {
   digitalWrite(FPGA_LOAD_PIN, 0);
   spiSendReceiveTwoChar(m1_val, m2_val);
@@ -315,3 +303,18 @@ char read_imu(char address) {
   digitalWrite(IMU_LOAD_PIN, 1);
   return imu_response;
 }
+
+void loop(){
+
+  tim_main(TIM6, 20, waiting, after_waiting);
+}
+
+
+////////////////////////////////////////////////
+// Main
+////////////////////////////////////////////////
+int main(void) {
+  init();
+  loop();
+}
+
