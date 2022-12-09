@@ -45,7 +45,7 @@ robot. And the loop repeats.
 
 
 <div style="text-align: left">
-  <img src="https://tanvikad.github.io/balance-robot/assets/schematics/Labeled-MCU-FPGA.png" alt="results" width="1000" />
+  <img src="https://tanvikad.github.io/balance-robot/assets/schematics/Labeled_MCU_FPGA.png" alt="results" width="1000" />
   <div style="text-align:center">Figure 3: Electronics connected to Robot </div>
 </div>
 
@@ -54,7 +54,10 @@ This project will incorporate an Inertial Measurement Unit (IMU), two DC motors,
 
 The IMU will provide measurements in six degrees of freedom ($x$, $y$, $z$, roll, pitch, and yaw). We will be using the IMU's reported $y$ and $z$ accelerations to approximate the tilt of the robot. The tilt is measured from the way the gravitational force is decomposed in the $y$ and $z$ direction of the IMU. Note that the sensor's positive $z$ direction points into the page and the positive $y$ direction points towards the front of the robot. When the sensor is flat, the $z$ axis lines up perfectly with the gravitational force vector and reports a value close to $g$. When the sensor is tilted at an angle, the effects of the gravitational force on the IMU's $z$ axis decreases but increases along the $x$ and $y$ axes. We use the difference between the $z$ acceleration value and g to determine the magnitude of the tilt. Since the $y$ axis points towards the front of the robot, when the head of the robot is tilted downward, the IMU reports increasing positive $y$ acceleration. In the opposite direction, the IMU reports decreasing negative $y$ acceleration. We take the sign of the $y$ acceleration to differentiate between leaning forward and leaning backward.
 
-
+<div style="text-align: left;">
+  <img src="https://tanvikad.github.io/balance-robot/assets/img/IMU_explaination.png" alt="results" width="1000" />
+  <div style="text-align:center">Figure 4:  </div>
+</div>
 
 We also use two brushed DC motors that can spin continuously and have one wire for power and one for ground. When connected to our motor driver (the L293D), we can control the spin of the motors bidirectionally. The L293D controls can control two motors independently. For each motor, it has two pins to control the spin direction of the motor (see FPGA section). Besides controlling the motors, the L293D allows us to amplify the current provided to the motors.
 
