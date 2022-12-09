@@ -4,24 +4,21 @@ title: Documentation
 permalink: /doc/
 ---
 
-# Schematics
-<!-- Include images of the schematics for your system. They should follow best practices for schematic drawings with all parts and pins clearly labeled. You may draw your schematics either with a software tool or neatly by hand. -->
-
-
-
+# Block Diagram
 <div style="text-align: left">
   <img src="https://tanvikad.github.io/balance-robot/assets/schematics/block-diagram.jpg" alt="results" width="1000" />
-  <div style="text-align:center">Block Diagram</div>
+
 </div>
 
+
+# Electronics Schematic
 <div style="text-align: left">
   <img src="https://tanvikad.github.io/balance-robot/assets/schematics/Schematics.jpg" alt="results" width="1000" />
-  <div style="text-align:center">Electronics Schematic</div>
 </div>
 
+# FPGA Hardware Design Schematic
 <div style="text-align: left">
   <img src="https://tanvikad.github.io/balance-robot/assets/schematics/fpga_diagram.jpg" alt="results" width="1000" />
-  <div style="text-align:center">FPGA Hardware Design Schematic</div>
 </div>
 
 

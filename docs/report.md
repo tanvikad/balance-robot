@@ -92,13 +92,7 @@ In the timer loop there are two main parts:
   <li>After the timer reaches the limit, the MCU computes the PID control based on the time step and the IMU data and then sends it to the FPGA through SPI (Figure \ref{fig:SPI with FPGA}).</li>
 </ol>
 
-We implement a standard PID algorithm with a capped integral component. The input to the control loop is the tilt magnitude multiplied by the direction of tilt. The magnitude is calculated as $g$ - $z$ accerlation. The $\texttt{Hardware}$ section contains more information on how these values are calcuated using IMU data. The proportional component acts directly based on the error. The integeral component is proportional to a running sum of past errors. This sum is capped at $10$ to avoid excessive influence on the rest of the system. Without this cap, we found the robot was not able to respond quickly to changes in tilt. Finally, the derivative component is proportional to the difference between the current error and previous error. After calcuting each component, we sum the values and apply a piecewise function to translate the control effort into an appropropiate duty cycle. The chosen function is linear for control values
-
-The proportional component acts directional
-
-This cap prevents our integral value from acculumating too much and dominating the rest of the control system.
-
-
+We implement a standard PID algorithm with a capped integral component. The input to the control loop is the tilt magnitude multiplied by the direction of tilt. The magnitude is calculated as $g$ - $z$ accerlation. The $\texttt{Hardware}$ section contains more information on how these values are calcuated using IMU data. The proportional component acts directly based on the error. The integeral component is proportional to a running sum of past errors. This sum is capped at $10$ to avoid excessive influence on the rest of the system. Without this cap, we found the robot was not able to respond quickly to changes in tilt. Finally, the derivative component is proportional to the difference between the current error and previous error. After calcuting each component, we sum the values and apply a piecewise function to translate the control effort into an appropropiate duty cycle. The chosen function is linear (y=x) for control values from -100 to 100, and bounds the rest of the range to either -100 for negative control efforts or 100 for positive control efforts. See below for a block diagram of our PID algorithm.
 
 
 # FPGA Design
