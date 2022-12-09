@@ -1,7 +1,7 @@
 `timescale 10ns/1ns
 /////////////////////////////////////////////
 // spi_tb
-// test our top spi module 
+// test our pwm_spi module 
 // Added by Eric Chen
 // erchen@hmc.edu
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -15,7 +15,7 @@ module testbench_spi_top();
     logic delay;
     
     // device under test
-    spi dut(reset, sck, clk, sdi, load, sdo, enable12, enable34, a1, a2, a3, a4, debug_light);
+    pwm_spi dut(reset, sck, clk, sdi, load, sdo, enable12, enable34, a1, a2, a3, a4, debug_light);
     
     // test case
     initial begin   
@@ -38,7 +38,7 @@ module testbench_spi_top();
     end
     
 	assign comb = {motor1_in, motor2_in};
-    // shift in test vectors, wait until done, check if the correct motor values are registered
+    // shift in test valus, wait until done, check if the correct motor values are registered
     always @(posedge clk) 
 		begin
 		  if (i == 16) load = 1'b0;

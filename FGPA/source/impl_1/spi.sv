@@ -1,27 +1,10 @@
 /////////////////////////////////////////////
-// pwm
-// 
+// spi
+// Faciliates spi communication with mcu
 // Added by Eric Chen
 // erchen@hmc.edu
 //////////////////////////////////////////////////////////////////////////////////////////
-module pwm(input logic sck,
-			input logic sdi,
-			output logic sdo,
-			input logic load);
-		
-		logic [7:0] motor1, motor2;
-		
-		pwm_spi spi(sck, load, sdi, sdo, motor1, motor2);
-endmodule 
-
-
-/////////////////////////////////////////////
-// pwm_spi
-// 
-// Added by Eric Chen
-// erchen@hmc.edu
-//////////////////////////////////////////////////////////////////////////////////////////
-module pwm_spi(input logic sck,
+module spi(input logic sck,
 	   input logic load,
        input logic sdi,
 	   output logic sdo,
@@ -30,12 +13,14 @@ module pwm_spi(input logic sck,
 	   
 	always_ff @(posedge sck) 
 	begin
-		if (load == 0'b0)
+		// when load is low, the mcu is talking to the spi, so start shifting in bytes
+		if (load == 1'b0)
 		begin
 				{motor1, motor2} = {motor1[6:0], motor2, sdi};
 		end
 	end
 	
+	// no need to send anything to mcu
 	assign sdo = 0;
 	  
 endmodule
