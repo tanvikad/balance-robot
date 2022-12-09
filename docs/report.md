@@ -2,6 +2,7 @@
 layout: page
 title: Project Report
 permalink: /report/
+exclude: true
 ---
 
 # Abstract
