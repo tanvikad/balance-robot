@@ -1,10 +1,10 @@
 `timescale 10ns/1ns
 /////////////////////////////////////////////
-// testbench_aes_spi
-// Tests AES with cases from FIPS-197 appendix
-// Simulates full system with SPI load
-/////////////////////////////////////////////
-
+// spi_tb
+// test our top spi module 
+// Added by Eric Chen
+// erchen@hmc.edu
+//////////////////////////////////////////////////////////////////////////////////////////
 module testbench_spi_top();
     logic clk, load, done, sck, sdi, sdo, reset,  enable12, enable34, a1, a2, a3, a4, debug_light;
 	logic [7:0] motor1_in, motor2_in;
@@ -20,7 +20,7 @@ module testbench_spi_top();
     // test case
     initial begin   
       motor1_in 	 <= 8'b10101010;
-      motor2_in    <= 8'b01010101;
+      motor2_in      <= 8'b01010101;
     end
     
     // generate clock and load signals

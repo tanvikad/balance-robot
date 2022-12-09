@@ -1,3 +1,9 @@
+/////////////////////////////////////////////
+// top
+// 
+// Added by Eric Chen
+// erchen@hmc.edu
+//////////////////////////////////////////////////////////////////////////////////////////
 module spi(
 	input logic reset,
 	input logic sck,
@@ -21,7 +27,12 @@ module spi(
 endmodule
 
 
-
+/////////////////////////////////////////////
+// top
+// The top modules that uses the FPGA oscillator as the clock.
+// Added by Tanvika Dasari
+// tdasari@hmc.edu
+//////////////////////////////////////////////////////////////////////////////////////////
 module top(
 	input logic reset,
 	input logic sck,
@@ -42,6 +53,7 @@ module top(
 	HSOSC #(.CLKHF_DIV(2'b11))
 		hf_osc (.CLKHFPU(1'b1), .CLKHFEN(1'b1), .CLKHF(int_osc));
 	
+	// We are slowing the clock and then feeding into the spi_unit
 	logic clk;
 	logic[5:0] counter;
 	parameter[5:0] limit = 6'd50;

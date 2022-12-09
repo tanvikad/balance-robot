@@ -43,13 +43,19 @@ module motor_controller(
 							old_motor2_upperlimit <= motor2_upperlimit;
 						end
 					debug_light <= 1'b0;
+					
+					//we are updating a1 - a4 based on the motor sign
 					a1<=(motor1_sign);
 					a2<=(!motor1_sign);
 					a3<=(motor2_sign);
 					a4<= (!motor2_sign);
+					
+					//incrementing the counter every rising clock edge unless it overflows past the limit, then we set it to 0
 					if(counter < upper_limit) counter <= counter + 1;
 					else counter <= 0;
 					
+					
+					//set the enables with the PWM signal
 					enable12 <= (counter <= old_motor1_upperlimit);
 					enable34 <= (counter <= old_motor2_upperlimit);
 						
