@@ -25,15 +25,10 @@ The goal of our final project is to create a self balancing two wheel robot. Whe
  <a href="https://www.linkedin.com/in/eric-chen-2b8726208/" target="_blank">
   <img style="border-radius: 50%;" src="./assets/img/Eric_Chen_Image.jpg" alt = "logo" width="100" />
  </a>
+
+  <a href="https://www.linkedin.com/in/tanvikadasari" target="_blank">
+  <img style="border-radius: 50%;" src="./assets/img/Tanvika_Dasari_Image.jpg" alt = "logo" width="100" />
+ </a>
 </span>
 </div>
 
-
-
-<div style="text-align: left">
-<img src="./assets/img/Results.PNG" width="100" />
-</div>
-
-<div style="text-align: left">
-  <img src="./assets/img/Logo.png" alt="logo" width="100" />
-</div>
