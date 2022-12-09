@@ -9,7 +9,7 @@ permalink: /doc/
 
 
 <div style="text-align: left">
-  <img src="https://tanvikad.github.io/balance-robot/schematics/Schematics.jpg" alt="results" width="500" />
+  <img src="https://tanvikad.github.io/balance-robot/assets/schematics/Schematics.jpgg" alt="results" width="500" />
 </div>
 
 
@@ -17,6 +17,7 @@ permalink: /doc/
 <!-- This section should include information to describe the organization of the code base and highlight how the code connects. -->
 Source code for the self balancing robot can be found with documentation [here](https://github.com/echen4628/balance-robot-code). The MCU and FPGA code are located in their respective folders. 
 
+The MCU code is intended for the STM32L432KC. Within the MCU folder, there are several files with helper functions in the $\texttt{/lib}$ folder to help with using [GPIO pins](https://github.com/echen4628/balance-robot-code/blob/main/MCU/lib/STM32L432KC_GPIO.h), [timers](https://github.com/echen4628/balance-robot-code/blob/main/MCU/lib/STM32L432KC_TIM.h), and [spi communication](https://github.com/echen4628/balance-robot-code/blob/main/MCU/lib/STM32L432KC_SPI.h). 
 
 # Bill of Materials
 <!-- The bill of materials should include all the parts used in your project along with the prices and links.  -->

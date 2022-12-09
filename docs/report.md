@@ -43,7 +43,7 @@ Finally, the whole system is powered by an external 6V battery. This extra batte
 # Schematics
 
 <div style="text-align: left">
-  <img src="https://tanvikad.github.io/balance-robot/schematics/Schematics.jpg" alt="results" width="500" />
+  <img src="https://tanvikad.github.io/balance-robot/assets/schematics/Schematics.jpg" alt="results" width="500" />
 </div>
 
 
