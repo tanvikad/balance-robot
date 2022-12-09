@@ -1,9 +1,10 @@
 # Configuration Options
-title: Example MicroPs Project Website
-author: "Prof. Josh Brake"
+title: Self Balancing Robot
+author: "Eric Chen and Tanvika Dasari"
 theme: minima
 
 header-pages:
+  - report.html
   - documentation.html
   - resources.html
 

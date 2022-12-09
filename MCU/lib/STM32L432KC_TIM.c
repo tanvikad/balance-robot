@@ -1,5 +1,10 @@
-// STM32F401RE_TIM.c
-// TIM functions
+/**
+Contains functions for MCU timers
+
+    @file TIM.h
+    @author Eric Chen, Tanvika Dasari, Josh Brake
+    @version 1.0 12/08/2022
+*/
 
 #include "STM32L432KC_TIM.h"
 #include "STM32L432KC_RCC.h"
@@ -26,9 +31,6 @@ void delay_millis(TIM_TypeDef * TIMx, uint32_t ms){
   
 }
 
-
-
-
 void tim_main(TIM_TypeDef * TIMx, uint32_t ms, void (*event_during_waiting)(int, struct imu_values*),  void (*event_after_waiting)(struct imu_values*, struct controller*))
 {
   TIMx->ARR = ms;// Set timer max count
@@ -43,8 +45,6 @@ void tim_main(TIM_TypeDef * TIMx, uint32_t ms, void (*event_during_waiting)(int,
 
   pid_init(&pid_controller);
   
-
-
   while(1)
   {
     while(!(TIMx->SR & 1)) // Wait for UIF to go high

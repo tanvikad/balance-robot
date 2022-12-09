@@ -1,6 +1,10 @@
-// STM32F401RE_TIM.h
-// Header for TIM functions
+/**
+Contains function headers for timer functions
 
+    @file TIM.h
+    @author Eric Chen, Tanvika Dasari, Josh Brake
+    @version 1.0 12/08/2022
+*/
 #ifndef STM32L4_TIM_H
 #define STM32L4_TIM_H
 
@@ -19,7 +23,8 @@ void delay_millis(TIM_TypeDef * TIMx, uint32_t ms);
 void delay_micros(TIM_TypeDef * TIMx, uint32_t us);
 
 
-
+/**
+*/
 void tim_main(TIM_TypeDef * TIMx, uint32_t ms, void (*event_during_waiting)(int, struct imu_values*),  void (*event_after_waiting)(struct imu_values*, struct controller*));
 
 #endif

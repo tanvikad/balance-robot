@@ -1,34 +1,25 @@
 /**
-  
-    @file cpi.c
+Contains the main and functions to communicate with the IMU and FPGA
+
+    @file spi.c
     @author Eric Chen, Tanvika Dasari
     @version 1.0 12/08/2022
 */
 
 #include "spi.h"
 #include "lib/helper.h"
-#include "lib/STM32L432KC_TIM.h"
 #include <float.h>
 #include <math.h>
 #define RCC_BASE_ADR (0x40021000UL)
 #define RCC_APB1ENR1 ((uint32_t*)(RCC_BASE_ADR + 0x58))
 
 
-
-////////////////////////////////////////////////
-// control_cap: takes in x, the control effort and caps it at our two limit
-////////////////////////////////////////////////
-float control_cap(float x){
-  if(x < -100) return -100;
-  if(x > 100) return 100;
-  return x;
+float control_cap(float control_effort){
+  if(control_effort < -100) return -100;
+  if(control_effort > 100) return 100;
+  return control_effort;
 }
 
-
-
-////////////////////////////////////////////////
-// print_float: prints a float with 3 significant figures
-////////////////////////////////////////////////
 void print_float(float f)
 {
   int before_decimal_place = (int)(f);
@@ -36,11 +27,6 @@ void print_float(float f)
   printf("%d.%d", before_decimal_place, after_decimal_place);
 }
 
-
-////////////////////////////////////////////////
-// waiting : function that is called while the timer is counting to ARR
-// data being read is stored in the struct "values"
-////////////////////////////////////////////////
 void waiting(int i, struct imu_values * values)
 {
   //debug led is switched on and off based on if the timer is continued to count
@@ -86,11 +72,6 @@ void waiting(int i, struct imu_values * values)
 
 }
 
-
-////////////////////////////////////////////////
-// after_waiting: function that is called after the timer counts to ARR
-// updated data stored in values is used to update the control effor which is sent to controller
-////////////////////////////////////////////////
 void after_waiting(struct imu_values * values, struct controller* c)
 {
 
@@ -134,16 +115,12 @@ void after_waiting(struct imu_values * values, struct controller* c)
   printf("Try to spin motor with %d", capped_control);
 
   //convert the integer capped control into our 8 bits of control based our FPGA specification
-  char motor_output = set_val(capped_control);
+  char motor_output = generate_FPGA_message(capped_control);
 
   //send the control for both motors through SPI
   spin_motor(motor_output, motor_output);
 }
 
-
-////////////////////////////////////////////////
-// init: We initialize the pins, clock, timer and IMU
-////////////////////////////////////////////////
 void init() {
 
   // Enable GPIOA clock
@@ -178,9 +155,9 @@ void init() {
   RCC->AHB1ENR |= (RCC_APB1ENR1_TIM6EN);
   *RCC_APB1ENR1 |= (1<<4);
   *RCC_APB1ENR1 |= (1<<5);
+
+  //initializes the timer
   initTIM(TIM6);
-
-
 
   //checking if the IMU is working 
   char imu_wai = read_imu((char)0b00001111);
@@ -190,13 +167,15 @@ void init() {
     printf("IMU returned the wrong WhoAmI register");
 
   
-  //set accelerometer 
+  //set accelerometer frequency to 6.66 kHz and range from -2g to 2g
   write_imu((char) CTRL1_XL, (char)0b10100000);
-  write_imu((char) CTRL2_G,  (char)0b10100000);
-  write_imu((char) CTRL7_G,  (char)0b01000000);
   
-}
+  //set gyroscope frequency to 6.66 kHz and range from -125 to 125 dps
+  write_imu((char) CTRL2_G,  (char)0b10100000);
 
+  // enable high pass filter for gyroscope
+  write_imu((char) CTRL7_G,  (char)0b01000000);
+}
 
 void spin_motor(char m1_val, char m2_val) {
   digitalWrite(FPGA_LOAD_PIN, 0);
@@ -210,12 +189,14 @@ int16_t twosComplement_to_int(char higher, char lower) {
  return (int16_t) (higher << 8 | lower);
 }
 
-float scale_accel(int16_t raw) {
- return (float) (raw * ACCEL_SCALE_2G * 9.807/1000.0);
+
+float scale_accel(int16_t raw_acceleration) {
+ return (float) (raw_acceleration * ACCEL_SCALE_2G * 9.807/1000.0);
 }
 
-float get_angle(int16_t raw) {
- return (float) (raw * GYRO_SCALE_250 * 0.017453293/1000.0);
+
+float get_angle(int16_t raw_angle) {
+ return (float) (raw_angle * GYRO_SCALE_250 * 0.017453293/1000.0);
 }
 
 int binaryToDecimal(int n)
@@ -260,17 +241,20 @@ int decimalToBinary(int n)
     return binaryNum;
 }
 
-char set_val(int value){
-  if (value < 0){
-    return set_val_helper(1, value*-1);
+char generate_FPGA_message(int control_effort){
+  // encode control effort based on sign
+  if (control_effort < 0){
+    return generate_FPGA_message_helper(1, control_effort*-1);
   }
   else{
-    return set_val_helper(0, value);
+    return generate_FPGA_message_helper(0, control_effort);
   }
 }
 
-char set_val_helper(bool reverse, int value){
+char generate_FPGA_message_helper(bool reverse, int value){
   char motor_output = (char) value;
+  // The msb of the message indicate direction of motor
+  // the rest of the message encodes a binary number
   motor_output |= reverse << 7;
   return motor_output;
 }
@@ -285,36 +269,26 @@ void force_reset(){
 
 void write_imu(char address, char write) {
   char imu_response;
-  printf("trying to write to %d with write block %d \n", address, write);
+  printf("Writing to %d with write block %d \n", address, write);
   digitalWrite(IMU_LOAD_PIN, 0);
   imu_response = spiSendReceiveTwoChar(address, write);
   while(SPI1->SR & SPI_SR_BSY);
   digitalWrite(IMU_LOAD_PIN, 1);
-  //return imu_response;
 }
 
 char read_imu(char address) {
   char imu_response;
-  //printf("trying to read from %d \n", address);
   address |= IMU_READ_ADDRESS;
   digitalWrite(IMU_LOAD_PIN, 0);
+  // We send the address and the send an empty byte to get the information at the address
   imu_response = spiSendReceiveTwoChar(address, 0b00000000);
   while(SPI1->SR & SPI_SR_BSY);
   digitalWrite(IMU_LOAD_PIN, 1);
   return imu_response;
 }
 
-void loop(){
-
-  tim_main(TIM6, 20, waiting, after_waiting);
-}
-
-
-////////////////////////////////////////////////
-// Main
-////////////////////////////////////////////////
 int main(void) {
   init();
-  loop();
+  tim_main(TIM6, 20, waiting, after_waiting);
 }
 
