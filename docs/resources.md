@@ -14,7 +14,4 @@ permalink: /resources/
 
 [Robot Kit Instructions](https://learn.adafruit.com/tri-layer-mini-round-robot-chassis-ki)
 
-# Inspiration
-
-Eric Chen
 

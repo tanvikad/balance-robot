@@ -11,7 +11,7 @@ exclude: true
 <form action="report">
     <input type="submit" style="text-align:center" value="Read our project report" />
 </form>
-<form action="https://github.com/tanvikad/balance-robot">
+<form action="https://github.com/echen4628/balance-robot-code">
     <input type="submit" value="Check out our Github" />
 </form>
 

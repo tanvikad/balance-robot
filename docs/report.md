@@ -11,19 +11,22 @@ which we define to be the upright position. We will use a PID control to control
 the angular velocity of the two wheels to achieve this capability. On Demo Day,
 visitors can push our robot and see it quickly return to the upright position.
 
-# Introduction
-Unlike their multi-wheeled counterparts, two wheeled robots are statically un-
-stable. Unless the center of mass is perfectly placed or they experience a flat
+# Introduction / Project Motivation
+Unlike their multi-wheeled counterparts, two wheeled robots are statically un-stable. Unless the center of mass is perfectly placed or they experience a flat
 tire, two wheeled robots are doomed to fall one way or the other. This class of
 balancing vertically unstable objects can be broadly modeled by the inverted
-pendulum problem. Several interesting real world applications depend on solv-
-ing the inverted pendulum problem, including launching and landing rockets
+pendulum problem. Several interesting real world applications depend on solving the inverted pendulum problem, including launching and landing rockets
 and navigating the streets on a fancy Segway. In this project, we showcase how
 to stabilize a two wheeled robot using a PID controls algorithm.
-The block diagram of the system is showcased in Figure 2 and the physical
-design of the robot is observable in Figure 1.  The control loop starts
-with the Microcontroller (MCU). It requests $y$ and $z$ acceleration data from
-an Inertial Measurement Unit (IMU) through SPI communication. Using this
+The block diagram of the system is showcased below in Figure 1 and the physical
+design of the robot is observable in Figure 2 and Figure 3. 
+
+<div style="text-align: left">
+  <img src="https://tanvikad.github.io/balance-robot/assets/schematics/block-diagram.jpg" alt="results" width="1000" />
+  <div style="text-align:center">Figure 1: Block Diagram</div>
+</div>
+
+The control loop starts with the Microcontroller (MCU). It requests $y$ and $z$ acceleration data from an Inertial Measurement Unit (IMU) through SPI communication. Using this
 data, the MCU calculates the magnitude and direction of the robot’s tilt and
 passes this information to a PID controls algorithm with the goal of minimizing
 the tilt magnitude. The controls outputs are processed and sent to a Field
@@ -37,13 +40,13 @@ robot. And the loop repeats.
 
 <div style="text-align: left">
   <img src="https://tanvikad.github.io/balance-robot/assets/schematics/Labeled-Battery-and-Motor.png" alt="results" width="1000" />
-  <div style="text-align:center">Figure 1: Lower Section of Robot </div>
+  <div style="text-align:center">Figure 2: Lower Section of Robot </div>
 </div>
 
 
 <div style="text-align: left">
   <img src="https://tanvikad.github.io/balance-robot/assets/schematics/Labeled-MCU-FPGA.png" alt="results" width="1000" />
-  <div style="text-align:center">Figure 2: Electronics connected to Robot </div>
+  <div style="text-align:center">Figure 3: Electronics connected to Robot </div>
 </div>
 
 
@@ -51,17 +54,13 @@ This project will incorporate an Inertial Measurement Unit (IMU), two DC motors,
 
 The IMU will provide measurements in six degrees of freedom ($x$, $y$, $z$, roll, pitch, and yaw). We will be using the IMU's reported $y$ and $z$ accelerations to approximate the tilt of the robot. The tilt is measured from the way the gravitational force is decomposed in the $y$ and $z$ direction of the IMU. Note that the sensor's positive $z$ direction points into the page and the positive $y$ direction points towards the front of the robot. When the sensor is flat, the $z$ axis lines up perfectly with the gravitational force vector and reports a value close to $g$. When the sensor is tilted at an angle, the effects of the gravitational force on the IMU's $z$ axis decreases but increases along the $x$ and $y$ axes. We use the difference between the $z$ acceleration value and g to determine the magnitude of the tilt. Since the $y$ axis points towards the front of the robot, when the head of the robot is tilted downward, the IMU reports increasing positive $y$ acceleration. In the opposite direction, the IMU reports decreasing negative $y$ acceleration. Through this system, we take the sign of the $y$ acceleration to differentiate between leaning forward and leaning backward.
 
-We also use two brushed DC. These DC motors can spin continuously and have one wire for power and one for ground. When connected to our motor driver (the L293D), we can control the spin of the motors bidirectionally. The L293D controls can control two motors independently. For each motor, it has two pins to control the spin direction of the motor (see FPGA section). Besides controlling the motors, the L293D allows us to amplify the current provided to the motors.
+We also use two brushed DC motors that can spin continuously and have one wire for power and one for ground. When connected to our motor driver (the L293D), we can control the spin of the motors bidirectionally. The L293D controls can control two motors independently. For each motor, it has two pins to control the spin direction of the motor (see FPGA section). Besides controlling the motors, the L293D allows us to amplify the current provided to the motors.
 
 Finally, the whole system is powered by an external 6V battery. This extra battery provide necessary power to rotate the motors at higher speeds and allows our robot to be a self contained unit.
 
  
 # Schematics
 
-<div style="text-align: left">
-  <img src="https://tanvikad.github.io/balance-robot/assets/schematics/block-diagram.jpg" alt="results" width="1000" />
-  <div style="text-align:center">Figure 3: Block Diagram</div>
-</div>
 
 <div style="text-align: left">
   <img src="https://tanvikad.github.io/balance-robot/assets/schematics/Schematics.jpg" alt="results" width="1000" />
@@ -76,7 +75,7 @@ Finally, the whole system is powered by an external 6V battery. This extra batte
 
 
 # MCU Design
-The $\texttt{main}$ function located in [spi.c](https://github.com/echen4628/balance-robot-code/blob/main/MCU/lib/STM32L432KC_SPI.h) consists of two functions $\texttt{init}$ and $\texttt{tim\_loop}$.
+The $\texttt{main}$ function located in [spi.c](https://github.com/echen4628/balance-robot-code/blob/main/MCU/spi.c) consists of two functions $\texttt{init}$ and $\texttt{tim\_loop}$.
 
 <div style="text-align: left">
     <img src="https://tanvikad.github.io/balance-robot/assets/schematics/spi with imu.jpg" alt="results" width="500" />
@@ -85,7 +84,7 @@ The $\texttt{main}$ function located in [spi.c](https://github.com/echen4628/bal
 
 In $\texttt{init}$ we initialize the SPI by making both $\texttt{phase}$ and $\texttt{polarity}$ to be 1. We configure the IMU and FPGA load and reset pins with $\texttt{GPIO\_OUTPUT}$.  We initialize timer 6 on the MCU which is used to keep track of the time step between IMU reads. Finally, we read the $\texttt{WhoAmI}$ register of the IMU, which contains a constant value. Comparing the value read from the IMU and the expected $\texttt{WhoAmI}$ value allows us to check the accuracy of our SPI communication.
 
-In $\texttt{tim\_loop}$, timer 6 is run on repeat. We set our timer to count up to 20 milliseconds making the rate the IMU is read at to be about 50 Hz. 
+In $\texttt{tim\_loop}$ located in [STM32L432KC_TIM.c](https://github.com/echen4628/balance-robot-code/blob/main/MCU/lib/STM32L432KC_TIM.c) contains the main code for our use of timer 6.  We set $\texttt{Tim6}$ on the robot to count up to 20 milliseconds making the rate the IMU is read at to be about 50 Hz. 
 In the timer loop there are two main parts: 
 <ol>
   <li> While the timer is counting, the MCU repeatedly reads the IMU and continually holds the most updated acceleration data.</li>
@@ -93,13 +92,17 @@ In the timer loop there are two main parts:
   <li>After the timer reaches the limit, the MCU computes the PID control based on the time step and the IMU data and then sends it to the FPGA through SPI (Figure \ref{fig:SPI with FPGA}).</li>
 </ol>
 
-We use a standard PID algorithm for  
+We implement a standard PID algorithm with a capped integral component. The input to the control loop is the tilt magnitude multiplied by the direction of tilt. The magnitude is calculated as $g$ - $z$ accerlation. The $\texttt{Hardware}$ section contains more information on how these values are calcuated using IMU data. The proportional component acts directly based on the error. The integeral component is proportional to a running sum of past errors. This sum is capped at $10$ to avoid excessive influence on the rest of the system. Without this cap, we found the robot was not able to respond quickly to changes in tilt. Finally, the derivative component is proportional to the difference between the current error and previous error. After calcuting each component, we sum the values and apply a piecewise function to translate the control effort into an appropropiate duty cycle. The chosen function is linear for control values
+
+The proportional component acts directional
+
+This cap prevents our integral value from acculumating too much and dominating the rest of the control system.
 
 
 
 
 # FPGA Design
-The top level module of our FPGA design takes in the inputs $\texttt{sck, clk, sdi, sdo, reset, and load}$ and controls 6 pins to control the H-Bridge. This module calls two modules, a $\texttt{SPI}$ module to load input from the MCU and a $\texttt{controller}$ module to generate a PWM signal.
+The [top](https://github.com/echen4628/balance-robot-code/blob/main/FPGA/source/top.sv) level module of our FPGA design takes in the inputs $\texttt{sck, clk, sdi, sdo, reset, and load}$ and controls 6 pins to control the H-Bridge. This module calls two modules, a $\texttt{SPI}$ module to load input from the MCU and a $\texttt{controller}$ module to generate a PWM signal.
 
 The $\texttt{SPI}$ module takes in the inputs $\texttt{sck, load, sdi, and sdo}$ and the outputs the 2 bytes of information the MCU sends through SPI. When $\texttt{load}$ is pulled low, the module uses a shift register to hold the 16 bits. After $\texttt{load}$ is pulled high by the MCU, these 2 bytes of data is sent to the controller to generate the PWM signal.
 
