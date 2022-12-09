@@ -20,8 +20,8 @@ pendulum problem. Several interesting real world applications depend on solv-
 ing the inverted pendulum problem, including launching and landing rockets
 and navigating the streets on a fancy Segway. In this project, we showcase how
 to stabilize a two wheeled robot using a PID controls algorithm.
-The block diagram of the system is showcased in Figure 1 and the physical
-design of the robot is observable in TD: add figure The control loop starts
+The block diagram of the system is showcased in Figure 2 and the physical
+design of the robot is observable in Figure 1.  The control loop starts
 with the Microcontroller (MCU). It requests $y$ and $z$ acceleration data from
 an Inertial Measurement Unit (IMU) through SPI communication. Using this
 data, the MCU calculates the magnitude and direction of the robot’s tilt and
@@ -31,19 +31,40 @@ Programmable Gate Array (FPGA) through SPI. The FPGA translates the
 desired controls effort into PWM waves to appropriately spin the wheels of the
 robot. And the loop repeats.
 
+
+
 # Hardware
 This project will incorporate an Inertial Measurement Unit (IMU), two DC motors, motor driver, and an external 6v battery. 
 
-The IMU will provide measurements in six degrees of freedom ($x$, $y$, $z$, roll, pitch, and yaw). We will be using the IMU's reported $y$ and z accelerations to approximate the tilt of the robot. The tilt is measured from the way the gravitational force is decomposed in the $y$ and $z$ direction of the IMU. Note that the sensor's positive $z$ direction points into the page and the positive $y$ direction points towards the front of the robot. When the sensor is flat, the $z$ axis lines up perfectly with the gravitational force vector and reports a value close to $g$. When the sensor is tilted at an angle, the effects of the gravitational force on the IMU's $z$ axis decreases but increases along the $x$ and $y$ axes. We use the difference between the $z$ acceleration value and g to determine the magnitude of the tilt. Since the $y$ axis points towards the front of the robot, when the head of the robot is tilted downward, the IMU reports increasing positive $y$ acceleration. In the opposite direction, the IMU reports decreasing negative $y$ acceleration. Through this system, we take the sign of the $y$ acceleration to differentiate between leaning forward and leaning backward.
+The IMU will provide measurements in six degrees of freedom ($x$, $y$, $z$, roll, pitch, and yaw). We will be using the IMU's reported $y$ and $z$ accelerations to approximate the tilt of the robot. The tilt is measured from the way the gravitational force is decomposed in the $y$ and $z$ direction of the IMU. Note that the sensor's positive $z$ direction points into the page and the positive $y$ direction points towards the front of the robot. When the sensor is flat, the $z$ axis lines up perfectly with the gravitational force vector and reports a value close to $g$. When the sensor is tilted at an angle, the effects of the gravitational force on the IMU's $z$ axis decreases but increases along the $x$ and $y$ axes. We use the difference between the $z$ acceleration value and g to determine the magnitude of the tilt. Since the $y$ axis points towards the front of the robot, when the head of the robot is tilted downward, the IMU reports increasing positive $y$ acceleration. In the opposite direction, the IMU reports decreasing negative $y$ acceleration. Through this system, we take the sign of the $y$ acceleration to differentiate between leaning forward and leaning backward.
 
 We also use two brushed DC. These DC motors can spin continuously and have one wire for power and one for ground. When connected to our motor driver (the L293D), we can control the spin of the motors bidirectionally. The L293D controls can control two motors independently. For each motor, it has two pins to control the spin direction of the motor (see FPGA section). Besides controlling the motors, the L293D allows us to amplify the current provided to the motors.
 
 Finally, the whole system is powered by an external 6V battery. This extra battery provide necessary power to rotate the motors at higher speeds and allows our robot to be a self contained unit.
+
+
+<div style="text-align: left">
+  <img src="https://tanvikad.github.io/balance-robot/assets/schematics/Labeled-Battery-and-Motor.png" alt="results" width="1000" />
+  <div style="text-align:center">Figure 1: IMU Axis </div>
+</div>
+
+
+<div style="text-align: left">
+  <img src="https://tanvikad.github.io/balance-robot/assets/schematics/Labeled-MCU-FPGA.png" alt="results" width="1000" />
+  <div style="text-align:center">Figure 1: IMU Axis </div>
+</div>
+
  
 # Schematics
 
 <div style="text-align: left">
-  <img src="https://tanvikad.github.io/balance-robot/assets/schematics/Schematics.jpg" alt="results" width="500" />
+  <img src="https://tanvikad.github.io/balance-robot/assets/schematics/block-diagram.jpg" alt="results" width="1000" />
+  <div style="text-align:center">Figure 2: PID Block Diagram</div>
+</div>
+
+<div style="text-align: left">
+  <img src="https://tanvikad.github.io/balance-robot/assets/schematics/Schematics.jpg" alt="results" width="1000" />
+  <div style="text-align:center">Figure 3: FPGA, IMU, MCU Schematic</div>
 </div>
 
 
@@ -80,7 +101,7 @@ The $\texttt{controller}$ modules takes in the 2 bytes of data and then pulls 6 
 |0 (forward) | value $\texttt{x}$ from (0, 100) | 1 | 0 | PWM signal, width = $\frac{\texttt{x}}{100}$ |
 |1 (backward) | value $\texttt{x}$ from (0, 100) | 0 | 1 | PWM signal, width = $\frac{\texttt{x}}{100}$ |
 
-To create a PWM signal with width determined based on the input we used a variable $\texttt{counter}$ that repeatedly counted from 0 to 100. When $\texttt{reset}$ was high we made sure pull both the enables low to make sure the robot did not move. However when $\texttt{reset}$ was low, we set the corresponding enable high whenever the $\texttt{counter}$ was less than the limit $\texttt{motor\textit{x}[7:0]}$ and low when it was greater than the limit. This is illustrated in the below table, 
+To create a PWM signal with width determined based on the input we used a variable $\texttt{counter}$ that repeatedly counted from 0 to 100. When $\texttt{reset}$ was high we made sure pull both the enables low to make sure the robot did not move. However when $\texttt{reset}$ was low, we set the corresponding enable high whenever the $\texttt{counter}$ was less than the limit $\texttt{motorx[7:0]}$ and low when it was greater than the limit. This is illustrated in the below table, 
 
 
 | condition 1 | condition 2 | $\texttt{en}_{1,2}$(output) | $\texttt{en}_{3,4}$ (output) |
@@ -100,4 +121,6 @@ Though the robot was able to regain balance after being pushed, we were unable t
 
 <div style="text-align: left">
   <img src="https://tanvikad.github.io/balance-robot/assets/img/Results.PNG" alt="results" width="500" />
+  <div style="text-align:center">Figure 3: Robot balancing after touch </div>
 </div>
+
