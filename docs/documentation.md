@@ -8,9 +8,20 @@ permalink: /doc/
 <!-- Include images of the schematics for your system. They should follow best practices for schematic drawings with all parts and pins clearly labeled. You may draw your schematics either with a software tool or neatly by hand. -->
 
 
+
+<div style="text-align: left">
+  <img src="https://tanvikad.github.io/balance-robot/assets/schematics/block-diagram.jpg" alt="results" width="1000" />
+  <div style="text-align:center">Block Diagram</div>
+</div>
+
 <div style="text-align: left">
   <img src="https://tanvikad.github.io/balance-robot/assets/schematics/Schematics.jpg" alt="results" width="1000" />
-  <div style="text-align:center">hiii</div>
+  <div style="text-align:center">Electronics Schematic</div>
+</div>
+
+<div style="text-align: left">
+  <img src="https://tanvikad.github.io/balance-robot/assets/schematics/fpga_diagram.jpg" alt="results" width="1000" />
+  <div style="text-align:center">FPGA Hardware Design Schematic</div>
 </div>
 
 
@@ -32,7 +43,7 @@ For more information on our methods, check out our [project report](https://tanv
 | Item | Part Number | Quantity | Unit Price | Link |
 | ---- | ----------- | ----- | ---- | ---- |
 | 4xAA Battery  |  N.A | 1 | $7.00 |  N.A |
-| Adafruit 6 DoF IMU  |  4502 | 1 | $19.95 |  [link](https://www.adafruit.com/ product/4502 description) |
+| Adafruit 6 DoF IMU  |  4502 | 1 | $19.95 |  [link](https://www.adafruit.com/product/4502) |
 | Battery Holder |  3859 | 1 | $2.95 |  [link](https://www.adafruit.com/product/3859) |
 | Adafruit Robot Kit  |  3244 | 1 | $24.95 |  [link](https://www.adafruit.com/product/3244) |
 | H-Bridge  |  STM L293D | 1  | $8.52 | [link](https://www.mouser.com/ProductDetail/STMicroelectronics/L293D)|

@@ -34,6 +34,19 @@ robot. And the loop repeats.
 
 
 # Hardware
+
+<div style="text-align: left">
+  <img src="https://tanvikad.github.io/balance-robot/assets/schematics/Labeled-Battery-and-Motor.png" alt="results" width="1000" />
+  <div style="text-align:center">Figure 1: Lower Section of Robot </div>
+</div>
+
+
+<div style="text-align: left">
+  <img src="https://tanvikad.github.io/balance-robot/assets/schematics/Labeled-MCU-FPGA.png" alt="results" width="1000" />
+  <div style="text-align:center">Figure 2: Electronics connected to Robot </div>
+</div>
+
+
 This project will incorporate an Inertial Measurement Unit (IMU), two DC motors, motor driver, and an external 6v battery. 
 
 The IMU will provide measurements in six degrees of freedom ($x$, $y$, $z$, roll, pitch, and yaw). We will be using the IMU's reported $y$ and $z$ accelerations to approximate the tilt of the robot. The tilt is measured from the way the gravitational force is decomposed in the $y$ and $z$ direction of the IMU. Note that the sensor's positive $z$ direction points into the page and the positive $y$ direction points towards the front of the robot. When the sensor is flat, the $z$ axis lines up perfectly with the gravitational force vector and reports a value close to $g$. When the sensor is tilted at an angle, the effects of the gravitational force on the IMU's $z$ axis decreases but increases along the $x$ and $y$ axes. We use the difference between the $z$ acceleration value and g to determine the magnitude of the tilt. Since the $y$ axis points towards the front of the robot, when the head of the robot is tilted downward, the IMU reports increasing positive $y$ acceleration. In the opposite direction, the IMU reports decreasing negative $y$ acceleration. Through this system, we take the sign of the $y$ acceleration to differentiate between leaning forward and leaning backward.
@@ -42,44 +55,47 @@ We also use two brushed DC. These DC motors can spin continuously and have one w
 
 Finally, the whole system is powered by an external 6V battery. This extra battery provide necessary power to rotate the motors at higher speeds and allows our robot to be a self contained unit.
 
-
-<div style="text-align: left">
-  <img src="https://tanvikad.github.io/balance-robot/assets/schematics/Labeled-Battery-and-Motor.png" alt="results" width="1000" />
-  <div style="text-align:center">Figure 1: IMU Axis </div>
-</div>
-
-
-<div style="text-align: left">
-  <img src="https://tanvikad.github.io/balance-robot/assets/schematics/Labeled-MCU-FPGA.png" alt="results" width="1000" />
-  <div style="text-align:center">Figure 1: IMU Axis </div>
-</div>
-
  
 # Schematics
 
 <div style="text-align: left">
   <img src="https://tanvikad.github.io/balance-robot/assets/schematics/block-diagram.jpg" alt="results" width="1000" />
-  <div style="text-align:center">Figure 2: PID Block Diagram</div>
+  <div style="text-align:center">Figure 3: Block Diagram</div>
 </div>
 
 <div style="text-align: left">
   <img src="https://tanvikad.github.io/balance-robot/assets/schematics/Schematics.jpg" alt="results" width="1000" />
-  <div style="text-align:center">Figure 3: FPGA, IMU, MCU Schematic</div>
+  <div style="text-align:center">Figure 4: Electronic Schematic</div>
+</div>
+
+<div style="text-align: left">
+  <img src="https://tanvikad.github.io/balance-robot/assets/schematics/fpga_diagram.jpg" alt="results" width="1000" />
+  <div style="text-align:center">Figure 5: FPGA Hardware Design Schematic</div>
 </div>
 
 
 
 # MCU Design
-In the main function of our code, 2 methods are called $\texttt{init}$ and $\texttt{tim\_loop}$.
+The $\texttt{main}$ function located in [spi.c](https://github.com/echen4628/balance-robot-code/blob/main/MCU/lib/STM32L432KC_SPI.h) consists of two functions $\texttt{init}$ and $\texttt{tim\_loop}$.
 
-In $\texttt{init}$ we initialize the SPI by making both $\texttt{phase}$ and $\texttt{polarity}$ to be 1. We configure the IMU and FPGA load and reset pins with $\texttt{GPIO\_OUTPUT}$.  We initialize timer 6 on the MCU which is used to keep track of the time step between IMU reads. Finally we check that the $\texttt{who\_am\_I}$ read on the IMU is at the correct configuration to make sure there are no errors on the SPI transaction between the MCU and the IMU.  
+<div style="text-align: left">
+    <img src="https://tanvikad.github.io/balance-robot/assets/schematics/spi with imu.jpg" alt="results" width="500" />
+    <div style="text-align:center">Figure 6: Oscilloscope trace of MCU communication with IMU through SPI</div>
+  </div>
 
-In $\texttt{tim\_loop}$, the timer 6 is run on repeat. We set our timer to count up to 20 milliseconds making the rate the IMU is read at to be 50 Hz. 
+In $\texttt{init}$ we initialize the SPI by making both $\texttt{phase}$ and $\texttt{polarity}$ to be 1. We configure the IMU and FPGA load and reset pins with $\texttt{GPIO\_OUTPUT}$.  We initialize timer 6 on the MCU which is used to keep track of the time step between IMU reads. Finally, we read the $\texttt{WhoAmI}$ register of the IMU, which contains a constant value. Comparing the value read from the IMU and the expected $\texttt{WhoAmI}$ value allows us to check the accuracy of our SPI communication.
+
+In $\texttt{tim\_loop}$, timer 6 is run on repeat. We set our timer to count up to 20 milliseconds making the rate the IMU is read at to be about 50 Hz. 
 In the timer loop there are two main parts: 
 <ol>
-  <li> While the timer is counting. In this section, the MCU repeatedly reads the IMU and continually holds the most updated acceleration data</li>
-  <li>After the timer reaches the limit. In this function, the MCU computes the PID control based on the time step and the IMU data and then sends it to the FPGA through SPI (Figure \ref{fig:SPI with FPGA}).</li>
+  <li> While the timer is counting, the MCU repeatedly reads the IMU and continually holds the most updated acceleration data.</li>
+
+  <li>After the timer reaches the limit, the MCU computes the PID control based on the time step and the IMU data and then sends it to the FPGA through SPI (Figure \ref{fig:SPI with FPGA}).</li>
 </ol>
+
+We use a standard PID algorithm for  
+
+
 
 
 # FPGA Design
@@ -111,6 +127,7 @@ To create a PWM signal with width determined based on the input we used a variab
 |$\texttt{counter} \leq \texttt{motor1[7:0]}$ | $\texttt{counter} >\texttt{motor2[7:0]}$ | 1 | 0 |
 |$\texttt{counter} > \texttt{motor1[7:0]}$ | $\texttt{counter} > \texttt{motor2[7:0]}$ | 0 | 0 |
 
+
 # Results
 We were able to successfully create PWM signals on the motor. The motor was able to spin in a range of speeds and in both directions. Furthermore we were able to communicate with the IMU, reading the expected value of the $\texttt{WhoAmI}$ register and getting sensible accelerator data. This configuration allowed us to make sure we read and wrote correctly through SPI. Furthermore, we successfully used a clock on the MCU to make sure that our reads from the IMU were at a constant frequency to update the PID control algorithm. 
 
@@ -120,7 +137,7 @@ Though the robot was able to regain balance after being pushed, we were unable t
 
 
 <div style="text-align: left">
-  <img src="https://tanvikad.github.io/balance-robot/assets/img/Results.PNG" alt="results" width="500" />
-  <div style="text-align:center">Figure 3: Robot balancing after touch </div>
+  <img src="https://tanvikad.github.io/balance-robot/assets/img/Results.PNG" alt="results" width="1000" />
+  <div style="text-align:center">Figure 6: Robot balancing after touch </div>
 </div>
 
