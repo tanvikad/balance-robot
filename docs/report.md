@@ -99,3 +99,12 @@ Though the robot was able to regain balance after being pushed, we were unable t
 <div style="text-align: left">
 <img src="./assets/img/Results.PNG" width="100" />
 </div>
+
+<div style="text-align: left">
+  <img src="./assets/img/Logo.png" alt="logo" width="100" />
+</div>
+
+
+<div style="text-align: left">
+  <img src="./assets/img/Results.PNG" alt="logo" width="100" />
+</div>
