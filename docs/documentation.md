@@ -7,10 +7,16 @@ permalink: /doc/
 # Schematics
 <!-- Include images of the schematics for your system. They should follow best practices for schematic drawings with all parts and pins clearly labeled. You may draw your schematics either with a software tool or neatly by hand. -->
 
+
+<div style="text-align: left">
+  <img src="https://tanvikad.github.io/balance-robot/schematics/Schematics.jpg" alt="results" width="500" />
+</div>
+
+
 # Source Code Overview
 <!-- This section should include information to describe the organization of the code base and highlight how the code connects. -->
+Source code for the self balancing robot can be found with documentation [here](https://github.com/echen4628/balance-robot-code). The MCU and FPGA code are located in their respective folders. 
 
-The FPGA code for the project is located in the Github repository [here](https://github.com/tanvikad/balance-robot/tree/main/FGPA/source/impl_1) and the MCU code for the project is located in the repository [here](https://github.com/tanvikad/balance-robot/tree/main/MCU).
 
 # Bill of Materials
 <!-- The bill of materials should include all the parts used in your project along with the prices and links.  -->
@@ -23,4 +29,4 @@ The FPGA code for the project is located in the Github repository [here](https:/
 | Adafruit Robot Kit  |  3244 | 1 | $24.95 |  [link](https://www.adafruit.com/product/3244) |
 | H-Bridge  |  STM L293D | 1  | $8.52 | [link](https://www.mouser.com/ProductDetail/STMicroelectronics/L293D)|
 
-**Total cost: $14.95**
+**Total cost: $56.37**

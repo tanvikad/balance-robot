@@ -30,22 +30,23 @@ the tilt magnitude. The controls outputs are processed and sent to a Field
 Programmable Gate Array (FPGA) through SPI. The FPGA translates the
 desired controls effort into PWM waves to appropriately spin the wheels of the
 robot. And the loop repeats.
-1
+
 # Hardware
 This project will incorporate an Inertial Measurement Unit (IMU), two DC motors, motor driver, and an external 6v battery. 
 
-The IMU will provide measurements in six degrees of freedom ($x$, $y$, $z$, roll, pitch, and yaw). We will be using the IMU's reported $y$ and z accelerations to approximate the tilt of the robot. The tilt is measured from the way the gravitational force is decomposed in the $y$ and $z$ direction of the IMU. Note that the sensor's positive z direction points into the page and the positive $y$ direction points towards the front of the robot. When the sensor is flat, the $z$ axis lines up perfectly with the gravitational force vector and reports a value close to $g$. When the sensor is tilted at an angle, the effects of the gravitational force on the IMU's $z$ axis decreases but increases along the $x$ and $y$ axes. We use the difference between the $z$ acceleration value and g to determine the magnitude of the tilt. Since the $y$ axis points towards the front of the robot, when the head of the robot is tilted downward, the IMU reports increasing positive $y$ acceleration. In the opposite direction, the IMU reports decreasing negative $y$ acceleration. Through this system, we take the sign of the $y$ acceleration to differentiate between leaning forward and leaning backward.
+The IMU will provide measurements in six degrees of freedom ($x$, $y$, $z$, roll, pitch, and yaw). We will be using the IMU's reported $y$ and z accelerations to approximate the tilt of the robot. The tilt is measured from the way the gravitational force is decomposed in the $y$ and $z$ direction of the IMU. Note that the sensor's positive $z$ direction points into the page and the positive $y$ direction points towards the front of the robot. When the sensor is flat, the $z$ axis lines up perfectly with the gravitational force vector and reports a value close to $g$. When the sensor is tilted at an angle, the effects of the gravitational force on the IMU's $z$ axis decreases but increases along the $x$ and $y$ axes. We use the difference between the $z$ acceleration value and g to determine the magnitude of the tilt. Since the $y$ axis points towards the front of the robot, when the head of the robot is tilted downward, the IMU reports increasing positive $y$ acceleration. In the opposite direction, the IMU reports decreasing negative $y$ acceleration. Through this system, we take the sign of the $y$ acceleration to differentiate between leaning forward and leaning backward.
 
 We also use two brushed DC. These DC motors can spin continuously and have one wire for power and one for ground. When connected to our motor driver (the L293D), we can control the spin of the motors bidirectionally. The L293D controls can control two motors independently. For each motor, it has two pins to control the spin direction of the motor (see FPGA section). Besides controlling the motors, the L293D allows us to amplify the current provided to the motors.
 
 Finally, the whole system is powered by an external 6V battery. This extra battery provide necessary power to rotate the motors at higher speeds and allows our robot to be a self contained unit.
-
-% The tilt approximation is made possible by the decomposition of the acceleration from gravity. When the IMU is flat and stat
-
-% The IMU operates on a basis in which the positive z direction points into the page, positive y direction points leftward, and positive x direction points upward. In this way, tilting such that the positive y direction points downard will cause y to register more of an increasing positive value while in tilting in the opposite way will cause y to register an increasing negative value. Therefore, a sense of direction of tilt can be found using the y axis accerleration. The magnitutde of the tilt can be determine solely by observing the acceleration registered on the z axis. When the imu is tilted, the vertical gravitaional accerlation vector has a decreasing z componenent, meaning that the greater the tilt, the smaller the z imu value becomes. 
-
-Our two brushed DC motors will be our main control input to the robot. With an H-Bridge, the motor can spin the wheels bidirectionally. 
+ 
 # Schematics
+
+<div style="text-align: left">
+  <img src="https://tanvikad.github.io/balance-robot/schematics/Schematics.jpg" alt="results" width="500" />
+</div>
+
+
 
 # MCU Design
 In the main function of our code, 2 methods are called $\texttt{init}$ and $\texttt{tim\_loop}$.
@@ -98,10 +99,5 @@ Though the robot was able to regain balance after being pushed, we were unable t
 
 
 <div style="text-align: left">
-  <img src="https://tanvikad.github.io/balance-robot/assets/img/Logo.png" alt="logo" width="100" />
-</div>
-
-
-<div style="text-align: left">
-  <img src="https://tanvikad.github.io/balance-robot/assets/img/Results.PNG" alt="results" width="100" />
+  <img src="https://tanvikad.github.io/balance-robot/assets/img/Results.PNG" alt="results" width="500" />
 </div>
