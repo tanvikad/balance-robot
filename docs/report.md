@@ -103,5 +103,5 @@ Though the robot was able to regain balance after being pushed, we were unable t
 
 
 <div style="text-align: left">
-  <img src="https://tanvikad.github.io/balance-robot/assets/img/Results.png" alt="results" width="100" />
+  <img src="https://tanvikad.github.io/balance-robot/assets/img/Results.PNG" alt="results" width="100" />
 </div>

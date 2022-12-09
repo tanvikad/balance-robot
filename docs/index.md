@@ -31,7 +31,7 @@ The goal of our final project is to create a self balancing two wheel robot. Whe
 
 
 <div style="text-align: left">
-<img src="./assets/img/Results.png" width="100" />
+<img src="./assets/img/Results.PNG" width="100" />
 </div>
 
 <div style="text-align: left">
