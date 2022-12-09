@@ -2,7 +2,7 @@
 Contains functions for MCU timers
 
     @file TIM.h
-    @author Eric Chen, Tanvika Dasari, Josh Brake
+    @author Tanvika Dasari, Josh Brake
     @version 1.0 12/08/2022
 */
 
@@ -31,18 +31,19 @@ void delay_millis(TIM_TypeDef * TIMx, uint32_t ms){
   
 }
 
-void tim_main(TIM_TypeDef * TIMx, uint32_t ms, void (*event_during_waiting)(int, struct imu_values*),  void (*event_after_waiting)(struct imu_values*, struct controller*))
+void tim_loop(TIM_TypeDef * TIMx, uint32_t ms, void (*event_during_waiting)(int, struct imu_values*),  void (*event_after_waiting)(struct imu_values*, struct controller*))
 {
   TIMx->ARR = ms;// Set timer max count
   TIMx->EGR |= 1;     // Force update
   TIMx->SR &= ~(0x1); // Clear UIF
   TIMx->CNT = 0;      // Reset count
 
-  int i = 0;
+  int i = 0; //A counter that is used to toggle a debug LED
   printf("The ARR is currently: %d", TIMx->ARR);
   struct imu_values values;
   struct controller pid_controller;
 
+  //initial the PID controller 
   pid_init(&pid_controller);
   
   while(1)
@@ -57,8 +58,6 @@ void tim_main(TIM_TypeDef * TIMx, uint32_t ms, void (*event_during_waiting)(int,
 
     i++;
     event_after_waiting(&values, &pid_controller);
-
-    printf("\n The counter delay is: %d \n", TIMx->CNT);
   }
   
 }

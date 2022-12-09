@@ -82,7 +82,7 @@ The $\texttt{controller}$ modules takes in the 2 bytes of data and then pulls 6 
 To create a PWM signal with width determined based on the input we used a variable $\texttt{counter}$ that repeatedly counted from 0 to 100. When $\texttt{reset}$ was high we made sure pull both the enables low to make sure the robot did not move. However when $\texttt{reset}$ was low, we set the corresponding enable high whenever the $\texttt{counter}$ was less than the limit $\texttt{motor\textit{x}[7:0]}$ and low when it was greater than the limit. This is illustrated in the below table, 
 
 
-| condition 1 | condition 2 | $$\texttt{en}_{1,2}$$ (output) | $$\texttt{en}_{3,4}$$ (output) |
+| condition 1 | condition 2 | $\texttt{en}_{1,2}$(output) | $\texttt{en}_{3,4}$ (output) |
 | --- | --- | --- | --- |
 |$\texttt{counter} \leq \texttt{motor1[7:0]}$ | $\texttt{counter} \leq \texttt{motor2[7:0]}$ | 1 | 1 |
 |$\texttt{counter} > \texttt{motor1[7:0]}$ | $\texttt{counter} \leq \texttt{motor2[7:0]}$ | 0 | 1 |
@@ -96,4 +96,4 @@ However, there were some difficulties with the hardware design of the robot. As 
 
 Though the robot was able to regain balance after being pushed, we were unable to exactly tune the robot to minimize the oscillations. The robot takes few seconds to recover from slight imbalances. 
 
-<img src="./assets/img/Result.PNG" width="100" />
+<img src="./assets/img/Results.PNG" width="100" />

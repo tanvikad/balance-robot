@@ -289,6 +289,6 @@ char read_imu(char address) {
 
 int main(void) {
   init();
-  tim_main(TIM6, 20, waiting, after_waiting);
+  tim_loop(TIM6, 20, waiting, after_waiting);
 }
 

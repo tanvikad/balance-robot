@@ -1,3 +1,9 @@
+/////////////////////////////////////////////
+// motor_controller
+// module to send PWM signals to 2 motors according to motorx_sign and motorx_upperlimit
+// Added by Tanvika Dasari
+// tdasari@hmc.edu
+//////////////////////////////////////////////////////////////////////////////////////////
 module motor_controller(
 	input logic reset,
 	input logic load,
@@ -17,25 +23,21 @@ module motor_controller(
 	//assign a1 = reset;
 
 	logic [6:0] counter;
+	//Counter counts to the upper limit 100
 	parameter [6:0] upper_limit = 7'd100;
-
+	
 	logic [6:0] old_motor1_upperlimit;
 	logic [6:0] old_motor2_upperlimit;
 	always_ff @(posedge clk)
 		begin
-			//Here we are changing the inputs based on the direction of the motor1 and motor2 input
 			if(reset == 1'b1)
 				begin
-					counter <= 8'd0;
-					debug_light <= 1'b1;
 					enable12 <= 1'b0;
 					enable34 <= 1'b0;
-					//old_motor1_upperlimit <= 8'd50;
-					//old_motor2_upperlimit <= 8'd50;
 				end
 			else
 				begin
-					if(load == 1'b1)
+					//When load is pulled high (or when information is not being sent) we send the new upper limit through a flip flop
 						begin
 							old_motor1_upperlimit <= motor1_upperlimit;
 							old_motor2_upperlimit <= motor2_upperlimit;
