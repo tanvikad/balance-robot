@@ -4,7 +4,7 @@ author: "Eric Chen and Tanvika Dasari"
 theme: minima
 
 header-pages:
-  - report.html
+  #- report.html
   - documentation.html
   - resources.html
 
