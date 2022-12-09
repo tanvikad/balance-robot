@@ -17,7 +17,7 @@ The goal of our final project is to create a self balancing two wheel robot. Whe
 
 <iframe width="560" height="315" src="https://www.youtube.com/shorts/tRsg7kjJD0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<form action="report.md">
+<form action="report">
     <input type="submit" style="text-align:center" value="Read our project report" />
 </form>
 <form action="https://github.com/tanvikad/balance-robot">
